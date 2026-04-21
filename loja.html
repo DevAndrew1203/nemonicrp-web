@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Nemonic Store - Adquira pacotes VIP, kits e itens exclusivos para sua jornada em Velmora.">
+    <title>Nemonic Store | Armazém de Velmora</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="store.css">
+    <script src="auth.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="index.html#mundo">Lore</a>
+                <a href="regras.html">Regras</a>
+                <a href="index.html#classes">Classes</a>
+                <a href="loja.html" class="active">Loja</a>
+                <div id="auth-status">
+                    <!-- Placeholder para Login/User Profile -->
+                </div>
+                <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- STORE HERO -->
+        <section class="store-hero">
+            <div class="container reveal">
+                <div class="store-hero-content">
+                    <h1 class="title-gold">Armazém de Velmora</h1>
+                    <p class="hero-quote">Equipe-se para o desconhecido. Sua ascensão começa aqui.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORE CATEGORIES -->
+        <section class="store-categories">
+            <div class="container">
+                <div class="category-tabs">
+                    <button class="cat-btn active" data-category="todos">Todos</button>
+                    <button class="cat-btn" data-category="vips">VIPS</button>
+                    <button class="cat-btn" data-category="unban">Unban</button>
+                    <button class="cat-btn" data-category="nitro">Nitro Booster</button>
+                    <button class="cat-btn" data-category="esteticos">Estéticos</button>
+                    <button class="cat-btn" data-category="utilidades">Úteis</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORE NOTICE -->
+        <section class="container">
+            <div class="store-notice reveal">
+                <h2>📜 Importante — Compras no servidor</h2>
+                <p>Para realizar uma compra, é necessário acessar o link de pagamento do produto desejado. Após concluir o pagamento, abra um <span class="highlight">ticket</span> e envie o comprovante. Não se esqueça de informar corretamente o seu nick do Minecraft.</p>
+                <p>O prazo de atendimento é de <span class="highlight">até 1 hora</span>, podendo variar. Após as 22:00, o tempo de espera pode se estender até o dia seguinte.</p>
+                <p class="highlight">Obs: não trabalhamos com reembolso.</p>
+            </div>
+        </section>
+
+        <!-- PRODUCTS GRID -->
+        <section class="products-section">
+            <div class="container">
+                <div class="products-grid">
+                    
+                    <!-- VIPS -->
+                    <div class="product-card" data-category="vips">
+                        <div class="product-image" style="background-image: url('assets/hero_bg_novo.jpg');"></div>
+                        <div class="product-info">
+                            <h3>VIP Mítico</h3>
+                            <ul class="benefits-list">
+                                <li>1 buff de XP</li>
+                                <li>Prioridade na allowlist</li>
+                                <li>Tag VIP exclusiva</li>
+                            </ul>
+                            <p class="product-desc">Planos mensais. Renovação necessária para manter privilégios.</p>
+                            <div class="product-price">R$ 14,99</div>
+                            <button onclick="solicitarTicket('VIP Mítico', 'R$ 14,99')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="vips">
+                        <div class="product-image" style="background-image: url('assets/valis_bg.png');"></div>
+                        <div class="product-info">
+                            <h3>VIP Ascendente</h3>
+                            <ul class="benefits-list">
+                                <li>Mochila gold 27 slots</li>
+                                <li>2 buff de XP</li>
+                                <li>Análise de ficha imediata</li>
+                                <li>Tag VIP exclusiva</li>
+                                <li>Acessório padronizado</li>
+                            </ul>
+                            <div class="product-price">R$ 29,90</div>
+                            <button onclick="solicitarTicket('VIP Ascendente', 'R$ 29,90')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="vips" id="vip-arcano">
+                        <div class="product-badge">Melhor Valor</div>
+                        <div class="product-image" style="background-image: url('assets/oros_bg.png');"></div>
+                        <div class="product-info">
+                            <h3>VIP Arcano</h3>
+                            <ul class="benefits-list">
+                                <li>Mochila diamante 54 slots</li>
+                                <li>2 buff de XP</li>
+                                <li>Tag personalizada no MC</li>
+                                <li>2 acessórios padronizados</li>
+                                <li>1 item customizável</li>
+                            </ul>
+                            <div class="product-price">R$ 41,90</div>
+                            <button onclick="solicitarTicket('VIP Arcano', 'R$ 41,90')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="vips">
+                        <div class="product-image" style="background-image: url('assets/kazaar_bg.png');"></div>
+                        <div class="product-info">
+                            <h3>VIP Ancestral</h3>
+                            <ul class="benefits-list">
+                                <li>Reconhecimento Legado</li>
+                                <li>Mochila gold 27 slots</li>
+                                <li>Desconto 20% Próximo Upgrade</li>
+                                <li>Tag VIP exclusiva</li>
+                            </ul>
+                            <p class="product-desc">Concedido a jogadores permanentes aos servidores antigos.</p>
+                            <button class="btn btn-info btn-full">Plano Legado</button>
+                        </div>
+                    </div>
+
+                    <!-- UNBAN -->
+                    <div class="product-card" data-category="unban">
+                        <div class="product-image" style="background-image: url('assets/dungeon_bg.png');"></div>
+                        <div class="product-info">
+                            <h3>Unban Temporário</h3>
+                            <p class="product-desc">Remoção de banimentos de 6 horas a 30 dias. Siga as regras!</p>
+                            <div class="product-price">R$ 39,90</div>
+                            <button onclick="solicitarTicket('Unban Temporário', 'R$ 39,90')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="unban">
+                        <div class="product-image" style="background-image: url('assets/dungeon_bg.png');"></div>
+                        <div class="product-info">
+                            <h3>Unban Permanente (1x)</h3>
+                            <p class="product-desc">Primeira chance de retorno após banimento permanente.</p>
+                            <div class="product-price">R$ 59,90</div>
+                            <button onclick="solicitarTicket('Unban Permanente 1x', 'R$ 59,90')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="unban">
+                        <div class="product-image" style="background-image: url('assets/dungeon_bg.png');"></div>
+                        <div class="product-info">
+                            <h3>Unban Permanente (2x)</h3>
+                            <p class="product-desc">Segunda e última chance de retorno. Limite máximo de uso.</p>
+                            <div class="product-price">R$ 109,90</div>
+                            <button onclick="solicitarTicket('Unban Permanente 2x', 'R$ 109,90')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <!-- NITRO -->
+                    <div class="product-card" data-category="nitro">
+                        <div class="product-image" style="background-image: url('assets/magic_forest.png');"></div>
+                        <div class="product-info">
+                            <h3>Nitro Booster</h3>
+                            <ul class="benefits-list">
+                                <li>Mochila comum 9 slots</li>
+                                <li>2 buff de XP</li>
+                                <li>Análise imediata</li>
+                                <li>Pet padrão em breve</li>
+                            </ul>
+                            <p class="product-desc">Reconhecimento para quem impulsiona o Discord.</p>
+                            <button onclick="solicitarTicket('Nitro Booster', 'Gratuito')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <!-- ESTÉTICOS -->
+                    <div class="product-card" data-category="esteticos">
+                        <div class="product-image" style="background-image: url('assets/ferreiro_bg.jpg');"></div>
+                        <div class="product-info">
+                            <h3>Itens Customizáveis</h3>
+                            <p class="product-desc">Skins para Espadas (25,90), Ferramentas (19,90) ou Armaduras (25,90).</p>
+                            <p class="product-desc">Mudança puramente estética (Skin 3D).</p>
+                            <button onclick="solicitarTicket('Item Customizável', 'Diversos')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="esteticos">
+                        <div class="product-image" style="background-image: url('assets/thalassia_bg.png');"></div>
+                        <div class="product-info">
+                            <h3>Acessórios</h3>
+                            <p class="product-desc">Simples (R$ 25,99) ou Complexos (R$ 30,00). Consulte via Ticket.</p>
+                            <button onclick="solicitarTicket('Acessório Customizado', 'Diversos')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="esteticos">
+                        <div class="product-badge">🛒 Promoção</div>
+                        <div class="product-image" style="background-image: url('assets/magic_forest.png');"></div>
+                        <div class="product-info">
+                            <h3>Pacote Páscoa</h3>
+                            <p class="product-desc">Combo Tag personalizada + Acessório de Orelhas de Coelho.</p>
+                            <div class="product-price"><strike>R$ 39,99</strike> R$ 25,90</div>
+                            <button onclick="solicitarTicket('Pacote Páscoa', 'R$ 25,90')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                    <!-- ÚTEIS -->
+                    <div class="product-card" data-category="utilidades">
+                        <div class="product-image" style="background-image: url('assets/hero_bg.png');"></div>
+                        <div class="product-info">
+                            <h3>Allowlist Prioritária</h3>
+                            <p class="product-desc">Sua ficha no topo da fila de análise. Não garante aprovação.</p>
+                            <div class="product-price">R$ 9,90</div>
+                            <button onclick="solicitarTicket('Allowlist Prioritária', 'R$ 9,90')" class="btn btn-primary btn-full btn-buy" disabled>Login Necessário</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="f-info">
+                    <img src="assets/serverlogo_bg.png" alt="Logo" class="footer-logo">
+                    <p>O mar apagou quem você era. Agora Velmora decidirá quem você se tornará.</p>
+                </div>
+                <div class="f-links">
+                    <h4>Navegação</h4>
+                    <a href="index.html">Início</a>
+                    <a href="index.html#mundo">Lore</a>
+                    <a href="index.html#regras">Regras</a>
+                </div>
+                <div class="f-social">
+                    <h4>Comunidade</h4>
+                    <a href="https://discord.gg/v34BpF54C" target="_blank">Discord</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+            <div class="f-copy">
+                &copy; 2026 NemonicRP. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Função para disparar a solicitação para a Staff via Webhook
+        async function solicitarTicket(produto, preco) {
+            const user = JSON.parse(localStorage.getItem('discord_user'));
+            if (!user) {
+                alert('Você precisa estar logado para solicitar um item.');
+                return;
+            }
+
+            const webhookUrl = "https://discord.com/api/webhooks/1490836033330348195/zuI4Seof9j2v59Ox_zkLcF1SEiBzPtBvB5RmXkGmih84_X7ysLGIcVFtvH4BM9ERVKZr";
+            
+            // Mensagem formatada em Embed para a Staff
+            const embedData = {
+                username: "Nemonic Store Bot",
+                avatar_url: "https://cdn.discordapp.com/attachments/1490827213879115786/dummy_logo.png",
+                embeds: [{
+                    title: "📝 Nova Solicitação de Compra!",
+                    description: "Um usuário demonstrou interesse em um produto e em breve abrirá um ticket.",
+                    color: 13663607,
+                    fields: [
+                        { name: "👤 Interessado", value: `<@${user.id}> (${user.username})`, inline: true },
+                        { name: "📦 Produto", value: produto, inline: true },
+                        { name: "💰 Preço", value: preco, inline: true },
+                    ],
+                    thumbnail: {
+                        url: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+                    },
+                    footer: { text: "NemonicRP - Registro de Intenção de Compra" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            try {
+                // Copia a mensagem formatada para a área de transferência do jogador
+                const mensagemUsuario = `Olá Staff! Eu sou o @${user.username} e gostaria de adquirir o item: ${produto} (${preco}).`;
+                await navigator.clipboard.writeText(mensagemUsuario);
+
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(embedData)
+                });
+
+                if (response.ok) {
+                    alert(`✅ Solicitação enviada e COPIADA!\n\n1. Nossa Staff já recebeu o alerta de interesse.\n2. Copiamos sua mensagem de compra automaticamente (CTRL+V).\n\nClique em OK para abrir o Discord, abrir seu TICKET e colar o seu pedido!`);
+                    window.open("https://discord.gg/RKVwhA6F", '_blank');
+                } else {
+                    throw new Error('Falha no envio');
+                }
+            } catch (error) {
+                console.error('Erro no fluxo de compra:', error);
+                alert('Houve um pequeno erro ao registrar. Por favor, tente novamente ou fale com a nossa staff no suporte.');
+                window.open("https://discord.gg/RKVwhA6F", '_blank');
+            }
+        }
+        // Lógica de filtro da Loja
+        const catButtons = document.querySelectorAll('.cat-btn');
+        const products = document.querySelectorAll('.product-card');
+
+        catButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.getAttribute('data-category');
+
+                products.forEach(product => {
+                    if (category === 'todos' || product.getAttribute('data-category') === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="NemonicRP - Servidor de Roleplay Medieval focado em imersão, narrativa e fantasia sombria no Arquipélago de Velmora.">
+    <title>NemonicRP | Roleplay Medieval Dark Fantasy</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#mundo">Lore</a>
+                <a href="regras.html">Regras</a>
+                <a href="#classes">Classes</a>
+                <a href="#progressao">Progressão</a>
+                <a href="loja.html">Loja</a>
+                <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
+                <div class="music-control-container">
+                    <button id="music-toggle" class="btn-icon" aria-label="Alternar Música" title="Tocar Música Ambiente">
+                        <span id="music-icon">🔊</span>
+                    </button>
+                    <div class="volume-dropdown">
+                        <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5" title="Ajustar Volume">
+                    </div>
+                </div>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. HERO SECTION -->
+        <section class="hero" id="hero">
+            <div class="particles" id="particles"></div>
+            <div class="hero-content reveal">
+                <h1 class="hero-title">
+                    <img src="assets/serverlogo_bg.png" alt="NemonicRP" class="hero-logo">
+                </h1>
+                <p class="hero-subtitle">Bem Vindos a Velmora!</p>
+                <div class="hero-divider"></div>
+                <p class="hero-quote">"Seu passado foi engolido pelo mar. <br>Seu destino começa em Velmora."</p>
+                <div class="hero-actions">
+                    <a href="https://discord.gg/v34BpF54C" class="btn btn-primary btn-glow">Entrar na Comunidade</a>
+                    <a href="regras.html" class="btn btn-secondary">Ler as Regras</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <p>Descubra</p>
+                <div class="arrow"></div>
+            </div>
+        </section>
+
+        <!-- 3. O MUNDO DE VELMORA -->
+        <section class="section world" id="mundo">
+            <div class="container reveal">
+                <div class="world-content">
+                    <div class="world-text">
+                        <h2 class="title-gold">Os Reinos de Baris</h2>
+                        <p class="lead">O Velho Continente (Sua Terra Natal).</p>
+                        <p>Antes de se perder no mar e chegar em Velmora, seu personagem veio daqui. Quatro grandes regiões compõem este mundo implacável.<br><br><strong>Clique nos pinos luminosos do mapa</strong> para explorar as lendas, vestimentas e a civilização de cada reino!</p>
+                    </div>
+                    <div class="world-image-wrapper">
+                        <!-- Imagem do mapa de fundo carregada por CSS -->
+                        <div class="world-compass"></div>
+                        
+                        <!-- Pinos do Mapa Interativo (Valis, Kazaar, Thalassia, Oros) -->
+                        <div class="map-pin" style="top: 45%; left: 82%;" data-region-target="region-valis" title="Explorar Valis">
+                            <div class="pin-marker"></div>
+                        </div>
+
+                        <div class="map-pin" style="top: 75%; left: 50%;" data-region-target="region-kazaar" title="Explorar Kazaar">
+                            <div class="pin-marker"></div>
+                        </div>
+
+                        <div class="map-pin" style="top: 50%; left: 20%;" data-region-target="region-thalassia" title="Explorar Thalassia">
+                            <div class="pin-marker"></div>
+                        </div>
+
+                        <div class="map-pin" style="top: 25%; left: 65%;" data-region-target="region-oros" title="Explorar Oros">
+                            <div class="pin-marker"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HISTÓRIA E CRIAÇÃO (A CHEGADA) -->
+        <section class="section arrival" id="chegada">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">A Chegada a Velmora ⛵</h2>
+                    <p class="hero-quote" style="margin-bottom:20px; color:#fff;">"O mar se acalma, o horizonte reaparece e, à frente, surge terra firme... mas partes de quem você era ficaram à deriva."</p>
+                    <p style="max-width: 800px; margin: 0 auto;">Este guia dita as regras fundamentais de quem você é neste novo mundo. O Arquipélago não aparece em mapas, não faz parte de rotas marítimas e não é reconhecido pelo mundo exterior. Ninguém conhece este lugar e ninguém viaja para cá intencionalmente.</p>
+                </div>
+
+                <div class="lore-tabs text-center" style="margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <button class="btn btn-primary btn-glow lore-tab-btn active" data-lore="travessia">A Travessia</button>
+                    <button class="btn btn-outline-gold lore-tab-btn" data-lore="amnesia">Amnésia e O Preço</button>
+                </div>
+
+                <div class="lore-content-container">
+                    <!-- Tab 1: Travessia & Origem -->
+                    <div class="lore-detail active" id="lore-travessia">
+                        <div class="lore-box">
+                            <h3>A Travessia 🌊</h3>
+                            <p>A chegada ao Arquipélago acontece <strong>exclusivamente pelo mar</strong>, sempre de forma inesperada. Durante uma viagem comum:</p>
+                            <ul>
+                                <li>O vento perde completamente sua direção.</li>
+                                <li>O mar se torna instável e o horizonte desaparece, como se o caminho simplesmente deixasse de existir. A bússola falha e a confusão toma conta da tripulação.</li>
+                                <li>Um clarão repentino cega a todos.</li>
+                            </ul>
+                            <p style="margin-top: 15px;">Quando a luz cede, tudo volta ao normal. O mar está calmo e uma terra firme surge à frente: o Arquipélago. A travessia parece incompleta, como se um salto no tempo ou no espaço tivesse ocorrido.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Amnesia -->
+                    <div class="lore-detail" id="lore-amnesia" style="display: none;">
+                        <div class="lore-box">
+                            <h3>O Preço da Chegada 🧠</h3>
+                            <p>Ao desembarcar, o personagem percebe rapidamente que algo está errado. A travessia cria uma "névoa" na mente.</p>
+                            <ul>
+                                <li><strong>O que você esquece:</strong> Nomes de entes queridos, rostos, lugares específicos e detalhes minuciosos da sua vida anterior. O passado existe, mas é distante, confuso e não confiável.</li>
+                                <li><strong>O que você lembra:</strong> O essencial permanece intacto. Suas habilidades práticas (sabe lutar, forjar, navegar), entende como o mundo funciona e o tipo de vida que levava. As suas habilidades e o seu <strong>próprio nome</strong> permanecem nítidos.</li>
+                            </ul>
+
+                            <h3 style="margin-top: 30px;">O Chamado (Seu Objetivo) 🎯</h3>
+                            <p>Mesmo com as falhas na memória, você chega acreditando ter um <strong>objetivo inabalável</strong>, mesmo sem saber a origem dessa motivação. Isso pode se manifestar como uma sensação persistente, uma voz no fundo da mente ou a intuição de que precisa fazer algo.</p>
+                            <p><em>Exemplos: Encontrar alguém perdido, recuperar um artefato, buscar uma resposta específica ou cumprir uma promessa esquecida.</em></p>
+                            <p>Para o personagem, esse objetivo é puramente real e natural.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.5 PROGRESSÃO SOCIAL -->
+        <section class="section progression" id="progressao">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">Progressão Social 📈</h2>
+                    <p class="hero-quote" style="margin-bottom:20px; color:#fff;">"A escada do poder é feita de ouro, sangue e fé. Subir até o topo exige anos de sacrifício; despencar exige apenas um passo em falso."</p>
+                    <p>O status social de um personagem em Velmora não está cravado em pedra. Através de ações notáveis, alianças políticas, riqueza acumulada e reputação, é possível ascender na hierarquia do reino — ou decair para as sombras.</p>
+                </div>
+
+                <div class="progression-warning">
+                    <h4>⚠️ A Regra de Ouro da Progressão</h4>
+                    <p>Toda ascensão deve acontecer de forma orgânica e através do Roleplay, não apenas por acúmulo de itens ou mecânicas do jogo. Para assumir novos cargos e títulos, muitas vezes é necessária a cerimônia e a aprovação direta da Staff ou de autoridades do RP (Duques, o Papa, o Rei, Líderes de Guilda, etc.).</p>
+                    <button id="toggle-progression-btn" class="btn btn-outline-gold" style="margin-top: 15px; width: 100%;">Explorar Caminhos de Ascensão</button>
+                </div>
+
+                <div id="progression-hidden-content" style="display: none; animation: fadeIn 0.5s;">
+                <div class="progression-grid">
+                    <!-- Caminho dos Camponeses -->
+                    <div class="prog-card">
+                        <h3>🌾 O Caminho dos Camponeses</h3>
+                        <p class="prog-desc">A base do mundo. Com suor e ambição, quem trabalha a terra pode forjar um futuro melhor.</p>
+                        <ul class="prog-path">
+                            <li>Camponês ➔ Trabalhador Especializado</li>
+                            <li>Camponês ➔ Artesão ➔ Mestre Artesão</li>
+                            <li>Camponês ➔ Mercador ➔ Guilda dos Mercadores</li>
+                        </ul>
+                    </div>
+
+                    <!-- Caminho da Burguesia -->
+                    <div class="prog-card">
+                        <h3>💰 O Caminho da Burguesia</h3>
+                        <p class="prog-desc">Onde o ouro fala mais alto que o sangue. A ascensão aqui depende de monopólios, contatos e lucros exorbitantes.</p>
+                        <ul class="prog-path">
+                            <li>Mercador ➔ Mestre da Guilda</li>
+                            <li>Artesão ➔ Mestre Artesão</li>
+                            <li>Grande Mercador ➔ Nobre Decadente</li>
+                        </ul>
+                    </div>
+
+                    <!-- Caminho Militar -->
+                    <div class="prog-card">
+                        <h3>⚔️ O Caminho Militar</h3>
+                        <p class="prog-desc">A glória forjada no aço. A progressão militar exige disciplina, vitórias em combate e lealdade inabalável.</p>
+                        <ul class="prog-path">
+                            <li>Escudeiro ➔ Cavaleiro Juramentado</li>
+                            <li>Cavaleiro ➔ Guarda Real</li>
+                            <li>Guarda Real ➔ Capitão da Guarda</li>
+                        </ul>
+                    </div>
+
+                    <!-- Caminho Religioso -->
+                    <div class="prog-card">
+                        <h3>✝️ O Caminho Religioso</h3>
+                        <p class="prog-desc">A ascensão através da devoção, do estudo arcano e da eliminação de heresias.</p>
+                        <ul class="prog-path">
+                            <li>Seguidor ➔ Sacerdote</li>
+                            <li>Sacerdote ➔ Inquisidor / Alquimista</li>
+                            <li>Inquisidor / Alquimista ➔ Alto Membro do Clero (Bispos/Cardeais)</li>
+                        </ul>
+                        <p class="prog-note">*Lembrando que você não é obrigado a ser da igreja se for da classe alquimista.</p>
+                    </div>
+
+                    <!-- Ascensão Nobreza -->
+                    <div class="prog-card">
+                        <h3>👑 Ascensão à Nobreza (Casos Raros)</h3>
+                        <p class="prog-desc">Tornar-se um nobre não é algo que o dinheiro compra facilmente. Geralmente ocorre através de grandes feitos heroicos, casamentos arranjados ou nomeação direta da Realeza.</p>
+                        <ul class="prog-path">
+                            <li>Burguesia ➔ Nobre Decadente</li>
+                            <li>Nobre Decadente ➔ Duque</li>
+                        </ul>
+                    </div>
+
+                    <!-- Caminho Marginalizados -->
+                    <div class="prog-card">
+                        <h3>🗡️ O Caminho dos Marginalizados</h3>
+                        <p class="prog-desc">A hierarquia do submundo. Crescer aqui significa sobreviver à guarda, à inquisição e aos próprios "colegas" de profissão.</p>
+                        <ul class="prog-path">
+                            <li>Criminoso ➔ Bandido ➔ Contrabandista</li>
+                            <li>Mercenário ➔ Líder de Companhia Mercenária</li>
+                            <li>Bruxo Clandestino ➔ Bruxo Renegado Poderoso</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="decadence-box">
+                    <h3>📉 Decadência Social (A Queda)</h3>
+                    <p>Assim como a ascensão é gloriosa, a queda é brutal. Seus atos (ou a falta deles) podem tirar tudo o que você conquistou:</p>
+                    <ul class="decadence-list">
+                        <li>Um <strong>Nobre falido ou traidor</strong> tem suas terras confiscadas e vira um Nobre Decadente (ou um exilado).</li>
+                        <li>Um <strong>Cavaleiro desonrado ou covarde</strong> tem sua espada quebrada e perde seu título.</li>
+                        <li>Um <strong>Sacerdote ou Inquisidor corrupto</strong> é excomungado e jogado à própria sorte (ou à fogueira).</li>
+                        <li>Um <strong>Mercador</strong> que negocia ilegalidades e é pego perde sua licença e vira um contrabandista procurado.</li>
+                    </ul>
+                </div>
+                </div> <!-- fecha div progression-hidden-content -->
+            </div>
+        </section>
+
+        <!-- 8. HIERARQUIA E STATUS -->
+        <section class="section hierarchy" id="hierarquia">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">Hierarquia e Status</h2>
+                    <p class="hero-quote" style="margin-bottom:20px; color:#fff;">"O sangue pode definir onde você nasce, mas o ouro, a fé e o aço determinam onde você vai parar."</p>
+                    <p style="max-width: 800px; margin: 0 auto; text-transform:none; letter-spacing:normal;">A sociedade de Velmora não é igualitária. Ela é estruturada em uma pirâmide rígida e perigosa, onde cada camada possui funções, privilégios e responsabilidades distintas. Conhecer o seu lugar — e o lugar de quem está à sua frente — é a primeira regra para sobreviver neste mundo.</p>
+                </div>
+                
+                <style>
+                    .tier-list { list-style: none; padding: 0 15px; text-align: left; }
+                    .tier-list li { margin-bottom: 10px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+                    .tier-list strong { color: var(--gold); }
+                    .tier-desc { text-align: center; margin-bottom: 20px !important; }
+                </style>
+
+                <div class="classes-grid" style="margin-top: 40px;">
+                    <div class="class-card">
+                        <div class="class-icon">👑</div>
+                        <h3>Realeza</h3>
+                        <p class="role">A Soberania Máxima</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">Ditando as leis, as guerras e os rumos do mundo inteiro.</p>
+                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="realeza" style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer Hierarquia</button>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-icon">🏰</div>
+                        <h3>Nobreza</h3>
+                        <p class="role">Os Senhores das Terras</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">Senhores abaixo da coroa, administram os territórios e a ordem local.</p>
+                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="nobreza" style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer Hierarquia</button>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-icon">⛪</div>
+                        <h3>O Clero</h3>
+                        <p class="role">A Voz do Divino</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">Autoridade espiritual. Guardiões da fé que controlam o uso legal da magia.</p>
+                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="clero" style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer Hierarquia</button>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-icon">⚔️</div>
+                        <h3>Os Cavaleiros</h3>
+                        <p class="role">O Braço Armado</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">A força militar implacável que luta nas guerras e preserva a ordem nas cidades.</p>
+                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="cavaleiros" style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer Hierarquia</button>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-icon">💰</div>
+                        <h3>A Burguesia</h3>
+                        <p class="role">O Motor do Mundo</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">Sem sangue azul, mas controlam todo o monopólio e o Ouro da região.</p>
+                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="burguesia" style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer Hierarquia</button>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-icon">🌾</div>
+                        <h3>Os Camponeses</h3>
+                        <p class="role">A Base da Pirâmide</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">O sustento silencioso. A enorme força de trabalho que não deixa Velmora colapsar.</p>
+                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="camponeses" style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer Hierarquia</button>
+                    </div>
+
+                    <div class="class-card" style="border-top-color: #d04646;">
+                        <div class="class-icon">🌑</div>
+                        <h3 class="blood-text" style="text-shadow: none;">Os Marginalizados</h3>
+                        <p class="role" style="color: #d04646;">As Sombras</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">Vivem à margem da lei, do submundo do crime até a feitiçaria herege.</p>
+                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="marginalizados" style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px; color: #d04646; border-color: rgba(208, 70, 70, 0.3);">Conhecer Hierarquia</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. CLASSES / FUNÇÕES. -->
+        <section class="section classes" id="classes">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2>Caminhos e Ofícios</h2>
+                    <p>Destaque-se na multidão dominando uma arte única.</p>
+                </div>
+                <div class="classes-grid">
+                    <div class="class-card alquimista-card">
+                        <div class="class-icon alchemy">🧪</div>
+                        <h3>Alquimista</h3>
+                        <p class="role">Estilo de Jogo: Suporte Mágico e Controle de Grupo</p>
+                        <button class="btn btn-outline-gold class-detail-btn" data-class="alquimista" style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
+                    </div>
+                    <div class="class-card mercador-card">
+                        <div class="class-icon merchant">⚖️</div>
+                        <h3>Mercador</h3>
+                        <p class="role">Estilo de Jogo: Mobilidade, Economia e Fuga</p>
+                        <button class="btn btn-outline-gold class-detail-btn" data-class="mercador" style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
+                    </div>
+                    <div class="class-card ferreiro-card">
+                        <div class="class-icon smith">⚒️</div>
+                        <h3>Ferreiro</h3>
+                        <p class="role">Estilo de Jogo: Tank, Suporte de Linha de Frente e Dano Físico</p>
+                        <button class="btn btn-outline-gold class-detail-btn" data-class="ferreiro" style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
+                    </div>
+                    <!-- Card de Teste do Guerreiro -->
+                    <div class="class-card guerreiro-card">
+                        <div class="class-icon warrior">⚔️</div>
+                        <h3>Guerreiro</h3>
+                        <p class="role">Estilo de Jogo: Tank / Dano Físico / Controle</p>
+                        <button class="btn btn-outline-gold class-detail-btn" data-class="guerreiro" style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. RESTRIÇÕES DE CRAFT -->
+        <section class="section craft-specialization" id="craft-restrictions">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2>Restrições de Craft por Classe</h2>
+                    <p>Dominar uma arte significa que apenas você pode criar certas ferramentas fundamentais.</p>
+                </div>
+
+                <!-- Tabela de Referência Rápida -->
+                <div class="craft-table-wrapper">
+                    <table class="craft-table">
+                        <thead>
+                            <tr>
+                                <th>Item / Receita</th>
+                                <th>✅ Especialista Autorizado</th>
+                                <th>❌ Restrito a</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Armadura e Ferramentas de Diamante</td>
+                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Armas de Diamante (Espada, Machado...)</td>
+                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Mesa de Forja (Upgrades Netherite)</td>
+                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Arco, Besta, Escudo</td>
+                                <td><span class="badge badge-warrior">🛡️ Guerreiro</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Mesa de Poções (Brewing Stand)</td>
+                                <td><span class="badge badge-alchemist">⚗️ Alquimista</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Maçã Dourada</td>
+                                <td><span class="badge badge-alchemist">⚗️ Alquimista</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr class="everyone-row">
+                                <td>Ferro, Madeira, Pedra, Ouro (Básico)</td>
+                                <td><span class="badge badge-all">✅ Todos</span></td>
+                                <td>Sem restrição</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Detalhamento Visual -->
+                <div class="spec-grid" style="margin-top: 60px;">
+                    <div class="spec-card">
+                        <div class="spec-icon">⚒️</div>
+                        <h4>Ferreiro</h4>
+                        <p>Único capaz de forjar equipamentos avançados e trabalhar com o metal mais puro.</p>
+                        <ul class="spec-list">
+                            <li>Conjunto completo de Diamante</li>
+                            <li>Equipamentos de Netherite</li>
+                            <li>Mesa de Forja Exclusiva</li>
+                        </ul>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">🛡️</div>
+                        <h4>Guerreiro</h4>
+                        <p>Especialista absoluto em armaria de combate à distância e defesa pessoal.</p>
+                        <ul class="spec-list">
+                            <li>Arcos e Bestas</li>
+                            <li>Escudos de Combate</li>
+                            <li>Manutenção de Arsenal</li>
+                        </ul>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">⚗️</div>
+                        <h4>Alquimista</h4>
+                        <p>Controla toda a produção de poções e itens de suporte arcano vital.</p>
+                        <ul class="spec-list">
+                            <li>Mesa de Poções Exclusiva</li>
+                            <li>Maçãs Douradas</li>
+                            <li>Elixires de Batalha</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nota de Cooperação -->
+                <div class="cooperation-note">
+                    <div class="note-icon">🤝</div>
+                    <div class="note-content">
+                        <h3>O Poder da Cooperação</h3>
+                        <p>Nenhuma classe é autossuficiente. Um grupo competitivo precisa de um <strong>Ferreiro</strong> para o aço, um <strong>Guerreiro</strong> para os arcos e um <strong>Alquimista</strong> para a sobrevivência. No NemonicRP, o sucesso depende do seu bando.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 11. REGIÕES DE BARIS -->
+        <section class="section regions" id="regioes">
+            <div class="container reveal">
+                <div class="section-header">
+                    <h2>A Antiga Baris</h2>
+                    <p>Antes de chegar a Velmora, seu personagem veio dos antigos reinos. Escolha seu berço natal:</p>
+                </div>
+                <div class="regions-tabs text-center" style="margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <button class="btn btn-primary btn-glow region-tab-btn active" data-region="valis">Valis</button>
+                    <button class="btn btn-outline-gold region-tab-btn" data-region="kazaar">Kazaar</button>
+                    <button class="btn btn-outline-gold region-tab-btn" data-region="thalassia">Thalassia</button>
+                    <button class="btn btn-outline-gold region-tab-btn" data-region="oros">Oros</button>
+                </div>
+
+                <div class="regions-content-container">
+                    <!-- Valis -->
+                    <div class="region-detail r-valis active" id="region-valis">
+                        <div class="region-detail-content">
+                            <h3 class="title-gold" style="font-size: 2.2rem; margin-bottom: 10px;">Valis: O Coração das Pradarias</h3>
+                            <p class="hero-quote">O celeiro do mundo e o ponto de encontro de todas as rotas comerciais, conhecido por suas planícies abertas e solo extremamente fértil.</p>
+                            
+                            <h4>🏛️ A Civilização</h4>
+                            <p>Um verdadeiro caldeirão cultural miscigenado. Sem uma aparência ou costume único dominante, é o lar das mais diversas origens e tradições que se encontram.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kazaar -->
+                    <div class="region-detail r-kazaar" id="region-kazaar" style="display: none;">
+                        <div class="region-detail-content">
+                            <h3 class="title-gold" style="font-size: 2.2rem; margin-bottom: 10px;">Kazaar: O Deserto de Vidro</h3>
+                            <p class="hero-quote">O Deserto de Vidro, coberto por uma areia branca e incrivelmente fina. Uma terra de ilusões e calor letal.</p>
+                            
+                            <h4>🏛️ Civilização e Costumes</h4>
+                            <p>Um povo nômade guerreiro, de pele escura e polida. Mestres absolutos na alquimia, erguem fortalezas de areia vitrificada. Toda a sua vida social, combates por honra e luxuosas cerimônias ocorrem exclusivamente à noite para evitar o sol mortal.</p>
+                        </div>
+                    </div>
+
+                    <!-- Thalassia -->
+                    <div class="region-detail r-thalassia" id="region-thalassia" style="display: none;">
+                        <div class="region-detail-content">
+                            <h3 class="title-gold" style="font-size: 2.2rem; margin-bottom: 10px;">Thalassia: O Trópico de Esmeralda</h3>
+                            <p class="hero-quote">Onde a selva profunda densa e constantemente perfumada abraça a fúria do oceano.</p>
+                            
+                            <h4>🏛️ Civilização e Arquitetura</h4>
+                            <p>Com pele bronzeada e olhos em tons quentes, vivem em exóticas cidades flutuantes devido às chuvas violentas. O opressivo sol do meio-dia decreta um longo repouso em redes e fontes termais, tornando-se uma obrigação cultural a todos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Oros -->
+                    <div class="region-detail r-oros" id="region-oros" style="display: none;">
+                        <div class="region-detail-content">
+                            <h3 class="title-gold" style="font-size: 2.2rem; margin-bottom: 10px;">Oros: O Domínio Nevado</h3>
+                            <p class="hero-quote">Um reino silencioso de sobrevivência extrema, onde a arquitetura vertical é rudemente cravada no coração das montanhas.</p>
+                            
+                            <h4>🏛️ A Civilização</h4>
+                            <p>O frio letal molda toda a vida: rostos frequentemente corados, olhos impiedosos de tempestade e longas camadas de cabelos brancos. As famílias da nobreza dominam os altos picos intocáveis, enquanto os servos sobrevivem das cabras nas perigosas encostas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+                    </div> <!-- FIM CPM BOX -->
+                </div>
+            </section>
+
+        <!-- 12. MASMORRAS E DESAFIOS -->
+        <section class="section dungeons-highlight" id="masmorras">
+            <div class="container reveal">
+                <div class="flex-layout">
+                    <div class="dungeon-info">
+                        <h2 class="title-gold">⚔️ Masmorras</h2>
+                        <p class="hero-quote" style="color: var(--gold); margin-bottom: 25px;">"Muitos entram em busca de ouro e glória esquecida. A maioria serve apenas para alimentar o que vive lá dentro."</p>
+                        
+                        <div class="dungeon-text">
+                            <p>O Arquipélago de Velmora não é um lugar pacífico. Para aqueles que buscam poder, relíquias e evolução rápida, o mundo oferece desafios extremos. Estas áreas são o teste definitivo para as suas habilidades, o seu grupo e a sua coragem.</p>
+                            
+                            <div class="danger-box">
+                                <h4 style="color: #d04646; font-size: 1.2rem; margin-bottom: 10px;">🩸 As Masmorras: A Lei do Mais Forte</h4>
+                                <p style="font-size: 0.95rem;">As Masmorras são ruínas antigas, covis subterrâneos e fortalezas isoladas. Ao cruzar os portões de uma masmorra, as leis da sociedade e a proteção da guarda deixam de existir. O instinto de sobrevivência é a única regra.</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <a href="regras.html#masmorras" class="btn btn-outline-gold">Entenda as Regras de Risco</a>
+                        </div>
+                    </div>
+                    <div class="dungeon-visual reveal">
+                        <div class="dungeon-image-frame">
+                            <img src="assets/dungeon_visual.png" alt="Masmorras de Velmora" class="dungeon-img">
+                            <div class="dungeon-overlay-text">Zonas de Perigo Ativo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <!-- 12.5 ZONAS DE MUNDO ABERTO -->
+        <section class="section open-world-zones" id="zonas">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">🗺️ Zonas de Mundo Aberto</h2>
+                    <p style="max-width: 800px; margin: 0 auto;">Quanto mais longe do spawn (0, 0) você se aventurar, mais perigosos ficam os inimigos — e maiores são as recompensas. O servidor ajusta os mobs dinamicamente de acordo com sua localização.</p>
+                </div>
+
+                <div class="zone-grid">
+                    <!-- Fase 1 -->
+                    <div class="zone-card z0">
+                        <div class="zone-header">FASE 1</div>
+                        <div class="zone-dist">Arredores do Spawn</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Fácil. Equipamento básico.<br><strong>Objetivo:</strong> Aprender o básico, formar grupos e escolher uma profissão.</p>
+                    </div>
+                    <!-- Fase 2 -->
+                    <div class="zone-card z1">
+                        <div class="zone-header">FASE 2</div>
+                        <div class="zone-dist">Campos Exteriores</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Grind Leve.<br><strong>Objetivo:</strong> Coleta de recursos iniciais e desbloqueio de habilidades.</p>
+                    </div>
+                    <!-- Fase 3 -->
+                    <div class="zone-card z2">
+                        <div class="zone-header">FASE 3</div>
+                        <div class="zone-dist">Planícies Selvagens</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Grind Médio.<br><strong>Objetivo:</strong> Foco em treinamento intenso. Cuidado com Endermans ao explorar sozinho.</p>
+                    </div>
+                    <!-- Fase 4 -->
+                    <div class="zone-card z3">
+                        <div class="zone-header">FASE 4</div>
+                        <div class="zone-dist">Terras Sombrias</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Diamante Indispensável.<br><strong>Objetivo:</strong> Craft coletivo. Alquimistas são prioridade absoluta em combate.</p>
+                    </div>
+                    <!-- Fase 5 -->
+                    <div class="zone-card z4">
+                        <div class="zone-header">FASE 5</div>
+                        <div class="zone-dist">Fronteiras Proibidas</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Grind Intenso.<br><strong>Objetivo:</strong> Exploração de dungeons de alto nível. Requer Ferreiro ou Alquimista.</p>
+                    </div>
+                    <!-- Fase 6 -->
+                    <div class="zone-card z5">
+                        <div class="zone-header">FASE 6</div>
+                        <div class="zone-dist">O Vazio Além</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Netherita Encantada.<br><strong>Objetivo:</strong> Desafios supremos e conquista de itens lendários lendários.</p>
+                    </div>
+                </div>
+
+                <div class="elite-callout">
+                    <div class="elite-header">
+                        <span class="skull-icon">☠</span> 
+                        <h3>Mobs Elite (Em Teste)</h3>
+                    </div>
+                    <div class="elite-content">
+                        <p>Em qualquer zona, existe uma chance de <strong>3%</strong> de um mob nascer como Elite (Nome em <span style="color: #ff4d4d; font-weight: bold;">Vermelho</span>). Eles possuem nível +20 acima da média da zona, mas recompensam com <strong>1.5x mais XP</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="survival-guide">
+                    <h3 class="title-gold" style="margin-bottom: 30px;">📜 Manual de Sobrevivência</h3>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <span class="tip-icon">🛡️</span>
+                            <p><strong>Não tenha pressa:</strong> Os mobs escalam. Um zumbi Lv.20 causa dano massivo mesmo em armaduras completas.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">👥</span>
+                            <p><strong>União faz a força:</strong> O XP é distribuído pelo dano. Matar em grupo é mais seguro e lucrativo.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">✨</span>
+                            <p><strong>Foque nos Elites:</strong> São desafios brutais, mas o salto de progressão que oferecem vale o risco.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">⚰️</span>
+                            <p><strong>Respeite seu nível:</strong> Aventurar-se longe demais é suicídio e ativa o sistema de morte permanente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <!-- 12.7 SISTEMA DE COMBATE E XP -->
+        <section class="section combat-xp-section" id="combate-xp">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">⚔️ Sistema de Combate e XP</h2>
+                    <p style="max-width: 800px; margin: 0 auto;">Recompensamos jogadores de acordo com o desafio enfrentado. O sistema ajusta o dano e a experiência de forma dinâmica para manter a jornada sempre desafiadora.</p>
+                </div>
+
+                <div class="zone-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <!-- Card 1: XP Multipliers -->
+                    <div class="zone-card z-xp">
+                        <div class="zone-header">EXEMPLO DE XP</div>
+                        <div class="zone-dist">Zombie Nível 10</div>
+                        <div class="xp-table">
+                            <div class="xp-row"><span>Jogador Lv. 5</span> <span class="xp-val">+490 XP</span></div>
+                            <div class="xp-row"><span>Jogador Lv. 10</span> <span class="xp-val">+150 XP</span></div>
+                            <div class="xp-row"><span>Jogador Lv. 20</span> <span class="xp-val">+60 XP</span></div>
+                            <div class="xp-row highlight-red"><span>Zombie Elite</span> <span class="xp-val">+225 XP</span></div>
+                            <div class="xp-row highlight-gold"><span>Boss Dungeon</span> <span class="xp-val">+375 XP</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Damage Scaling -->
+                    <div class="zone-card z-damage">
+                        <div class="zone-header">EQUILÍBRIO DE DANO</div>
+                        <div class="zone-dist">Escala Dinâmica</div>
+                        <div class="damage-mechanics">
+                            <div class="damage-item">
+                                <p><strong>💥 Dano do Jogador:</strong> Atacar mobs de nível superior garante bônus de dano; mobs muito fracos recebem menos dano do seu personagem.</p>
+                            </div>
+                            <div class="damage-item" style="margin-top: 20px;">
+                                <p><strong>🩸 Vingança dos Mobs:</strong> O dano recebido também escala. Entrar em zonas hostis sem o equipamento correto é extremamente letal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="survival-guide" style="margin-top: 40px;">
+                    <h3 class="title-gold" style="margin-bottom: 30px;">⚔️ Dicas de Progressão</h3>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <span class="tip-icon">🗺️</span>
+                            <p><strong>Fique na sua zona:</strong> Mobs no seu nível oferecem o melhor equilíbrio entre XP e risco.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">☠️</span>
+                            <p><strong>Elites Valiosos:</strong> O bônus de experiência compensa a luta prolongada. Não os ignore!</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">👥</span>
+                            <p><strong>XP Compartilhado:</strong> Grupos dividem XP pelo dano, garantindo que ninguém "roube" sua evolução.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🏰</span>
+                            <p><strong>Dungeons:</strong> Os chefes de masmorra possuem os maiores multiplicadores do servidor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13. CTA FINAL -->
+        <section class="hero cta-final" id="cta">
+            <div class="hero-content reveal">
+                <h2 class="title-blood">O Seu Fim ou o Seu Início?</h2>
+                <p class="hero-quote" style="margin-bottom: 30px;">"O mar apagou quem você era.<br>Agora Velmora
+                    decidirá quem você se tornará."</p>
+                <div class="hero-actions">
+                    <a href="https://discord.gg/v34BpF54C" class="btn btn-primary btn-glow">Entrar no Discord</a>
+                    <a href="#criacao" class="btn btn-secondary">Começar Minha Jornada</a>
+                </div>
+            </div>
+        </section>
+        </section>
+
+        <!-- MODAL DO MAPA INTERATIVO -->
+        <div id="map-modal-overlay" class="map-modal-overlay">
+            <div class="map-modal-content">
+                <button id="close-map-modal" class="close-modal-btn">&times;</button>
+                <div id="map-modal-body">
+                    <!-- O conteúdo será injetado via JavaScript -->
+                </div>
+            </div>
+        </div>
+        <!-- MODAL DE DETALHES DAS CLASSES -->
+        <div id="class-modal-overlay" class="class-modal-overlay">
+            <div class="class-modal-content">
+                <button id="close-class-modal" class="close-modal-btn">&times;</button>
+                <div id="class-modal-body">
+                    <!-- Conteúdo preenchido dinamicamente via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL DE DETALHES DA HIERARQUIA -->
+        <div id="hierarchy-modal-overlay" class="class-modal-overlay">
+            <div class="class-modal-content">
+                <button id="close-hierarchy-modal" class="close-modal-btn">&times;</button>
+                <div id="hierarchy-modal-body">
+                    <!-- Conteúdo preenchido dinamicamente via JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 14. FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="f-brand">
+                    <h2>Nemonic<span>RP</span></h2>
+                    <p>O pináculo do roleplay medieval.</p>
+                </div>
+                <div class="f-links">
+                    <h4>Navegação</h4>
+                    <a href="#sobre">Sobre o Mundo</a>
+                    <a href="#regras">Nossas Leis</a>
+                    <a href="#classes">Sistema de Ofícios</a>
+                </div>
+                <div class="f-social">
+                    <h4>Comunidade</h4>
+                    <a href="#">Discord Oficial</a>
+                    <a href="#">Lore & Wiki Docs</a>
+                </div>
+            </div>
+            <div class="f-copy">
+                &copy; 2026 NemonicRP. Todos os direitos reservados. Falsificar sua história resultará na ira dos deuses
+                do mar.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Áudio de Fundo (Faixa de Teste de Servidor) -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
+
+

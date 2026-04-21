@@ -1,0 +1,13 @@
+{
+  "name": "nemonicrp-store",
+  "version": "1.0.0",
+  "description": "NemonicRP Store and Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
