@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Mundo de Velmora no NemonicRP - Zonas de Mundo Aberto, Masmorras e Sistema de Combate.">
+    <title>Mundo de Velmora | NemonicRP</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="index.html#mundo">História</a>
+                <a href="classes.html">Classe e Sistemas</a>
+                <a href="velmora.html" class="active">Mundo de Velmora</a>
+                <a href="regras.html">Guia do Jogador</a>
+                <a href="loja.html" style="display: none;">Loja</a>
+                <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main style="padding-top: 100px;">
+        <!-- HERO VELMORA -->
+        <section class="section rules-hero" style="background: linear-gradient(rgba(7, 9, 12, 0.8), rgba(7, 9, 12, 0.8)), url('assets/hero_bg.png'); background-size: cover; background-position: center; padding: 100px 0; border-bottom: 1px solid var(--gold);">
+            <div class="container text-center reveal active">
+                <h1 class="title-gold" style="font-size: 3rem; margin-bottom: 20px;">O Arquipélago de Velmora</h1>
+                <p class="hero-quote">O ambiente é tão hostil e implacável quanto a sociedade que o habita.</p>
+            </div>
+        </section>
+
+        <!-- MASMORRAS E DESAFIOS -->
+        <section class="section dungeons-highlight" id="masmorras" style="padding-top: 60px;">
+            <div class="container reveal">
+                <div class="flex-layout">
+                    <div class="dungeon-info">
+                        <h2 class="title-gold">⚔️ Masmorras</h2>
+                        <p class="hero-quote" style="color: var(--gold); margin-bottom: 25px;">"Muitos entram em busca
+                            de ouro e glória esquecida. A maioria serve apenas para alimentar o que vive lá dentro."</p>
+
+                        <div class="dungeon-text">
+                            <p>O Arquipélago de Velmora não é um lugar pacífico. Para aqueles que buscam poder,
+                                relíquias e evolução rápida, o mundo oferece desafios extremos. Estas áreas são o teste
+                                definitivo para as suas habilidades, o seu grupo e a sua coragem.</p>
+
+                            <div class="danger-box">
+                                <h4 style="color: #d04646; font-size: 1.2rem; margin-bottom: 10px;">🩸 As Masmorras: A
+                                    Lei do Mais Forte</h4>
+                                <p style="font-size: 0.95rem;">As Masmorras são ruínas antigas, covis subterrâneos e
+                                    fortalezas isoladas. Ao cruzar os portões de uma masmorra, as leis da sociedade e a
+                                    proteção da guarda deixam de existir. O instinto de sobrevivência é a única regra.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <a href="regras.html#masmorras" class="btn btn-outline-gold">Entenda as Regras de Risco</a>
+                        </div>
+                    </div>
+                    <div class="dungeon-visual reveal">
+                        <div class="dungeon-image-frame">
+                            <img src="assets/dungeon_visual.png" alt="Masmorras de Velmora" class="dungeon-img">
+                            <div class="dungeon-overlay-text">Zonas de Perigo Ativo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZONAS DE MUNDO ABERTO -->
+        <section class="section open-world-zones" id="zonas">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">🗺️ Zonas de Mundo Aberto</h2>
+                    <p style="max-width: 800px; margin: 0 auto;">Quanto mais longe do spawn (0, 0) você se aventurar,
+                        mais perigosos ficam os inimigos — e maiores são as recompensas. O servidor ajusta os mobs
+                        dinamicamente de acordo com sua localização.</p>
+                </div>
+
+                <div class="zone-grid">
+                    <!-- Fase 1 -->
+                    <div class="zone-card z0">
+                        <div class="zone-header">FASE 1</div>
+                        <div class="zone-dist">Arredores do Spawn</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Fácil. Equipamento
+                            básico.<br><strong>Objetivo:</strong> Aprender o básico, formar grupos e escolher uma
+                            profissão.</p>
+                    </div>
+                    <!-- Fase 2 -->
+                    <div class="zone-card z1">
+                        <div class="zone-header">FASE 2</div>
+                        <div class="zone-dist">Campos Exteriores</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Grind Leve.<br><strong>Objetivo:</strong>
+                            Coleta de recursos iniciais e desbloqueio de habilidades.</p>
+                    </div>
+                    <!-- Fase 3 -->
+                    <div class="zone-card z2">
+                        <div class="zone-header">FASE 3</div>
+                        <div class="zone-dist">Planícies Selvagens</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Grind Médio.<br><strong>Objetivo:</strong>
+                            Foco em treinamento intenso. Cuidado com Endermans ao explorar sozinho.</p>
+                    </div>
+                    <!-- Fase 4 -->
+                    <div class="zone-card z3">
+                        <div class="zone-header">FASE 4</div>
+                        <div class="zone-dist">Terras Sombrias</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Diamante
+                            Indispensável.<br><strong>Objetivo:</strong> Craft coletivo. Alquimistas são prioridade
+                            absoluta em combate.</p>
+                    </div>
+                    <!-- Fase 5 -->
+                    <div class="zone-card z4">
+                        <div class="zone-header">FASE 5</div>
+                        <div class="zone-dist">Fronteiras Proibidas</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Grind Intenso.<br><strong>Objetivo:</strong>
+                            Exploração de dungeons de alto nível. Requer Ferreiro ou Alquimista.</p>
+                    </div>
+                    <!-- Fase 6 -->
+                    <div class="zone-card z5">
+                        <div class="zone-header">FASE 6</div>
+                        <div class="zone-dist">O Vazio Além</div>
+                        <p class="zone-desc"><strong>Dificuldade:</strong> Netherita
+                            Encantada.<br><strong>Objetivo:</strong> Desafios supremos e conquista de itens lendários
+                            lendários.</p>
+                    </div>
+                </div>
+
+                <div class="elite-callout">
+                    <div class="elite-header">
+                        <span class="skull-icon">☠</span>
+                        <h3>Mobs Elite (Em Teste)</h3>
+                    </div>
+                    <div class="elite-content">
+                        <p>Em qualquer zona, existe uma chance de <strong>3%</strong> de um mob nascer como Elite (Nome
+                            em <span style="color: #ff4d4d; font-weight: bold;">Vermelho</span>). Eles possuem nível +20
+                            acima da média da zona, mas recompensam com <strong>1.5x mais XP</strong>.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SISTEMA DE COMBATE E XP -->
+        <section class="section combat-xp-section" id="combate-xp">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">⚔️ Sistema de Combate e XP</h2>
+                    <p style="max-width: 800px; margin: 0 auto;">Recompensamos jogadores de acordo com o desafio
+                        enfrentado. O sistema ajusta o dano e a experiência de forma dinâmica para manter a jornada
+                        sempre desafiadora.</p>
+                </div>
+
+                <div class="zone-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <!-- Card 1: XP Multipliers -->
+                    <div class="zone-card z-xp">
+                        <div class="zone-header">EXEMPLO DE XP</div>
+                        <div class="zone-dist">Zombie Nível 10</div>
+                        <div class="xp-table">
+                            <div class="xp-row"><span>Jogador Lv. 5</span> <span class="xp-val">+490 XP</span></div>
+                            <div class="xp-row"><span>Jogador Lv. 10</span> <span class="xp-val">+150 XP</span></div>
+                            <div class="xp-row"><span>Jogador Lv. 20</span> <span class="xp-val">+60 XP</span></div>
+                            <div class="xp-row highlight-red"><span>Zombie Elite</span> <span class="xp-val">+225
+                                    XP</span></div>
+                            <div class="xp-row highlight-gold"><span>Boss Dungeon</span> <span class="xp-val">+375
+                                    XP</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Damage Scaling -->
+                    <div class="zone-card z-damage">
+                        <div class="zone-header">EQUILÍBRIO DE DANO</div>
+                        <div class="zone-dist">Escala Dinâmica</div>
+                        <div class="damage-mechanics">
+                            <div class="damage-item">
+                                <p><strong>💥 Dano do Jogador:</strong> Atacar mobs de nível superior garante bônus de
+                                    dano; mobs muito fracos recebem menos dano do seu personagem.</p>
+                            </div>
+                            <div class="damage-item" style="margin-top: 20px;">
+                                <p><strong>🩸 Vingança dos Mobs:</strong> O dano recebido também escala. Entrar em zonas
+                                    hostis sem o equipamento correto é extremamente letal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="survival-guide" style="margin-top: 40px;">
+                    <h3 class="title-gold" style="margin-bottom: 30px;">📜 Manual de Sobrevivência e Progressão</h3>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <span class="tip-icon">🛡️</span>
+                            <p><strong>Não tenha pressa:</strong> Os mobs escalam. Um zumbi Lv.20 causa dano massivo
+                                mesmo em armaduras completas.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">👥</span>
+                            <p><strong>União faz a força:</strong> O XP é distribuído pelo dano. Matar em grupo é mais
+                                seguro e lucrativo.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🗺️</span>
+                            <p><strong>Fique na sua zona:</strong> Mobs no seu nível oferecem o melhor equilíbrio entre
+                                XP e risco.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">✨</span>
+                            <p><strong>Foque nos Elites:</strong> São desafios brutais, mas o salto de progressão que
+                                oferecem vale o risco.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🏰</span>
+                            <p><strong>Dungeons:</strong> Os chefes de masmorra possuem os maiores multiplicadores do
+                                servidor.</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">⚰️</span>
+                            <p><strong>Respeite seu nível:</strong> Aventurar-se longe demais é suicídio e ativa o
+                                sistema de morte permanente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="f-info">
+                    <img src="assets/serverlogo_bg.png" alt="Logo" class="footer-logo">
+                    <p>O mar apagou quem você era. Agora Velmora decidirá quem você se tornará.</p>
+                </div>
+                <div class="f-links">
+                    <h4>Navegação</h4>
+                    <a href="index.html">Início</a>
+                    <a href="index.html#mundo">História</a>
+                    <a href="classes.html">Classe e Sistemas</a>
+                    <a href="velmora.html">Mundo de Velmora</a>
+                    <a href="regras.html">Guia do Jogador</a>
+                </div>
+                <div class="f-social">
+                    <h4>Comunidade</h4>
+                    <a href="https://discord.gg/v34BpF54C" target="_blank">Discord</a>
+                </div>
+            </div>
+            <div class="f-copy">
+                &copy; 2026 NemonicRP. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+</body>
+
+</html>

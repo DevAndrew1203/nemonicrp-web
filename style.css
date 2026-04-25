@@ -160,6 +160,7 @@ a {
   position: relative;
   font-weight: 500;
   color: var(--text-primary);
+  white-space: nowrap;
 }
 
 .nav-links a:not(.btn)::after {
@@ -195,6 +196,7 @@ a {
   /* Bordas retas mais sérias */
   transition: var(--transition);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .btn-primary {

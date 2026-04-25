@@ -68,7 +68,7 @@ const Auth = {
                     <button onclick="Auth.logout()" class="btn-logout" title="Sair">✖</button>
                 </div>
             `;
-            
+
             // Ativa os botões de compra
             buyButtons.forEach(btn => {
                 btn.disabled = false;
@@ -105,7 +105,7 @@ const Auth = {
 // Inicializar ao carregar
 window.addEventListener('DOMContentLoaded', () => {
     Auth.init();
-    
+
     // Sincroniza o login entre abas abertas
     window.addEventListener('storage', (event) => {
         if (event.key === 'discord_user') {
