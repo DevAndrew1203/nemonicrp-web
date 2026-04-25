@@ -153,6 +153,10 @@ a {
   flex-wrap: nowrap;
 }
 
+.nav-links > * {
+  flex-shrink: 0;
+}
+
 .nav-links a:not(.btn) {
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -162,6 +166,7 @@ a {
   font-weight: 500;
   color: var(--text-primary);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-links a:not(.btn)::after {
