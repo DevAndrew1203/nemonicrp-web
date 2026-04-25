@@ -121,8 +121,9 @@ a {
   justify-content: center;
   /* Centraliza todo o conjunto (logo + abas) no site */
   align-items: center;
-  gap: 30px;
-  max-width: 1200px;
+  flex-wrap: nowrap;
+  gap: 20px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -149,18 +150,20 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-links > * {
   flex-shrink: 0;
+  white-space: nowrap !important;
 }
 
 .nav-links a:not(.btn) {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   /* Skyrim menus são bem espaçados */
   position: relative;
   font-weight: 500;
