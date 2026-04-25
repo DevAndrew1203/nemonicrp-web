@@ -27,7 +27,7 @@
             </a>
             <nav class="nav-links">
                 <a href="#">Início</a>
-                <a href="#mundo">História</a>
+                <a href="historia.html">História</a>
                 <a href="classes.html">Classe e Sistemas</a>
                 <a href="velmora.html">Mundo de Velmora</a>
                 <a href="regras.html">Guia do Jogador</a>
@@ -71,212 +71,46 @@
                 <div class="arrow"></div>
             </div>
         </section>
+        
 
-        <!-- 3. O MUNDO DE VELMORA -->
-        <section class="section world" id="mundo">
+
+
+
+        <!-- 2. NAVEGAÇÃO RÁPIDA (CARDS) -->
+        <section class="section quick-nav" id="inicio-cards" style="padding-top: 40px; padding-bottom: 40px;">
             <div class="container reveal">
-                <div class="world-content">
-                    <div class="world-text">
-                        <h2 class="title-gold">Os Reinos de Baris</h2>
-                        <p class="lead">O Velho Continente (Sua Terra Natal).</p>
-                        <p>Antes de se perder no mar e chegar em Velmora, seu personagem veio daqui. Quatro grandes
-                            regiões compõem este mundo implacável.<br><br><strong>Clique nos pinos luminosos do
-                                mapa</strong> para explorar as lendas, vestimentas e a civilização de cada reino!</p>
+                <div class="classes-grid">
+                    <!-- Card 1: Historia -->
+                    <div class="class-card">
+                        <div class="class-icon">📜</div>
+                        <h3>Historia</h3>
+                        <div class="hero-divider" style="margin: 15px auto;"></div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
+                            Descubra os segredos dos reinos antigos e a névoa que apaga o passado.</p>
+                        <a href="historia.html" class="btn btn-outline-gold" style="width: 100%; padding: 10px; text-align: center; display: block; font-size: 0.85rem;">Conhecer História</a>
                     </div>
-                    <div class="world-image-wrapper">
-                        <!-- Imagem do mapa de fundo carregada por CSS -->
-                        <div class="world-compass"></div>
 
-                        <!-- Pinos do Mapa Interativo (Valis, Kazaar, Thalassia, Oros) -->
-                        <div class="map-pin" style="top: 45%; left: 82%;" data-region-target="region-valis"
-                            title="Explorar Valis">
-                            <div class="pin-marker"></div>
-                        </div>
-
-                        <div class="map-pin" style="top: 75%; left: 50%;" data-region-target="region-kazaar"
-                            title="Explorar Kazaar">
-                            <div class="pin-marker"></div>
-                        </div>
-
-                        <div class="map-pin" style="top: 50%; left: 20%;" data-region-target="region-thalassia"
-                            title="Explorar Thalassia">
-                            <div class="pin-marker"></div>
-                        </div>
-
-                        <div class="map-pin" style="top: 25%; left: 65%;" data-region-target="region-oros"
-                            title="Explorar Oros">
-                            <div class="pin-marker"></div>
-                        </div>
+                    <!-- Card 2: Classes e Sistemas -->
+                    <div class="class-card">
+                        <div class="class-icon">⚒️</div>
+                        <h3>Classes e Sistemas</h3>
+                        <div class="hero-divider" style="margin: 15px auto;"></div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
+                            Escolha seu destino entre as linhagens de Baris e domine suas habilidades.</p>
+                        <a href="classes.html" class="btn btn-outline-gold" style="width: 100%; padding: 10px; text-align: center; display: block; font-size: 0.85rem;">Conhecer Classes</a>
                     </div>
-                </div>
+
+                    <!-- Card 3: Mundo de Velmora -->
+                    <div class="class-card">
+                        <div class="class-icon">🗺️</div>
+                        <h3>Mundo de Velmora</h3>
+                        <div class="hero-divider" style="margin: 15px auto;"></div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
+                            Explore o arquipélago de Velmora, um lugar que não aparece em nenhum mapa.</p>
+                        <a href="velmora.html" class="btn btn-outline-gold" style="width: 100%; padding: 10px; text-align: center; display: block; font-size: 0.85rem;">Conhecer o Mundo</a>
+                    </div>
             </div>
         </section>
-
-        <!-- 11. REGIÕES DE BARIS -->
-        <section class="section regions" id="regioes">
-            <div class="container reveal">
-                <div class="section-header">
-                    <h2>A Antiga Baris</h2>
-                    <p>Antes de chegar a Velmora, seu personagem veio dos antigos reinos. Escolha seu berço natal:</p>
-                </div>
-                <div class="regions-tabs text-center"
-                    style="margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <button class="btn btn-primary btn-glow region-tab-btn active" data-region="valis">Valis</button>
-                    <button class="btn btn-outline-gold region-tab-btn" data-region="kazaar">Kazaar</button>
-                    <button class="btn btn-outline-gold region-tab-btn" data-region="thalassia">Thalassia</button>
-                    <button class="btn btn-outline-gold region-tab-btn" data-region="oros">Oros</button>
-                </div>
-
-                <div class="regions-content-container">
-                    <!-- Valis -->
-                    <div class="region-detail r-valis active" id="region-valis">
-                        <div class="region-detail-content">
-                            <h3 class="title-gold" style="font-size: 2.2rem; margin-bottom: 10px;">Valis: O Coração das Pradarias</h3>
-                            <p class="hero-quote">O celeiro do mundo e o ponto de encontro de todas as rotas comerciais.</p>
-
-                            <h4>🏛️ A Civilização e Costumes</h4>
-                            <p>Devido à sua geografia acolhedora, Valis é o maior caldeirão cultural do mundo. Não existe um costume único ou uma aparência dominante; a civilização é vasta e profundamente miscigenada. Pessoas de todas as origens se encontram aqui, fazendo com que tradições, idiomas e crenças se misturem e criem algo totalmente novo.</p>
-
-                            <h4>👔 Vestimentas</h4>
-                            <p>A moda em Valis é, antes de tudo, utilitária e simples. As roupas são voltadas para a praticidade e o trabalho nos campos de plantação e no comércio diário, sem os extremos necessários nos outros reinos.</p>
-                        </div>
-                    </div>
-
-                    <!-- Kazaar -->
-                    <div class="region-detail r-kazaar" id="region-kazaar" style="display: none;">
-                        <div class="region-detail-content">
-                            <h3 class="title-gold" style="font-size: 2.2rem; margin-bottom: 10px;">Kazaar: O Deserto de Vidro</h3>
-                            <p class="hero-quote">Onde o sol do meio-dia é mortal e a noite é o único refúgio seguro.</p>
-
-                            <h4>🏛️ A Civilização</h4>
-                            <p>Um povo nômade e resiliente, que viaja entre oásis ocultos. Eles são os indiscutíveis mestres da alquimia e do manuseio do vidro, capazes de erguer imponentes fortalezas de areia vitrificada que surgem e desaparecem no horizonte das dunas. Fisicamente, possuem uma pele riquíssima em melanina, sendo muito escura e com um brilho natural, quase polido, que os protege da severa radiação solar.</p>
-
-                            <h4>🌙 Costumes</h4>
-                            <p>Como o sol do meio-dia é mortal, toda a cultura de Kazaar é noturna. A vida social, os intensos duelos por honra e as cerimônias de casamento ocorrem exclusivamente sob a luz das estrelas, abrigados em luxuosas tendas de seda que bloqueiam o calor residual do deserto.</p>
-
-                            <h4>👔 Vestimentas</h4>
-                            <p>Utilizam túnicas fluidas que cobrem o corpo inteiro, essenciais para evitar a desidratação rápida. O traje é sempre finalizado com turbantes e véus intrincados, projetados para filtrar a areia fina carregada pelos ventos.</p>
-                        </div>
-                    </div>
-
-                    <!-- Thalassia -->
-                    <div class="region-detail r-thalassia" id="region-thalassia" style="display: none;">
-                        <div class="region-detail-content">
-                            <h3 class="title-gold" style="font-size: 2.2rem; margin-bottom: 10px;">Thalassia: O Trópico de Esmeralda</h3>
-                            <p class="hero-quote">Onde a selva densa abraça a fúria do oceano e o sol dita o ritmo da vida.</p>
-
-                            <h4>🏛️ A Civilização</h4>
-                            <p>Profundamente conectados à natureza, os habitantes de Thalassia possuem um tom de pele bronze-avermelhado, moldado pela forte influência do sol. Seus corpos não possuem quase nenhum pelo, uma adaptação ao calor extremo e à umidade. Têm cabelos pretos e ondulados, e olhos que variam em tons quentes de âmbar ou castanho-claro.</p>
-
-                            <h4>🏝️ Costumes e Arquitetura</h4>
-                            <p>Devido às violentas cheias durante a Estação das Águas, suas cidades são suspensas ou flutuantes, construídas perto das praias ou em plataformas no alto das árvores, conectadas por pontes de corda. O meio-dia em Thalassia é um momento sagrado de descanso. O sol forte faz a civilização parar completamente: todos se recolhem para banhos coletivos em fontes termais ou para a tradicional sesta em redes tecidas com fibras refrescantes.</p>
-
-                            <h4>👔 Vestimentas</h4>
-                            <p>O calor exige roupas extremamente leves, confeccionadas com fibras de palmeira. Eles adornam seus corpos com flores, conchas e, mais importante, elaboradas pinturas corporais feitas com pigmentos de sementes que funcionam como um repelente natural contra os insetos gigantes da região.</p>
-                        </div>
-                    </div>
-
-                    <!-- Oros -->
-                    <div class="region-detail r-oros" id="region-oros" style="display: none;">
-                        <div class="region-detail-content">
-                            <h3 class="title-gold" style="font-size: 2.2rem; margin-bottom: 10px;">Oros: O Domínio Nevado</h3>
-                            <p class="hero-quote">Um reino silencioso de sobrevivência extrema cravado na pedra e no gelo.</p>
-
-                            <h4>🏛️ A Civilização</h4>
-                            <p>O povo de Oros carrega o frio em sua aparência. A pele é caracteristicamente corada nos narizes e bochechas devido à adaptação ao clima gélido. Possuem cabelos grossos, que crescem em camadas densas para reter calor, geralmente em tons brancos ou loiro-platinados. Seus olhos costumam ser impressionantes, variando entre o cinza-tempestade e o violeta.</p>
-
-                            <h4>👔 Vestimentas</h4>
-                            <p>Focadas na pura sobrevivência e retenção de calor. Usam pesadas capas de lã sobrepostas e botas robustas equipadas com cravos de ferro, essenciais para a locomoção segura nas encostas escorregadias de gelo e pedra.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HISTÓRIA E CRIAÇÃO (A CHEGADA) -->
-        <section class="section arrival" id="chegada">
-            <div class="container reveal">
-                <div class="section-header text-center">
-                    <h2 class="title-gold">A Chegada a Velmora ⛵</h2>
-                    <p class="hero-quote" style="margin-bottom:20px; color:#fff;">"O mar se acalma, o horizonte
-                        reaparece e, à frente, surge terra firme... mas partes de quem você era ficaram à deriva."</p>
-                    <p style="max-width: 800px; margin: 0 auto;">Este guia dita as regras fundamentais de quem você é
-                        neste novo mundo. O Arquipélago não aparece em mapas, não faz parte de rotas marítimas e não é
-                        reconhecido pelo mundo exterior. Ninguém conhece este lugar e ninguém viaja para cá
-                        intencionalmente.</p>
-                </div>
-
-                <div class="lore-tabs text-center"
-                    style="margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <button class="btn btn-primary btn-glow lore-tab-btn active" data-lore="travessia">A
-                        Travessia</button>
-                    <button class="btn btn-outline-gold lore-tab-btn" data-lore="amnesia">Amnésia e O Preço</button>
-                </div>
-
-                <div class="lore-content-container">
-                    <!-- Tab 1: Travessia & Origem -->
-                    <div class="lore-detail active" id="lore-travessia">
-                        <div class="lore-box">
-                            <h3>A Travessia 🌊</h3>
-                            <p>A chegada ao Arquipélago acontece <strong>exclusivamente pelo mar</strong>, sempre de
-                                forma inesperada. Durante uma viagem comum:</p>
-                            <ul>
-                                <li>O vento perde completamente sua direção.</li>
-                                <li>O mar se torna instável e o horizonte desaparece, como se o caminho simplesmente
-                                    deixasse de existir. A bússola falha e a confusão toma conta da tripulação.</li>
-                                <li>Um clarão repentino cega a todos.</li>
-                            </ul>
-                            <p style="margin-top: 15px;">Quando a luz cede, tudo volta ao normal. O mar está calmo e uma
-                                terra firme surge à frente: o Arquipélago. A travessia parece incompleta, como se um
-                                salto no tempo ou no espaço tivesse ocorrido.</p>
-                        </div>
-                    </div>
-
-                    <!-- Tab 2: Amnesia -->
-                    <div class="lore-detail" id="lore-amnesia" style="display: none;">
-                        <div class="lore-box">
-                            <h3>O Preço da Chegada 🧠</h3>
-                            <p>Ao desembarcar, o personagem percebe rapidamente que algo está errado. A travessia cria
-                                uma "névoa" na mente.</p>
-                            <ul>
-                                <li><strong>O que você esquece:</strong> Nomes de entes queridos, rostos, lugares
-                                    específicos e detalhes minuciosos da sua vida anterior. O passado existe, mas é
-                                    distante, confuso e não confiável.</li>
-                                <li><strong>O que você lembra:</strong> O essencial permanece intacto. Suas habilidades
-                                    práticas (sabe lutar, forjar, navegar), entende como o mundo funciona e o tipo de
-                                    vida que levava. As suas habilidades e o seu <strong>próprio nome</strong>
-                                    permanecem nítidos.</li>
-                            </ul>
-
-                            <h3 style="margin-top: 30px;">O Chamado (Seu Objetivo) 🎯</h3>
-                            <p>Mesmo com as falhas na memória, você chega acreditando ter um <strong>objetivo
-                                    inabalável</strong>, mesmo sem saber a origem dessa motivação. Isso pode se
-                                manifestar como uma sensação persistente, uma voz no fundo da mente ou a intuição de que
-                                precisa fazer algo.</p>
-                            <p><em>Exemplos: Encontrar alguém perdido, recuperar um artefato, buscar uma resposta
-                                    específica ou cumprir uma promessa esquecida.</em></p>
-                            <p>Para o personagem, esse objetivo é puramente real e natural.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- 13. CTA FINAL -->
-        <section class="hero cta-final" id="cta">
-            <div class="hero-content reveal">
-                <h2 class="title-blood">O Seu Fim ou o Seu Início?</h2>
-                <p class="hero-quote" style="margin-bottom: 30px;">"O mar apagou quem você era.<br>Agora Velmora
-                    decidirá quem você se tornará."</p>
-                <div class="hero-actions">
-                    <a href="https://discord.gg/v34BpF54C" class="btn btn-primary btn-glow">Entrar no Discord</a>
-                    <a href="#criacao" class="btn btn-secondary">Começar Minha Jornada</a>
-                </div>
-            </div>
-        </section>
-        </section>
-
         <!-- MODAL DO MAPA INTERATIVO -->
         <div id="map-modal-overlay" class="map-modal-overlay">
             <div class="map-modal-content">
@@ -302,26 +136,25 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="f-brand">
-                    <h2>Nemonic<span>RP</span></h2>
-                    <p>O pináculo do roleplay medieval.</p>
+                <div class="f-info">
+                    <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="footer-logo" style="max-width: 250px; margin-bottom: 20px;">
+                    <p>O mar apagou quem você era. Agora Velmora decidirá quem você se tornará.</p>
                 </div>
                 <div class="f-links">
                     <h4>Navegação</h4>
-                    <a href="#">Início</a>
+                    <a href="index.html">Início</a>
+                    <a href="historia.html">História</a>
                     <a href="classes.html">Classe e Sistemas</a>
                     <a href="velmora.html">Mundo de Velmora</a>
                     <a href="regras.html">Guia do Jogador</a>
                 </div>
                 <div class="f-social">
                     <h4>Comunidade</h4>
-                    <a href="#">Discord Oficial</a>
-                    <a href="#">História & Wiki Docs</a>
+                    <a href="https://discord.gg/v34BpF54C" target="_blank">Discord Oficial</a>
                 </div>
             </div>
             <div class="f-copy">
-                &copy; 2026 NemonicRP. Todos os direitos reservados. Falsificar sua história resultará na ira dos deuses
-                do mar.
+                &copy; 2026 NemonicRP. Todos os direitos reservados.
             </div>
         </div>
     </footer>

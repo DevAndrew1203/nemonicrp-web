@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A História de NemonicRP - Explore os Reinos de Baris e entenda a travessia para o Arquipélago de Velmora.">
+    <title>História e Lore | NemonicRP</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="historia.html" class="active">História</a>
+                <a href="classes.html">Classe e Sistemas</a>
+                <a href="velmora.html">Mundo de Velmora</a>
+                <a href="regras.html">Guia do Jogador</a>
+                <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main style="padding-top: 100px;">
+        <!-- HERO HISTORIA -->
+        <section class="section rules-hero" style="background: linear-gradient(rgba(7, 9, 12, 0.8), rgba(7, 9, 12, 0.8)), url('assets/hero_bg.png'); background-size: cover; background-position: center; padding: 100px 0; border-bottom: 1px solid var(--gold);">
+            <div class="container text-center reveal active">
+                <h1 class="title-gold" style="font-size: 3rem; margin-bottom: 20px;">As Crônicas de Baris</h1>
+                <p class="hero-quote">O passado é uma névoa, mas as cicatrizes do mundo permanecem.</p>
+            </div>
+        </section>
+
+        <!-- 1. OS REINOS DE BARIS (MAPA) -->
+        <section class="section world" id="mundo">
+            <div class="container reveal">
+                <div class="world-content">
+                    <div class="world-text">
+                        <h2 class="title-gold">O Velho Continente</h2>
+                        <p class="lead">Sua Terra Natal.</p>
+                        <p>Antes de se perder no mar e chegar em Velmora, seu personagem veio daqui. Quatro grandes
+                            regiões compõem este mundo implacável.<br><br><strong>Clique nos pinos luminosos do
+                                mapa</strong> para explorar as lendas, vestimentas e a civilização de cada reino!</p>
+                    </div>
+                    <div class="world-image-wrapper">
+                        <div class="world-compass"></div>
+
+                        <!-- Pinos do Mapa Interativo -->
+                        <div class="map-pin" style="top: 45%; left: 82%;" data-region-target="region-valis" title="Explorar Valis">
+                            <div class="pin-marker"></div>
+                        </div>
+                        <div class="map-pin" style="top: 75%; left: 50%;" data-region-target="region-kazaar" title="Explorar Kazaar">
+                            <div class="pin-marker"></div>
+                        </div>
+                        <div class="map-pin" style="top: 50%; left: 20%;" data-region-target="region-thalassia" title="Explorar Thalassia">
+                            <div class="pin-marker"></div>
+                        </div>
+                        <div class="map-pin" style="top: 25%; left: 65%;" data-region-target="region-oros" title="Explorar Oros">
+                            <div class="pin-marker"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DETALHES DOS REINOS -->
+        <section class="section regions" id="regioes">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2>As Linhagens de Baris</h2>
+                    <p>De onde você veio define como você vê o mundo.</p>
+                </div>
+                
+                <div class="regions-tabs text-center" style="margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <button class="btn btn-primary btn-glow region-tab-btn active" data-region="valis">Valis</button>
+                    <button class="btn btn-outline-gold region-tab-btn" data-region="kazaar">Kazaar</button>
+                    <button class="btn btn-outline-gold region-tab-btn" data-region="thalassia">Thalassia</button>
+                    <button class="btn btn-outline-gold region-tab-btn" data-region="oros">Oros</button>
+                </div>
+
+                <div class="regions-content-container">
+                    <!-- Valis -->
+                    <div class="region-detail r-valis active" id="region-valis">
+                        <div class="region-detail-content">
+                            <h3 class="title-gold">Valis: O Coração das Pradarias</h3>
+                            <p class="hero-quote">O celeiro do mundo e o ponto de encontro de todas as rotas comerciais.</p>
+                            <h4>🏛️ A Civilização e Costumes</h4>
+                            <p>Devido à sua geografia acolhedora, Valis é o maior caldeirão cultural do mundo. Não existe um costume único ou uma aparência dominante; a civilização é vasta e profundamente miscigenada.</p>
+                            <h4>👔 Vestimentas</h4>
+                            <p>A moda em Valis é utilitária e simples, voltada para a praticidade e o trabalho nos campos de plantação.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kazaar -->
+                    <div class="region-detail r-kazaar" id="region-kazaar" style="display: none;">
+                        <div class="region-detail-content">
+                            <h3 class="title-gold">Kazaar: O Deserto de Vidro</h3>
+                            <p class="hero-quote">Onde o sol do meio-dia é mortal e a noite é o único refúgio seguro.</p>
+                            <h4>🏛️ A Civilização</h4>
+                            <p>Um povo nômade e resiliente, mestres da alquimia e do manuseio do vidro.</p>
+                            <h4>👔 Vestimentas</h4>
+                            <p>Utilizam túnicas fluidas que cobrem o corpo inteiro e turbantes para filtrar a areia fina.</p>
+                        </div>
+                    </div>
+
+                    <!-- Thalassia -->
+                    <div class="region-detail r-thalassia" id="region-thalassia" style="display: none;">
+                        <div class="region-detail-content">
+                            <h3 class="title-gold">Thalassia: O Trópico de Esmeralda</h3>
+                            <p class="hero-quote">Onde a selva densa abraça a fúria do oceano.</p>
+                            <h4>🏛️ A Civilização</h4>
+                            <p>Profundamente conectados à natureza, com cidades suspensas ou flutuantes.</p>
+                            <h4>👔 Vestimentas</h4>
+                            <p>Roupas extremamente leves confeccionadas com fibras de palmeira e pinturas corporais.</p>
+                        </div>
+                    </div>
+
+                    <!-- Oros -->
+                    <div class="region-detail r-oros" id="region-oros" style="display: none;">
+                        <div class="region-detail-content">
+                            <h3 class="title-gold">Oros: O Domínio Nevado</h3>
+                            <p class="hero-quote">Um reino silencioso de sobrevivência extrema cravado na pedra e no gelo.</p>
+                            <h4>🏛️ A Civilização</h4>
+                            <p>O povo de Oros carrega o frio em sua aparência, com peles coradas e cabelos grossos.</p>
+                            <h4>👔 Vestimentas</h4>
+                            <p>Pesadas capas de lã sobrepostas e botas robustas equipadas com cravos de ferro.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. A CHEGADA -->
+        <section class="section arrival" id="chegada">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">A Travessia ⛵</h2>
+                    <p>Ninguém chega ao Arquipélago por vontade própria.</p>
+                </div>
+                
+                <div class="lore-box">
+                    <h3>O Mistério do Mar 🌊</h3>
+                    <p>A chegada ao Arquipélago acontece exclusivamente pelo mar. Durante uma viagem comum, o vento morre, a bússola falha e um clarão cega a todos.</p>
+                    <p>Quando a luz cede, uma terra firme surge à frente: o Arquipélago. Mas o preço da entrada é alto: a amnésia.</p>
+                    <h3 style="margin-top: 30px;">O Preço: Amnésia 🧠</h3>
+                    <p>Você esquece rostos e nomes específicos, mas suas habilidades e seu objetivo inabalável permanecem. Você sabe lutar, sabe forjar, mas não lembra para quem ou por que fazia isso.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODAIS -->
+        <div id="map-modal-overlay" class="map-modal-overlay">
+            <div class="map-modal-content">
+                <button id="close-map-modal" class="close-modal-btn">&times;</button>
+                <div id="map-modal-body"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="f-info">
+                    <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="footer-logo" style="max-width: 250px; margin-bottom: 20px;">
+                    <p>O mar apagou quem você era. Agora Velmora decidirá quem você se tornará.</p>
+                </div>
+                <div class="f-links">
+                    <h4>Navegação</h4>
+                    <a href="index.html">Início</a>
+                    <a href="historia.html">História</a>
+                    <a href="classes.html">Classe e Sistemas</a>
+                    <a href="velmora.html">Mundo de Velmora</a>
+                    <a href="regras.html">Guia do Jogador</a>
+                </div>
+                <div class="f-social">
+                    <h4>Comunidade</h4>
+                    <a href="https://discord.gg/v34BpF54C" target="_blank">Discord Oficial</a>
+                </div>
+            </div>
+            <div class="f-copy">
+                &copy; 2026 NemonicRP. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
