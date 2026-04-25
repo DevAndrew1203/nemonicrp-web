@@ -121,7 +121,7 @@ a {
   justify-content: center;
   /* Centraliza todo o conjunto (logo + abas) no site */
   align-items: center;
-  gap: 60px;
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -149,11 +149,12 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
 
 .nav-links a:not(.btn) {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   /* Skyrim menus são bem espaçados */
