@@ -29,6 +29,7 @@
                 <a href="classes.html">Classe e Sistemas</a>
                 <a href="velmora.html" class="active">Mundo de Velmora</a>
                 <a href="regras.html">Guia do Jogador</a>
+                <a href="#">Mapa</a>
                 <a href="loja.html" style="display: none;">Loja</a>
                 <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
             </nav>
@@ -40,48 +41,10 @@
 
     <main style="padding-top: 100px;">
         <!-- HERO VELMORA -->
-        <section class="section rules-hero" style="background: linear-gradient(rgba(7, 9, 12, 0.8), rgba(7, 9, 12, 0.8)), url('assets/hero_bg.png'); background-size: cover; background-position: center; padding: 100px 0; border-bottom: 1px solid var(--gold);">
+        <section class="section rules-hero" style="background: linear-gradient(rgba(7, 9, 12, 0.6), rgba(7, 9, 12, 0.6)), url('assets/velmora_village_bg_user.jpg'); background-size: cover; background-position: center; padding: 100px 0; border-bottom: 1px solid var(--gold);">
             <div class="container text-center reveal active">
                 <h1 class="title-gold" style="font-size: 3rem; margin-bottom: 20px;">O Arquipélago de Velmora</h1>
                 <p class="hero-quote">O ambiente é tão hostil e implacável quanto a sociedade que o habita.</p>
-            </div>
-        </section>
-
-        <!-- MASMORRAS E DESAFIOS -->
-        <section class="section dungeons-highlight" id="masmorras" style="padding-top: 60px;">
-            <div class="container reveal">
-                <div class="flex-layout">
-                    <div class="dungeon-info">
-                        <h2 class="title-gold">⚔️ Masmorras</h2>
-                        <p class="hero-quote" style="color: var(--gold); margin-bottom: 25px;">"Muitos entram em busca
-                            de ouro e glória esquecida. A maioria serve apenas para alimentar o que vive lá dentro."</p>
-
-                        <div class="dungeon-text">
-                            <p>O Arquipélago de Velmora não é um lugar pacífico. Para aqueles que buscam poder,
-                                relíquias e evolução rápida, o mundo oferece desafios extremos. Estas áreas são o teste
-                                definitivo para as suas habilidades, o seu grupo e a sua coragem.</p>
-
-                            <div class="danger-box">
-                                <h4 style="color: #d04646; font-size: 1.2rem; margin-bottom: 10px;">🩸 As Masmorras: A
-                                    Lei do Mais Forte</h4>
-                                <p style="font-size: 0.95rem;">As Masmorras são ruínas antigas, covis subterrâneos e
-                                    fortalezas isoladas. Ao cruzar os portões de uma masmorra, as leis da sociedade e a
-                                    proteção da guarda deixam de existir. O instinto de sobrevivência é a única regra.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 30px;">
-                            <a href="regras.html#masmorras" class="btn btn-outline-gold">Entenda as Regras de Risco</a>
-                        </div>
-                    </div>
-                    <div class="dungeon-visual reveal">
-                        <div class="dungeon-image-frame">
-                            <img src="assets/dungeon_visual.png" alt="Masmorras de Velmora" class="dungeon-img">
-                            <div class="dungeon-overlay-text">Zonas de Perigo Ativo</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -155,6 +118,313 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- MASMORRAS E DESAFIOS -->
+        <section class="section dungeons-highlight" id="masmorras" style="padding-top: 60px;">
+            <div class="container reveal">
+                <div class="flex-layout">
+                    <div class="dungeon-info">
+                        <h2 class="title-gold">⚔️ Masmorras</h2>
+                        <p class="hero-quote" style="color: var(--gold); margin-bottom: 25px;">"Muitos entram em busca
+                            de ouro e glória esquecida. A maioria serve apenas para alimentar o que vive lá dentro."</p>
+
+                        <div class="dungeon-text">
+                            <p>O Arquipélago de Velmora não é um lugar pacífico. Para aqueles que buscam poder,
+                                relíquias e evolução rápida, o mundo oferece desafios extremos. Estas áreas são o teste
+                                definitivo para as suas habilidades, o seu grupo e a sua coragem.</p>
+
+                            <div class="danger-box">
+                                <h4 style="color: #d04646; font-size: 1.2rem; margin-bottom: 10px;">🩸 As Masmorras: A
+                                    Lei do Mais Forte</h4>
+                                <p style="font-size: 0.95rem;">As Masmorras são ruínas antigas, covis subterrâneos e
+                                    fortalezas isoladas. Ao cruzar os portões de uma masmorra, as leis da sociedade e a
+                                    proteção da guarda deixam de existir. O instinto de sobrevivência é a única regra.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <a href="regras.html#masmorras" class="btn btn-outline-gold">Entenda as Regras de Risco</a>
+                        </div>
+                    </div>
+                    <div class="dungeon-visual reveal">
+                        <div class="dungeon-image-frame">
+                            <img src="assets/dungeon_visual.png" alt="Masmorras de Velmora" class="dungeon-img">
+                            <div class="dungeon-overlay-text">Zonas de Perigo Ativo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTAÇÕES DO ANO -->
+        <section class="section seasons-section" id="estacoes" style="padding-top: 60px; background: #000;">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">🍂 Estações do Ano</h2>
+                    <p style="max-width: 800px; margin: 0 auto;">O ciclo da natureza afeta diretamente a sobrevivência. Cada estação traz mudanças climáticas, recursos específicos e desafios únicos.</p>
+                </div>
+
+                <div class="zone-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <!-- Primavera -->
+                    <div class="zone-card" style="border-top-color: #2ecc71;">
+                        <div class="zone-header" style="color: #2ecc71;">🌸 PRIMAVERA</div>
+                        <div class="zone-dist">O Despertar de Velmora</div>
+                        <p class="zone-desc" style="font-style: italic; color: var(--gold); margin-bottom: 15px;">“Após o frio e o silêncio, a vida retorna ao mundo.”</p>
+                        <p class="zone-desc">A primavera marca o renascimento do arquipélago. A natureza floresce, os animais se multiplicam e o clima se torna mais acolhedor — criando o cenário ideal para exploração e crescimento.</p>
+                    </div>
+                    <!-- Verão -->
+                    <div class="zone-card" style="border-top-color: #f1c40f;">
+                        <div class="zone-header" style="color: #f1c40f;">☀️ VERÃO</div>
+                        <div class="zone-dist">O Ápice de Velmora</div>
+                        <p class="zone-desc" style="font-style: italic; color: var(--gold); margin-bottom: 15px;">“Sob o sol intenso, apenas os preparados prosperam.”</p>
+                        <p class="zone-desc">O verão traz calor extremo, dias longos e um mundo mais hostil. É uma estação de abundância — mas também de resistência.</p>
+                    </div>
+                    <!-- Outono -->
+                    <div class="zone-card" style="border-top-color: #e67e22;">
+                        <div class="zone-header" style="color: #e67e22;">🍂 OUTONO</div>
+                        <div class="zone-dist">A Queda do Reino</div>
+                        <p class="zone-desc" style="font-style: italic; color: var(--gold); margin-bottom: 15px;">“As folhas caem… e com elas, a esperança dos despreparados.”</p>
+                        <p class="zone-desc">O outono marca a transição para tempos difíceis. O mundo desacelera, a vida recua e o clima começa a endurecer.</p>
+                    </div>
+                    <!-- Inverno -->
+                    <div class="zone-card" style="border-top-color: #3498db;">
+                        <div class="zone-header" style="color: #3498db;">❄️ INVERNO</div>
+                        <div class="zone-dist">O Silêncio de Velmora</div>
+                        <p class="zone-desc" style="font-style: italic; color: var(--gold); margin-bottom: 15px;">“O frio não perdoa. Apenas sobrevive quem respeita o inverno.”</p>
+                        <p class="zone-desc">O inverno é a estação mais perigosa. O mundo congela, a vida desaparece e cada decisão pode ser a última.</p>
+                    </div>
+                </div>
+
+                <!-- TABELA DE EFEITOS -->
+                <div class="table-container" style="margin-top: 50px; overflow-x: auto; background: rgba(18, 21, 27, 0.6); border: 1px solid rgba(210, 204, 161, 0.1); border-radius: 4px; padding: 20px;">
+                    <h3 style="color: var(--gold); margin-bottom: 20px; font-size: 1.5rem; text-align: center;">📊 Guia de Efeitos das Estações</h3>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; min-width: 800px;">
+                        <thead>
+                            <tr style="background: rgba(176,141,87,0.1); border-bottom: 2px solid rgba(176,141,87,0.4);">
+                                <th style="padding: 15px; color: var(--gold);">Estação</th>
+                                <th style="padding: 15px; color: var(--gold);">Clima & Ciclo</th>
+                                <th style="padding: 15px; color: var(--gold);">Efeitos Visuais</th>
+                                <th style="padding: 15px; color: var(--gold);">Vida & Spawns</th>
+                                <th style="padding: 15px; color: var(--gold);">Impacto na Jogabilidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Primavera -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(46, 204, 113, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #2ecc71; font-weight: bold;">🌸 Primavera</td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • 5°C a 23°C<br>
+                                    • Dias/Noites iguais<br>
+                                    • Clima estável
+                                </td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • Tons rosados<br>
+                                    • Pétalas caindo<br>
+                                    • Degelo gradual
+                                </td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • Mais animais/filhotes<br>
+                                    • Abelhas frequentes
+                                </td>
+                                <td style="padding: 15px; color: #aaa;">
+                                    <span style="color: #2ecc71;">✓</span> Ideal para explorar e coletar sem riscos climáticos.
+                                </td>
+                            </tr>
+                            <!-- Verão -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(241, 196, 15, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #f1c40f; font-weight: bold;">☀️ Verão</td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • 25°C a 40°C<br>
+                                    • Dias longos (13m)<br>
+                                    • Chuvas raras
+                                </td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • Verde intenso<br>
+                                    • Céu/Água claros<br>
+                                    • Folhas caindo
+                                </td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • Fauna de selva<br>
+                                    • Arbustos de frutas
+                                </td>
+                                <td style="padding: 15px; color: #aaa;">
+                                    <span style="color: #f1c40f;">⚡</span> Plantações 2x mais rápidas.<br>
+                                    <span style="color: #d04646;">⚠</span> Risco de calor e Husks.
+                                </td>
+                            </tr>
+                            <!-- Outono -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(230, 126, 34, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #e67e22; font-weight: bold;">🍂 Outono</td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • 5°C a 25°C<br>
+                                    • Tempestades<br>
+                                    • Clima instável
+                                </td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • Tons laranjas/marrons<br>
+                                    • Céu cinza pesado
+                                </td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • Raposas e sapos<br>
+                                    • Mais aranhas
+                                </td>
+                                <td style="padding: 15px; color: #aaa;">
+                                    <span style="color: #e67e22;">🍁</span> Mobs com abóboras.<br>
+                                    <span style="color: #d04646;">⚠</span> Recursos começam a diminuir.
+                                </td>
+                            </tr>
+                            <!-- Inverno -->
+                            <tr style="transition: background 0.3s;" onmouseover="this.style.background='rgba(52, 152, 219, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #3498db; font-weight: bold;">❄️ Inverno</td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • -10°C a 5°C<br>
+                                    • Noites longas (13m)<br>
+                                    • Frio letal
+                                </td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • Mundo cinza/branco<br>
+                                    • Neve e lagos congelados
+                                </td>
+                                <td style="padding: 15px; color: #ddd;">
+                                    • Lobos e ursos polares<br>
+                                    • Strays ativos
+                                </td>
+                                <td style="padding: 15px; color: #aaa;">
+                                    <span style="color: #d04646;">☠</span> Plantações travadas ao ar livre.<br>
+                                    <span style="color: #3498db;">❄</span> Sobrevivência extrema.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RESUMO RÁPIDO -->
+                <div style="margin-top: 30px; background: rgba(208, 70, 70, 0.1); border-left: 4px solid #d04646; padding: 20px; border-radius: 4px;">
+                    <h4 style="color: #d04646; margin-bottom: 10px; font-size: 1.2rem;">🧠 Resumo de Sobrevivência</h4>
+                    <p style="color: #ddd; margin: 0;">O <strong>Inverno</strong> é a estação mais implacável de Velmora: mais difícil, mais hostil e mais perigosa. O foco deve ser total na sua preparação e sobrevivência!</p>
+            </div>
+        </section>
+
+        <!-- CALENDÁRIO DE VELMORA -->
+        <section class="section calendar-section" id="calendario" style="padding-top: 60px; background: #000;">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">📅 Calendário de Velmora</h2>
+                    <p style="font-style: italic; color: var(--gold); margin-bottom: 15px;">“O tempo não para… e cada estação traz um novo destino.”</p>
+                    <p style="max-width: 800px; margin: 0 auto;">O mundo de Velmora segue um calendário completo e dinâmico, onde dias, meses e estações evoluem de forma contínua — impactando diretamente a sua jornada.</p>
+                </div>
+
+                <div class="table-container" style="margin-top: 40px; overflow-x: auto; background: rgba(18, 21, 27, 0.6); border: 1px solid rgba(210, 204, 161, 0.1); border-radius: 4px; padding: 20px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; min-width: 800px;">
+                        <thead>
+                            <tr style="background: rgba(176,141,87,0.1); border-bottom: 2px solid rgba(176,141,87,0.4);">
+                                <th style="padding: 15px; color: var(--gold); width: 25%;">Mecânica</th>
+                                <th style="padding: 15px; color: var(--gold); width: 50%;">Como Funciona</th>
+                                <th style="padding: 15px; color: var(--gold); width: 25%;">Impacto / Dica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(176,141,87,0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: var(--gold); font-weight: bold;">⏳ Sistema de Tempo</td>
+                                <td style="padding: 15px; color: #ddd;">Dias, semanas, meses e anos em um ciclo contínuo de 24 horas.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>O mundo evolui continuamente.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(176,141,87,0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: var(--gold); font-weight: bold;">📆 Calendário Realista</td>
+                                <td style="padding: 15px; color: #ddd;">365 dias por ano com datas reais. 1 dia no jogo = ~20 minutos reais.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Um ano passa em poucos dias.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(176,141,87,0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: var(--gold); font-weight: bold;">🌗 Ciclo Dinâmico</td>
+                                <td style="padding: 15px; color: #ddd;">Duração de dia/noite muda por estação (Verão longo, Inverno curto).</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Influência direta na gameplay.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(176,141,87,0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: var(--gold); font-weight: bold;">🌍 Sincronização</td>
+                                <td style="padding: 15px; color: #ddd;">Pode seguir o tempo real e pausa sem jogadores online.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Velmora vive no seu tempo.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(176,141,87,0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: var(--gold); font-weight: bold;">🎉 Eventos Dinâmicos</td>
+                                <td style="padding: 15px; color: #ddd;">Eventos automáticos em datas especiais com recompensas.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Cada dia traz algo único.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(176,141,87,0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: var(--gold); font-weight: bold;">📡 Info em Tempo Real</td>
+                                <td style="padding: 15px; color: #ddd;">Comando <strong>/season</strong> mostra estação, data, hora e próximos eventos.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Saiba sempre o que está por vir.</em></td>
+                            </tr>
+                            <tr style="transition: background 0.3s;" onmouseover="this.style.background='rgba(176,141,87,0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: var(--gold); font-weight: bold;">⚙️ Integração</td>
+                                <td style="padding: 15px; color: #ddd;">Informações exibidas no Scoreboard, Tab, Bossbar ou HUD.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Tudo integrado no servidor.</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SISTEMA DE TEMPERATURA -->
+        <section class="section temperature-section" id="temperatura" style="padding-top: 60px; background: #000;">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">🌡️ Sistema de Temperatura</h2>
+                    <p style="font-style: italic; color: var(--gold); margin-bottom: 15px;">“Não é apenas o mundo que muda… o seu corpo também sente.”</p>
+                    <p style="max-width: 800px; margin: 0 auto;">Em Velmora, a temperatura não é apenas estética — ela influencia diretamente a sua sobrevivência. Cada decisão pode aquecer ou condenar seu personagem.</p>
+                </div>
+
+                <div class="table-container" style="margin-top: 40px; overflow-x: auto; background: rgba(18, 21, 27, 0.6); border: 1px solid rgba(210, 204, 161, 0.1); border-radius: 4px; padding: 20px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; min-width: 800px;">
+                        <thead>
+                            <tr style="background: rgba(208, 70, 70, 0.1); border-bottom: 2px solid rgba(208, 70, 70, 0.4);">
+                                <th style="padding: 15px; color: #d04646; width: 25%;">Sistema</th>
+                                <th style="padding: 15px; color: #d04646; width: 50%;">Detalhes</th>
+                                <th style="padding: 15px; color: #d04646; width: 25%;">Impacto / Dica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(208, 70, 70, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #d04646; font-weight: bold;">🌍 Temp. Dinâmica</td>
+                                <td style="padding: 15px; color: #ddd;">Cada jogador possui temperatura própria que varia por bioma e atualiza constantemente.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Você sente o mundo.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(208, 70, 70, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #d04646; font-weight: bold;">⚙️ Fatores</td>
+                                <td style="padding: 15px; color: #ddd;">Estação, bioma, armadura, clima, horário, água, comida, altura e movimento.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Cada detalhe muda seu destino.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(208, 70, 70, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #d04646; font-weight: bold;">⚠️ Efeitos Extremos</td>
+                                <td style="padding: 15px; color: #ddd;">Frio letal (congelamento) ou Calor intenso (queima). Causa fome e remove a cura.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Ignorar o clima é fatal.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(208, 70, 70, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #d04646; font-weight: bold;">👁️ Efeitos Visuais</td>
+                                <td style="padding: 15px; color: #ddd;">Personagem sua no calor e solta vapor no frio, com alertas visuais na tela.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Imersão sem números.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(208, 70, 70, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #d04646; font-weight: bold;">📊 Interface (HUD)</td>
+                                <td style="padding: 15px; color: #ddd;">Temperatura exibida na action bar com sistema de cores e alertas rápidos.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Monitore o perigo sempre.</em></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s;" onmouseover="this.style.background='rgba(208, 70, 70, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #d04646; font-weight: bold;">🧪 Customização</td>
+                                <td style="padding: 15px; color: #ddd;">Flexível para a staff e com suporte a itens customizados com proteção térmica.</td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Adaptado ao servidor.</em></td>
+                            </tr>
+                            <tr style="transition: background 0.3s;" onmouseover="this.style.background='rgba(208, 70, 70, 0.05)'" onmouseout="this.style.background='transparent'">
+                                <td style="padding: 15px; color: #d04646; font-weight: bold;">🔥 Nether & End</td>
+                                <td style="padding: 15px; color: #ddd;">Ambientes com regras extremas. <strong style="color: #d04646;"><br>⚠️ Atualmente Bloqueados.</strong></td>
+                                <td style="padding: 15px; color: #aaa;">💡 <em>Novas regras de sobrevivência.</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 

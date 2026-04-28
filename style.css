@@ -316,10 +316,7 @@ a {
 /* SECTION GLOBAL */
 .section {
   padding: 100px 0;
-}
-
-.section:nth-of-type(even) {
-  background-color: var(--primary-dark);
+  background-color: #000;
 }
 
 .section-header {
@@ -420,6 +417,137 @@ a {
   display: flex;
   gap: 12px;
   justify-content: center;
+}
+
+/* Layout Duas Colunas na Hero */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px !important;
+  text-align: left;
+}
+
+.hero-left {
+  flex: 1.2;
+}
+
+/* Card de Changelog Estilo Jornal */
+.changelog-paper {
+  flex: 0.8;
+  background: rgba(20, 16, 12, 0.95);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 30px;
+  font-family: 'Cinzel', serif;
+  color: #e8d8b0;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+  position: relative;
+  max-width: 450px;
+  animation: fadeInDown 1s ease-out;
+}
+
+/* Cantos decorativos do jornal */
+.changelog-paper::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border: 1px solid rgba(176, 141, 87, 0.3);
+  pointer-events: none;
+}
+
+.changelog-header {
+  border-bottom: 2px double var(--gold);
+  text-align: center;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.changelog-title {
+  font-size: 1.6rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.changelog-date {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  color: #a8936d;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.changelog-content {
+  font-family: 'Jost', sans-serif;
+}
+
+.changelog-section-title {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(176, 141, 87, 0.2);
+  padding-bottom: 5px;
+}
+
+.changelog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.changelog-item {
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 20px;
+  color: #ddd;
+}
+
+.changelog-item strong {
+  color: var(--gold);
+}
+
+.changelog-footer {
+  margin-top: 20px;
+  border-top: 1px solid rgba(176, 141, 87, 0.2);
+  padding-top: 10px;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+  color: #a8936d;
+}
+
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 120px;
+  }
+  .hero-left {
+    text-align: center;
+  }
+  .hero-logo {
+    margin: 0 auto !important;
+  }
+  .hero-subtitle, .hero-quote {
+    text-align: center !important;
+  }
+  .hero-divider {
+    margin: 15px auto !important;
+  }
+  .hero-actions {
+    justify-content: center !important;
+  }
+  .changelog-paper {
+    max-width: 100%;
+    margin-top: 30px;
+  }
 }
 
 @keyframes bounce {
@@ -2059,8 +2187,7 @@ a {
 
 /* DUNGEONS HIGHLIGHT (Index) */
 .dungeons-highlight {
-  background: linear-gradient(to top, rgba(11, 14, 20, 1) 0%, rgba(11, 14, 20, 0.95) 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #000;
 }
 
 .flex-layout {
@@ -2307,7 +2434,7 @@ a {
 
 /* COMBAT & XP SECTION */
 .combat-xp-section {
-  background: rgba(11, 14, 20, 0.98);
+  background: #000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 

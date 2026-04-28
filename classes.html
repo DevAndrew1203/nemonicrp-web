@@ -29,6 +29,7 @@
                 <a href="classes.html" class="active">Classe e Sistemas</a>
                 <a href="velmora.html">Mundo de Velmora</a>
                 <a href="regras.html">Guia do Jogador</a>
+                <a href="#">Mapa</a>
                 <a href="loja.html" style="display: none;">Loja</a>
                 <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
             </nav>
@@ -85,129 +86,7 @@
                             style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- RESTRIÇÕES DE CRAFT -->
-        <section class="section craft-specialization" id="craft-restrictions">
-            <div class="container reveal">
-                <div class="section-header text-center">
-                    <h2>Restrições de Craft por Classe</h2>
-                    <p>Dominar uma arte significa que apenas você pode criar certas ferramentas fundamentais.</p>
-                </div>
-
-                <!-- Tabela de Referência Rápida -->
-                <div class="craft-table-wrapper">
-                    <table class="craft-table">
-                        <thead>
-                            <tr>
-                                <th>Item / Receita</th>
-                                <th>✅ Especialista Autorizado</th>
-                                <th>❌ Restrito a</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Armadura e Ferramentas de Diamante</td>
-                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Armas de Diamante (Espada, Machado...)</td>
-                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Mesa de Forja (Upgrades Netherite)</td>
-                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Arco, Besta, Escudo</td>
-                                <td><span class="badge badge-warrior">🛡️ Guerreiro</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Mesa de Poções (Brewing Stand)</td>
-                                <td><span class="badge badge-alchemist">⚗️ Alquimista</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Maçã Dourada</td>
-                                <td><span class="badge badge-alchemist">⚗️ Alquimista</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr class="everyone-row">
-                                <td>Ferro, Madeira, Pedra, Ouro (Básico)</td>
-                                <td><span class="badge badge-all">✅ Todos</span></td>
-                                <td>Sem restrição</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Detalhamento Visual -->
-                <div class="spec-grid" style="margin-top: 60px;">
-                    <div class="spec-card">
-                        <div class="spec-icon">⚒️</div>
-                        <h4>Ferreiro</h4>
-                        <p>Único capaz de forjar equipamentos avançados e trabalhar com o metal mais puro.</p>
-                        <ul class="spec-list">
-                            <li>Conjunto completo de Diamante</li>
-                            <li>Equipamentos de Netherite</li>
-                            <li>Mesa de Forja Exclusiva</li>
-                        </ul>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-icon">🛡️</div>
-                        <h4>Guerreiro</h4>
-                        <p>Especialista absoluto em armaria de combate à distância e defesa pessoal.</p>
-                        <ul class="spec-list">
-                            <li>Arcos e Bestas</li>
-                            <li>Escudos de Combate</li>
-                            <li>Manutenção de Arsenal</li>
-                        </ul>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-icon">⚗️</div>
-                        <h4>Alquimista</h4>
-                        <p>Controla toda a produção de poções e itens de suporte arcano vital.</p>
-                        <ul class="spec-list">
-                            <li>Mesa de Poções Exclusiva</li>
-                            <li>Maçãs Douradas</li>
-                            <li>Elixires de Batalha</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Nota de Cooperação -->
-                <div class="cooperation-note">
-                    <div class="note-icon">🤝</div>
-                    <div class="note-content">
-                        <h3>O Poder da Cooperação</h3>
-                        <p>Nenhuma classe é autossuficiente. Um grupo competitivo precisa de um
-                            <strong>Ferreiro</strong> para o aço, um <strong>Guerreiro</strong> para os arcos e um
-                            <strong>Alquimista</strong> para a sobrevivência. No NemonicRP, o sucesso depende do seu
-                            bando.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- MODAL DE DETALHES DA HIERARQUIA -->
-        <div id="hierarchy-modal-overlay" class="class-modal-overlay">
-            <div class="class-modal-content">
-                <button id="close-hierarchy-modal" class="close-modal-btn">&times;</button>
-                <div id="hierarchy-modal-body">
-                    <!-- Conteúdo preenchido dinamicamente via JS -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 8.5 PROGRESSÃO SOCIAL -->
+                  <!-- 8.5 PROGRESSÃO SOCIAL -->
         <section class="section progression" id="progressao">
             <div class="container reveal">
                 <div class="section-header text-center">
@@ -443,6 +322,123 @@
                 </div>
             </div>
         </section>
+
+        <!-- RESTRIÇÕES DE CRAFT -->
+        <section class="section craft-specialization" id="craft-restrictions">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2>Restrições de Craft por Classe</h2>
+                    <p>Dominar uma arte significa que apenas você pode criar certas ferramentas fundamentais.</p>
+                </div>
+
+                <!-- Tabela de Referência Rápida -->
+                <div class="craft-table-wrapper">
+                    <table class="craft-table">
+                        <thead>
+                            <tr>
+                                <th>Item / Receita</th>
+                                <th>✅ Especialista Autorizado</th>
+                                <th>❌ Restrito a</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Armadura e Ferramentas de Diamante</td>
+                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Armas de Diamante (Espada, Machado...)</td>
+                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Mesa de Forja (Upgrades Netherite)</td>
+                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Arco, Besta, Escudo</td>
+                                <td><span class="badge badge-warrior">🛡️ Guerreiro</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Mesa de Poções (Brewing Stand)</td>
+                                <td><span class="badge badge-alchemist">⚗️ Alquimista</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr>
+                                <td>Maçã Dourada</td>
+                                <td><span class="badge badge-alchemist">⚗️ Alquimista</span></td>
+                                <td>Todas as outras classes</td>
+                            </tr>
+                            <tr class="everyone-row">
+                                <td>Ferro, Madeira, Pedra, Ouro (Básico)</td>
+                                <td><span class="badge badge-all">✅ Todos</span></td>
+                                <td>Sem restrição</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Detalhamento Visual -->
+                <div class="spec-grid" style="margin-top: 60px;">
+                    <div class="spec-card">
+                        <div class="spec-icon">⚒️</div>
+                        <h4>Ferreiro</h4>
+                        <p>Único capaz de forjar equipamentos avançados e trabalhar com o metal mais puro.</p>
+                        <ul class="spec-list">
+                            <li>Conjunto completo de Diamante</li>
+                            <li>Equipamentos de Netherite</li>
+                            <li>Mesa de Forja Exclusiva</li>
+                        </ul>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">🛡️</div>
+                        <h4>Guerreiro</h4>
+                        <p>Especialista absoluto em armaria de combate à distância e defesa pessoal.</p>
+                        <ul class="spec-list">
+                            <li>Arcos e Bestas</li>
+                            <li>Escudos de Combate</li>
+                            <li>Manutenção de Arsenal</li>
+                        </ul>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">⚗️</div>
+                        <h4>Alquimista</h4>
+                        <p>Controla toda a produção de poções e itens de suporte arcano vital.</p>
+                        <ul class="spec-list">
+                            <li>Mesa de Poções Exclusiva</li>
+                            <li>Maçãs Douradas</li>
+                            <li>Elixires de Batalha</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nota de Cooperação -->
+                <div class="cooperation-note">
+                    <div class="note-icon">🤝</div>
+                    <div class="note-content">
+                        <h3>O Poder da Cooperação</h3>
+                        <p>Nenhuma classe é autossuficiente. Um grupo competitivo precisa de um
+                            <strong>Ferreiro</strong> para o aço, um <strong>Guerreiro</strong> para os arcos e um
+                            <strong>Alquimista</strong> para a sobrevivência. No NemonicRP, o sucesso depende do seu
+                            bando.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODAL DE DETALHES DA HIERARQUIA -->
+        <div id="hierarchy-modal-overlay" class="class-modal-overlay">
+            <div class="class-modal-content">
+                <button id="close-hierarchy-modal" class="close-modal-btn">&times;</button>
+                <div id="hierarchy-modal-body">
+                    <!-- Conteúdo preenchido dinamicamente via JS -->
+                </div>
+            </div>
+        
 
         <!-- MODAL DE DETALHES DAS CLASSES -->
         <div id="class-modal-overlay" class="class-modal-overlay">

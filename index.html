@@ -31,6 +31,7 @@
                 <a href="classes.html">Classe e Sistemas</a>
                 <a href="velmora.html">Mundo de Velmora</a>
                 <a href="regras.html">Guia do Jogador</a>
+                <a href="#">Mapa</a>
                 <a href="loja.html" style="display: none;">Loja</a>
                 <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
                 <div class="music-control-container">
@@ -55,15 +56,43 @@
         <section class="hero" id="hero">
             <div class="particles" id="particles"></div>
             <div class="hero-content reveal">
-                <h1 class="hero-title">
-                    <img src="assets/serverlogo_bg.png" alt="NemonicRP" class="hero-logo">
-                </h1>
-                <p class="hero-subtitle">Bem Vindos a Velmora!</p>
-                <div class="hero-divider"></div>
-                <p class="hero-quote">"Seu passado foi engolido pelo mar. <br>Seu destino começa em Velmora."</p>
-                <div class="hero-actions">
-                    <a href="https://discord.gg/v34BpF54C" class="btn btn-primary btn-glow">Entrar na Comunidade</a>
-                    <a href="regras.html" class="btn btn-secondary">Ler as Regras</a>
+                <!-- LADO ESQUERDO: LOGO E AÇÕES -->
+                <div class="hero-left">
+                    <h1 class="hero-title">
+                        <img src="assets/serverlogo_bg.png" alt="NemonicRP" class="hero-logo" style="margin: 0 0 -10px 0;">
+                    </h1>
+                    <div class="hero-divider" style="margin: 15px 0;"></div>
+                    <p class="hero-quote" style="text-align: left;">"Das profundezas do passado nasce o seu destino em Velmora."</p>
+
+                </div>
+
+                <!-- LADO DIREITO: O JORNAL (Changelog) -->
+                <div class="changelog-paper">
+                    <div class="changelog-header">
+                        <h3 class="changelog-title">A GAZETA DE VELMORA</h3>
+                        <div class="changelog-date">Edição #02 — 28 de Abril de 2026</div>
+                    </div>
+                    <div class="changelog-content">
+                        <!-- Manutenção de Hoje -->
+                        <div class="changelog-section-title" style="color: #d04646;">🚨 MANUTENÇÃO PROGRAMADA (v0.2.1)</div>
+                        <ul class="changelog-list" style="margin-bottom: 20px;">
+                            <li class="changelog-item"><strong>Horário:</strong> 00:30 (Brasília)</li>
+                            <li class="changelog-item"><strong>Duração:</strong> ~10 minutos.</li>
+                            <li class="changelog-item"><strong>Status:</strong> Ajustes de configurações.</li>
+                        </ul>
+
+                        <!-- Atualização de Ontem -->
+                        <div class="changelog-section-title">📈 DAILY FIX (v0.2.0)</div>
+                        <ul class="changelog-list">
+                            <li class="changelog-item"><strong>Progressão:</strong> Requisitos de nível reduzidos em até 5 níveis para quase todas as skills.</li>
+                            <li class="changelog-item"><strong>Classes:</strong> Rebalanceamento completo nos níveis de desbloqueio de habilidades.</li>
+                            <li class="changelog-item"><strong>Performance:</strong> Redução de 35% nas partículas e correção de sons.</li>
+                            <li class="changelog-item"><strong>Mecânicas:</strong> Passivas agora escalam de poder a cada upgrade investido.</li>
+                        </ul>
+                    </div>
+                    <div class="changelog-footer">
+                        "O conhecimento é a melhor arma contra o desconhecido."
+                    </div>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -106,10 +135,20 @@
                         <h3>Mundo de Velmora</h3>
                         <div class="hero-divider" style="margin: 15px auto;"></div>
                         <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
-                            Explore o arquipélago de Velmora, um lugar que não aparece em nenhum mapa.</p>
+                            Explore o misterioso arquipélago de Velmora e desvende os segredos dessa terra implacável.</p>
                         <a href="velmora.html" class="btn btn-outline-gold" style="width: 100%; padding: 10px; text-align: center; display: block; font-size: 0.85rem;">Conhecer o Mundo</a>
                     </div>
-            </div>
+
+                    <!-- Card 4: Cartografia de Velmora -->
+                    <div class="class-card">
+                        <div class="class-icon">🌍</div>
+                        <h3>Cartografia de Velmora</h3>
+                        <div class="hero-divider" style="margin: 15px auto;"></div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
+                            Explore territórios, identifique perigos e trace sua jornada observando o mundo de cima.</p>
+                        <a href="#" class="btn btn-outline-gold" style="width: 100%; padding: 10px; text-align: center; display: block; font-size: 0.85rem;">Explorar o Mapa</a>
+                    </div>
+                </div>
         </section>
         <!-- MODAL DO MAPA INTERATIVO -->
         <div id="map-modal-overlay" class="map-modal-overlay">
