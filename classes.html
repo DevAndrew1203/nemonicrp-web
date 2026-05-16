@@ -4,21 +4,601 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Classes e Sistemas do NemonicRP - Descubra os caminhos, ofícios e restrições de craft de Velmora.">
-    <title>Classe e Sistemas | NemonicRP</title>
-
+    <title>NemonicRP | Classes & Sistemas</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.1">
+    
+    <style>
+        /* =========================================================
+           ESTANDARTES DE HIERARQUIA (BANNERS EXPANSÍVEIS)
+           ========================================================= */
+        .hierarchy-hero {
+            background: linear-gradient(rgba(7, 9, 12, 0.8), rgba(7, 9, 12, 0.9)), url('assets/velmora_map.png'); 
+            background-size: cover; 
+            background-position: center; 
+            padding: 140px 20px 80px 20px; 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+        }
+
+        .hierarchy-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .hierarchy-hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .banner-container {
+            max-width: 1200px;
+            margin: 60px auto 100px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 0 20px;
+        }
+
+        .hierarchy-banner {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #0a0a0c;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .banner-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6) grayscale(0.2);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        /* Imagens de fundo para cada nível social */
+        .tier-0 .banner-bg { background-image: url('assets/tier0_bg.png'); } /* Realeza */
+        .tier-1 .banner-bg { background-image: url('assets/tier1_bg.png'); } /* Nobreza */
+        .tier-2 .banner-bg { background-image: url('assets/tier2_bg.png'); } /* Militar/Burguesia */
+        .tier-3 .banner-bg { background-image: url('assets/tier3_bg.png'); } /* Comum/Marginal */
+
+        .banner-header {
+            position: relative;
+            z-index: 2;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.3) 50%, rgba(10,10,12,0.95) 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.6s ease;
+        }
+
+        .banner-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            margin: 0;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #fff; /* Fallback */
+        }
+
+        /* Cores baseadas no poder */
+        .tier-0 .banner-title { color: #D4AF37; } /* Dourado Premium */
+        .tier-1 .banner-title { color: #E6C875; } /* Dourado Suave */
+        .tier-2 .banner-title { color: #5B92E5; } /* Azul Aço */
+        .tier-3 .banner-title { color: #aaaaaa; } /* Cinza Ferro */
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .banner-intro {
+            text-align: center;
+            color: #ddd;
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        /* HOVER INTERACTIONS (The Magic) */
+        .hierarchy-banner:hover {
+            height: 480px; /* Expansão */
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .hierarchy-banner:hover .banner-bg {
+            filter: brightness(0.6) grayscale(0.2);
+            transform: scale(1.03);
+        }
+
+        .hierarchy-banner:hover .banner-header {
+            background: linear-gradient(90deg, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.6) 50%, rgba(10,10,12,0.95) 100%);
+        }
+
+        .hierarchy-banner:hover .banner-title {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        .hierarchy-banner:hover .banner-content {
+            opacity: 1;
+            transform: translateY(0);
+            padding-top: 30px;
+            padding-bottom: 40px;
+            height: 360px; /* Space inside */
+            pointer-events: auto;
+        }
+
+        /* GRID INTERNO DOS CARGOS */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .role-card {
+            background: rgba(5, 5, 8, 0.75);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 20px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            background: rgba(10, 10, 15, 0.85);
+            transform: translateY(-5px);
+        }
+
+        .role-card h4 {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .role-card p {
+            font-size: 0.9rem;
+            color: #bbb;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .role-details {
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .perk { color: #81C784; } /* Verde para Privilégio */
+        .risk { color: #E57373; } /* Vermelho para Risco */
+
+        @media (max-width: 992px) {
+            .hierarchy-banner { height: auto !important; padding-bottom: 0; }
+            .banner-content { opacity: 1; transform: translateY(0); height: auto !important; pointer-events: auto; padding: 20px; }
+            .banner-header { height: 80px; }
+            .banner-title { font-size: 1.6rem; }
+            .banner-bg { filter: brightness(0.5) grayscale(0.4); }
+        }
+
+        /* =========================================================
+           ÁRVORES DE ASCENSÃO E DECADÊNCIA
+           ========================================================= */
+        .progression-container {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .prog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        @media (max-width: 1100px) {
+            .prog-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .prog-grid { grid-template-columns: 1fr; }
+        }
+        .prog-path-card {
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .prog-path-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            opacity: 0.5;
+        }
+        .prog-path-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
+        }
+        .prog-path-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .prog-path-desc {
+            font-size: 0.9rem;
+            color: #bbb;
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .prog-node {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        .prog-node:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--primary-gold);
+        }
+        .prog-node h4 {
+            color: #fff;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        .prog-arrow {
+            text-align: center;
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin: 10px 0;
+            opacity: 0.7;
+            animation: floatArrow 2s infinite ease-in-out;
+        }
+        @keyframes floatArrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        /* BANNER DE DECADÊNCIA (THE FALL) */
+        .decadence-banner {
+            background: linear-gradient(135deg, rgba(30, 5, 5, 0.95) 0%, rgba(15, 2, 2, 0.95) 100%);
+            border: 1px solid rgba(229, 115, 115, 0.3);
+            border-left: 4px solid #E57373;
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(229, 115, 115, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .decadence-banner:hover {
+            box-shadow: 0 15px 40px rgba(229, 115, 115, 0.2);
+            border-color: rgba(229, 115, 115, 0.6);
+        }
+        .decadence-banner::after {
+            content: '⚠️';
+            position: absolute;
+            right: -20px;
+            bottom: -40px;
+            font-size: 15rem;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .decadence-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #E57373;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(229, 115, 115, 0.3);
+        }
+        .decadence-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        .decadence-list li {
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 2px solid #E57373;
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            transition: all 0.3s ease;
+        }
+        .decadence-list li:hover {
+            background: rgba(0,0,0,0.6);
+            transform: translateX(5px);
+        }
+        .decadence-list strong { color: #fff; display: block; margin-bottom: 8px; font-size: 1.05rem;}
+
+        /* =========================================================
+           WIKI / CODEX SYSTEM
+           ========================================================= */
+        .wiki-container {
+            max-width: 1400px;
+            margin: 80px auto;
+            display: flex;
+            gap: 40px;
+            padding: 0 20px;
+            min-height: 600px;
+        }
+
+        .wiki-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: rgba(10, 10, 15, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .wiki-sidebar h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .wiki-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .wiki-nav li {
+            margin-bottom: 10px;
+        }
+
+        .wiki-nav-btn {
+            background: transparent;
+            border: none;
+            color: #aaa;
+            font-size: 1.05rem;
+            text-align: left;
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wiki-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .wiki-nav-btn.active {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.15), transparent);
+            color: var(--primary-gold);
+            border-left: 3px solid var(--primary-gold);
+            font-weight: 600;
+        }
+
+        .wiki-content-area {
+            flex-grow: 1;
+            background: rgba(10, 10, 12, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wiki-content-area::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            opacity: 0.3;
+        }
+
+        .wiki-panel {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .wiki-panel.active {
+            display: block;
+        }
+
+        .wiki-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .wiki-subtitle {
+            color: var(--primary-gold);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .wiki-text {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+
+        .wiki-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .wiki-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 3px solid #555;
+            transition: all 0.3s ease;
+        }
+
+        .wiki-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .wiki-card.gold-card { border-top-color: var(--primary-gold); }
+        .wiki-card.blue-card { border-top-color: #5B92E5; }
+        .wiki-card.red-card { border-top-color: #E57373; }
+
+        .wiki-card h4 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wiki-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Tabela Estilo Codex */
+        .codex-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .codex-table th, .codex-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .codex-table th {
+            color: var(--primary-gold);
+            font-family: 'Cinzel', serif;
+            background: rgba(255, 255, 255, 0.02);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .codex-table tr:hover td {
+            background: rgba(212, 175, 55, 0.03);
+            color: #fff;
+        }
+
+        .restriction-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .badge-allow { background: rgba(129, 199, 132, 0.1); color: #81C784; border: 1px solid rgba(129, 199, 132, 0.3); }
+        .badge-deny { background: rgba(229, 115, 115, 0.1); color: #E57373; border: 1px solid rgba(229, 115, 115, 0.3); }
+
+        @media (max-width: 992px) {
+            .wiki-container {
+                flex-direction: column;
+            }
+            .wiki-sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+            .wiki-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .wiki-nav li {
+                margin: 0;
+                flex-grow: 1;
+            }
+            .wiki-nav-btn {
+                justify-content: center;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            .wiki-nav-btn.active {
+                border-left: none;
+                border-bottom: 3px solid var(--primary-gold);
+                background: linear-gradient(0deg, rgba(212, 175, 55, 0.15), transparent);
+            }
+        }
+
+    </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <header class="navbar scrolled" id="navbar">
+    <header class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="logo-img">
@@ -26,11 +606,10 @@
             <nav class="nav-links">
                 <a href="index.html">Início</a>
                 <a href="historia.html">História</a>
-                <a href="classes.html" class="active">Classe e Sistemas</a>
+                <a href="classes.html" class="active" style="color: var(--primary-gold);">Classe e Sistemas</a>
                 <a href="velmora.html">Mundo de Velmora</a>
                 <a href="regras.html">Guia do Jogador</a>
-                <a href="#">Mapa</a>
-                <a href="loja.html" style="display: none;">Loja</a>
+                <a href="mapa.html">Mapa</a>
                 <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Menu">
@@ -39,416 +618,707 @@
         </div>
     </header>
 
-    <main style="padding-top: 100px;">
-        <!-- HERO CLASSES -->
-        <section class="section rules-hero" style="background: linear-gradient(rgba(7, 9, 12, 0.8), rgba(7, 9, 12, 0.8)), url('assets/hero_bg.png'); background-size: cover; background-position: center; padding: 100px 0; border-bottom: 1px solid var(--gold);">
-            <div class="container text-center reveal active">
-                <h1 class="title-gold" style="font-size: 3rem; margin-bottom: 20px;">Classe e Sistemas</h1>
-                <p class="hero-quote">Onde a força bruta encontra a maestria artesanal e os conhecimentos arcanos.</p>
-            </div>
+    <main>
+        <!-- Hero Section Classes -->
+        <section class="classes-hero reveal active">
+            <h1>O Panteão das Classes</h1>
+            <p>Escolha seu caminho, Defina seu Legado.</p>
         </section>
 
-        <!-- CLASSES / FUNÇÕES. -->
-        <section class="section classes" id="classes" style="padding-top: 60px;">
-            <div class="container reveal">
-                <div class="section-header text-center">
-                    <h2>Caminhos e Ofícios</h2>
-                    <p>Destaque-se na multidão dominando uma arte única.</p>
-                </div>
-                <div class="classes-grid">
-                    <div class="class-card alquimista-card">
-                        <div class="class-icon alchemy">🧪</div>
-                        <h3>Alquimista</h3>
-                        <p class="role">Estilo de Jogo: Suporte Mágico e Controle de Grupo</p>
-                        <button class="btn btn-outline-gold class-detail-btn" data-class="alquimista"
-                            style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
+        <!-- Cinematic Grid (Classes) -->
+        <section class="cine-grid reveal">
+            <!-- ALQUIMISTA -->
+            <div class="cine-card alquimista-cine">
+                <div class="cine-bg"></div>
+                <div class="cine-content">
+                    <div class="cine-header">
+                        <div class="cine-icon">🧪</div>
+                        <h2>Alquimista</h2>
                     </div>
-                    <div class="class-card mercador-card">
-                        <div class="class-icon merchant">⚖️</div>
-                        <h3>Mercador</h3>
-                        <p class="role">Estilo de Jogo: Mobilidade, Economia e Fuga</p>
-                        <button class="btn btn-outline-gold class-detail-btn" data-class="mercador"
-                            style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
-                    </div>
-                    <div class="class-card ferreiro-card">
-                        <div class="class-icon smith">⚒️</div>
-                        <h3>Ferreiro</h3>
-                        <p class="role">Estilo de Jogo: Tank, Suporte de Linha de Frente e Dano Físico</p>
-                        <button class="btn btn-outline-gold class-detail-btn" data-class="ferreiro"
-                            style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
-                    </div>
-                    <!-- Card de Guerreiro -->
-                    <div class="class-card guerreiro-card">
-                        <div class="class-icon warrior">⚔️</div>
-                        <h3>Guerreiro</h3>
-                        <p class="role">Estilo de Jogo: Tank / Dano Físico / Controle</p>
-                        <button class="btn btn-outline-gold class-detail-btn" data-class="guerreiro"
-                            style="margin-top: 20px; width: 100%; padding: 8px;">Conhecer Caminho</button>
+                    <div class="cine-body">
+                        <p class="cine-role">Suporte Mágico / Controle de Grupo</p>
+                        <p class="cine-desc">Mestres das misturas e da manipulação vital. O Alquimista utiliza o conhecimento arcano para curar aliados ou devastar inimigos com toxinas letais.</p>
+                        <div class="cine-stats">
+                            <div class="cine-stat"><span class="stat-label">Magia</span><span class="stat-val">+15%</span></div>
+                            <div class="cine-stat"><span class="stat-label">Mana</span><span class="stat-val">Alta</span></div>
+                            <div class="cine-stat"><span class="stat-label">Cooldown</span><span class="stat-val">-10%</span></div>
+                        </div>
+                        <div class="cine-btn-wrapper">
+                            <button class="btn btn-outline-gold class-detail-btn" data-class="alquimista" style="width: 100%;">Explorar Habilidades</button>
+                        </div>
                     </div>
                 </div>
-                  <!-- 8.5 PROGRESSÃO SOCIAL -->
-        <section class="section progression" id="progressao">
-            <div class="container reveal">
-                <div class="section-header text-center">
-                    <h2 class="title-gold">Progressão Social 📈</h2>
-                    <p class="hero-quote" style="margin-bottom:20px; color:#fff;">"A escada do poder é feita de ouro,
-                        sangue e fé. Subir até o topo exige anos de sacrifício; despencar exige apenas um passo em
-                        falso."</p>
-                    <p>O status social de um personagem em Velmora não está cravado em pedra. Através de ações notáveis,
-                        alianças políticas, riqueza acumulada e reputação, é possível ascender na hierarquia do reino —
-                        ou decair para as sombras.</p>
-                </div>
-
-                <div class="progression-warning">
-                    <h4>⚠️ A Regra de Ouro da Progressão</h4>
-                    <p>Toda ascensão deve acontecer de forma orgânica e através do Roleplay, não apenas por acúmulo de
-                        itens ou mecânicas do jogo. Para assumir novos cargos e títulos, muitas vezes é necessária a
-                        cerimônia e a aprovação direta da Staff ou de autoridades do RP (Duques, o Papa, o Rei, Líderes
-                        de Guilda, etc.).</p>
-                    <button id="toggle-progression-btn" class="btn btn-outline-gold"
-                        style="margin-top: 15px; width: 100%;">Explorar Caminhos de Ascensão</button>
-                </div>
-
-                <div id="progression-hidden-content" style="display: none; animation: fadeIn 0.5s;">
-                    <div class="progression-grid">
-                        <!-- Caminho dos Camponeses -->
-                        <div class="prog-card">
-                            <h3>🌾 O Caminho dos Camponeses</h3>
-                            <p class="prog-desc">A base do mundo. Com suor e ambição, quem trabalha a terra pode forjar
-                                um futuro melhor.</p>
-                            <ul class="prog-path">
-                                <li>Camponês ➔ Trabalhador Especializado</li>
-                                <li>Camponês ➔ Artesão ➔ Mestre Artesão</li>
-                                <li>Camponês ➔ Mercador ➔ Guilda dos Mercadores</li>
-                            </ul>
-                        </div>
-
-                        <!-- Caminho da Burguesia -->
-                        <div class="prog-card">
-                            <h3>💰 O Caminho da Burguesia</h3>
-                            <p class="prog-desc">Onde o ouro fala mais alto que o sangue. A ascensão aqui depende de
-                                monopólios, contatos e lucros exorbitantes.</p>
-                            <ul class="prog-path">
-                                <li>Mercador ➔ Mestre da Guilda</li>
-                                <li>Artesão ➔ Mestre Artesão</li>
-                                <li>Grande Mercador ➔ Nobre Decadente</li>
-                            </ul>
-                        </div>
-
-                        <!-- Caminho Militar -->
-                        <div class="prog-card">
-                            <h3>⚔️ O Caminho Militar</h3>
-                            <p class="prog-desc">A glória forjada no aço. A progressão militar exige disciplina,
-                                vitórias em combate e lealdade inabalável.</p>
-                            <ul class="prog-path">
-                                <li>Escudeiro ➔ Cavaleiro Juramentado</li>
-                                <li>Cavaleiro ➔ Guarda Real</li>
-                                <li>Guarda Real ➔ Capitão da Guarda</li>
-                            </ul>
-                        </div>
-
-                        <!-- Caminho Religioso -->
-                        <div class="prog-card">
-                            <h3>✝️ O Caminho Religioso</h3>
-                            <p class="prog-desc">A ascensão através da devoção, do estudo arcano e da eliminação de
-                                heresias.</p>
-                            <ul class="prog-path">
-                                <li>Seguidor ➔ Sacerdote</li>
-                                <li>Sacerdote ➔ Inquisidor / Alquimista</li>
-                                <li>Inquisidor / Alquimista ➔ Alto Membro do Clero (Bispos/Cardeais)</li>
-                            </ul>
-                            <p class="prog-note">*Lembrando que você não é obrigado a ser da igreja se for da classe
-                                alquimista.</p>
-                        </div>
-
-                        <!-- Ascensão Nobreza -->
-                        <div class="prog-card">
-                            <h3>👑 Ascensão à Nobreza (Casos Raros)</h3>
-                            <p class="prog-desc">Tornar-se um nobre não é algo que o dinheiro compra facilmente.
-                                Geralmente ocorre através de grandes feitos heroicos, casamentos arranjados ou nomeação
-                                direta da Realeza.</p>
-                            <ul class="prog-path">
-                                <li>Burguesia ➔ Nobre Decadente</li>
-                                <li>Nobre Decadente ➔ Duque</li>
-                            </ul>
-                        </div>
-
-                        <!-- Caminho Marginalizados -->
-                        <div class="prog-card">
-                            <h3>🗡️ O Caminho dos Marginalizados</h3>
-                            <p class="prog-desc">A hierarquia do submundo. Crescer aqui significa sobreviver à guarda, à
-                                inquisição e aos próprios "colegas" de profissão.</p>
-                            <ul class="prog-path">
-                                <li>Criminoso ➔ Bandido ➔ Contrabandista</li>
-                                <li>Mercenário ➔ Líder de Companhia Mercenária</li>
-                                <li>Bruxo Clandestino ➔ Bruxo Renegado Poderoso</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="decadence-box">
-                        <h3>📉 Decadência Social (A Queda)</h3>
-                        <p>Assim como a ascensão é gloriosa, a queda é brutal. Seus atos (ou a falta deles) podem tirar
-                            tudo o que você conquistou:</p>
-                        <ul class="decadence-list">
-                            <li>Um <strong>Nobre falido ou traidor</strong> tem suas terras confiscadas e vira um Nobre
-                                Decadente (ou um exilado).</li>
-                            <li>Um <strong>Cavaleiro desonrado ou covarde</strong> tem sua espada quebrada e perde seu
-                                título.</li>
-                            <li>Um <strong>Sacerdote ou Inquisidor corrupto</strong> é excomungado e jogado à própria
-                                sorte (ou à fogueira).</li>
-                            <li>Um <strong>Mercador</strong> que negocia ilegalidades e é pego perde sua licença e vira
-                                um contrabandista procurado.</li>
-                        </ul>
-                    </div>
-                </div> <!-- fecha div progression-hidden-content -->
             </div>
-        </section>
 
-        <!-- 8. HIERARQUIA E STATUS -->
-        <section class="section hierarchy" id="hierarquia">
-            <div class="container reveal">
-                <div class="section-header text-center">
-                    <h2 class="title-gold">Hierarquia e Status</h2>
-                    <p class="hero-quote" style="margin-bottom:20px; color:#fff;">"O sangue pode definir onde você
-                        nasce, mas o ouro, a fé e o aço determinam onde você vai parar."</p>
-                    <p style="max-width: 800px; margin: 0 auto; text-transform:none; letter-spacing:normal;">A sociedade
-                        de Velmora não é igualitária. Ela é estruturada em uma pirâmide rígida e perigosa, onde cada
-                        camada possui funções, privilégios e responsabilidades distintas. Conhecer o seu lugar — e o
-                        lugar de quem está à sua frente — é a primeira regra para sobreviver neste mundo.</p>
+            <!-- MERCADOR -->
+            <div class="cine-card mercador-cine">
+                <div class="cine-bg"></div>
+                <div class="cine-content">
+                    <div class="cine-header">
+                        <div class="cine-icon">⚖️</div>
+                        <h2>Mercador</h2>
+                    </div>
+                    <div class="cine-body">
+                        <p class="cine-role">Mobilidade / Economia / Evasão</p>
+                        <p class="cine-desc">O motor que faz a economia girar. Não é um combatente frontal, mas um sobrevivente. Focado em evasão tática, invisibilidade e maximização de loot.</p>
+                        <div class="cine-stats">
+                            <div class="cine-stat"><span class="stat-label">Mobilidade</span><span class="stat-val">+0.115</span></div>
+                            <div class="cine-stat"><span class="stat-label">Sorte</span><span class="stat-val">+8</span></div>
+                            <div class="cine-stat"><span class="stat-label">Armadura</span><span class="stat-val">-1</span></div>
+                        </div>
+                        <div class="cine-btn-wrapper">
+                            <button class="btn btn-outline-gold class-detail-btn" data-class="mercador" style="width: 100%;">Explorar Habilidades</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <style>
-                    .tier-list {
-                        list-style: none;
-                        padding: 0 15px;
-                        text-align: left;
-                    }
-
-                    .tier-list li {
-                        margin-bottom: 10px;
-                        font-size: 0.9rem;
-                        color: var(--text-muted);
-                        line-height: 1.5;
-                    }
-
-                    .tier-list strong {
-                        color: var(--gold);
-                    }
-
-                    .tier-desc {
-                        text-align: center;
-                        margin-bottom: 20px !important;
-                    }
-                </style>
-
-                <div class="classes-grid" style="margin-top: 40px;">
-                    <div class="class-card">
-                        <div class="class-icon">👑</div>
-                        <h3>Realeza</h3>
-                        <p class="role">A Soberania Máxima</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
-                            Ditando as leis, as guerras e os rumos do mundo inteiro.</p>
-                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="realeza"
-                            style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer
-                            Hierarquia</button>
+            <!-- FERREIRO -->
+            <div class="cine-card ferreiro-cine">
+                <div class="cine-bg"></div>
+                <div class="cine-content">
+                    <div class="cine-header">
+                        <div class="cine-icon">⚒️</div>
+                        <h2>Ferreiro</h2>
                     </div>
-
-                    <div class="class-card">
-                        <div class="class-icon">🏰</div>
-                        <h3>Nobreza</h3>
-                        <p class="role">Os Senhores das Terras</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
-                            Senhores abaixo da coroa, administram os territórios e a ordem local.</p>
-                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="nobreza"
-                            style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer
-                            Hierarquia</button>
+                    <div class="cine-body">
+                        <p class="cine-role">Tank / Linha de Frente / Forja</p>
+                        <p class="cine-desc">O mestre do aço e do escudo humano. Sustenta as fileiras, controla hordas com ondas de choque e forja os melhores equipamentos do servidor.</p>
+                        <div class="cine-stats">
+                            <div class="cine-stat"><span class="stat-label">Vida Max</span><span class="stat-val">+20</span></div>
+                            <div class="cine-stat"><span class="stat-label">Armadura</span><span class="stat-val">+3</span></div>
+                            <div class="cine-stat"><span class="stat-label">Knockback</span><span class="stat-val">10%</span></div>
+                        </div>
+                        <div class="cine-btn-wrapper">
+                            <button class="btn btn-outline-gold class-detail-btn" data-class="ferreiro" style="width: 100%;">Explorar Habilidades</button>
+                        </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="class-card">
-                        <div class="class-icon">⛪</div>
-                        <h3>O Clero</h3>
-                        <p class="role">A Voz do Divino</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
-                            Autoridade espiritual. Guardiões da fé que controlam o uso legal da magia.</p>
-                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="clero"
-                            style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer
-                            Hierarquia</button>
+            <!-- GUERREIRO -->
+            <div class="cine-card guerreiro-cine">
+                <div class="cine-bg"></div>
+                <div class="cine-content">
+                    <div class="cine-header">
+                        <div class="cine-icon">⚔️</div>
+                        <h2>Guerreiro</h2>
                     </div>
-
-                    <div class="class-card">
-                        <div class="class-icon">⚔️</div>
-                        <h3>Os Cavaleiros</h3>
-                        <p class="role">O Braço Armado</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">A
-                            força militar implacável que luta nas guerras e preserva a ordem nas cidades.</p>
-                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="cavaleiros"
-                            style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer
-                            Hierarquia</button>
-                    </div>
-
-                    <div class="class-card">
-                        <div class="class-icon">💰</div>
-                        <h3>A Burguesia</h3>
-                        <p class="role">O Motor do Mundo</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
-                            Sem sangue azul, mas controlam todo o monopólio e o Ouro da região.</p>
-                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="burguesia"
-                            style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer
-                            Hierarquia</button>
-                    </div>
-
-                    <div class="class-card">
-                        <div class="class-icon">🌾</div>
-                        <h3>Os Camponeses</h3>
-                        <p class="role">A Base da Pirâmide</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">O
-                            sustento silencioso. A enorme força de trabalho que não deixa Velmora colapsar.</p>
-                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="camponeses"
-                            style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px;">Conhecer
-                            Hierarquia</button>
-                    </div>
-
-                    <div class="class-card" style="border-top-color: #d04646;">
-                        <div class="class-icon">🌑</div>
-                        <h3 class="blood-text" style="text-shadow: none;">Os Marginalizados</h3>
-                        <p class="role" style="color: #d04646;">As Sombras</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 40px;">
-                            Vivem à margem da lei, do submundo do crime até a feitiçaria herege.</p>
-                        <button class="btn btn-outline-gold hierarchy-detail-btn" data-tier="marginalizados"
-                            style="width: 100%; padding: 8px; text-transform: uppercase; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px; color: #d04646; border-color: rgba(208, 70, 70, 0.3);">Conhecer
-                            Hierarquia</button>
+                    <div class="cine-body">
+                        <p class="cine-role">Tank / Dano Físico Bruto</p>
+                        <p class="cine-desc">A força destrutiva imparável. O Guerreiro engaja múltiplos inimigos de uma só vez, rasgando linhas de defesa e sobrevivendo através de seu alto vampirismo.</p>
+                        <div class="cine-stats">
+                            <div class="cine-stat"><span class="stat-label">Dano</span><span class="stat-val">+2</span></div>
+                            <div class="cine-stat"><span class="stat-label">Armadura</span><span class="stat-val">+2</span></div>
+                            <div class="cine-stat"><span class="stat-label">Atk Spd</span><span class="stat-val">+5%</span></div>
+                        </div>
+                        <div class="cine-btn-wrapper">
+                            <button class="btn btn-outline-gold class-detail-btn" data-class="guerreiro" style="width: 100%;">Explorar Habilidades</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- RESTRIÇÕES DE CRAFT -->
-        <section class="section craft-specialization" id="craft-restrictions">
-            <div class="container reveal">
-                <div class="section-header text-center">
-                    <h2>Restrições de Craft por Classe</h2>
-                    <p>Dominar uma arte significa que apenas você pode criar certas ferramentas fundamentais.</p>
-                </div>
-
-                <!-- Tabela de Referência Rápida -->
-                <div class="craft-table-wrapper">
-                    <table class="craft-table">
-                        <thead>
-                            <tr>
-                                <th>Item / Receita</th>
-                                <th>✅ Especialista Autorizado</th>
-                                <th>❌ Restrito a</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Armadura e Ferramentas de Diamante</td>
-                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Armas de Diamante (Espada, Machado...)</td>
-                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Mesa de Forja (Upgrades Netherite)</td>
-                                <td><span class="badge badge-smith">⚒️ Ferreiro</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Arco, Besta, Escudo</td>
-                                <td><span class="badge badge-warrior">🛡️ Guerreiro</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Mesa de Poções (Brewing Stand)</td>
-                                <td><span class="badge badge-alchemist">⚗️ Alquimista</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr>
-                                <td>Maçã Dourada</td>
-                                <td><span class="badge badge-alchemist">⚗️ Alquimista</span></td>
-                                <td>Todas as outras classes</td>
-                            </tr>
-                            <tr class="everyone-row">
-                                <td>Ferro, Madeira, Pedra, Ouro (Básico)</td>
-                                <td><span class="badge badge-all">✅ Todos</span></td>
-                                <td>Sem restrição</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Detalhamento Visual -->
-                <div class="spec-grid" style="margin-top: 60px;">
-                    <div class="spec-card">
-                        <div class="spec-icon">⚒️</div>
-                        <h4>Ferreiro</h4>
-                        <p>Único capaz de forjar equipamentos avançados e trabalhar com o metal mais puro.</p>
-                        <ul class="spec-list">
-                            <li>Conjunto completo de Diamante</li>
-                            <li>Equipamentos de Netherite</li>
-                            <li>Mesa de Forja Exclusiva</li>
-                        </ul>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-icon">🛡️</div>
-                        <h4>Guerreiro</h4>
-                        <p>Especialista absoluto em armaria de combate à distância e defesa pessoal.</p>
-                        <ul class="spec-list">
-                            <li>Arcos e Bestas</li>
-                            <li>Escudos de Combate</li>
-                            <li>Manutenção de Arsenal</li>
-                        </ul>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-icon">⚗️</div>
-                        <h4>Alquimista</h4>
-                        <p>Controla toda a produção de poções e itens de suporte arcano vital.</p>
-                        <ul class="spec-list">
-                            <li>Mesa de Poções Exclusiva</li>
-                            <li>Maçãs Douradas</li>
-                            <li>Elixires de Batalha</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Nota de Cooperação -->
-                <div class="cooperation-note">
-                    <div class="note-icon">🤝</div>
-                    <div class="note-content">
-                        <h3>O Poder da Cooperação</h3>
-                        <p>Nenhuma classe é autossuficiente. Um grupo competitivo precisa de um
-                            <strong>Ferreiro</strong> para o aço, um <strong>Guerreiro</strong> para os arcos e um
-                            <strong>Alquimista</strong> para a sobrevivência. No NemonicRP, o sucesso depende do seu
-                            bando.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MODAL DE DETALHES DA HIERARQUIA -->
-        <div id="hierarchy-modal-overlay" class="class-modal-overlay">
-            <div class="class-modal-content">
-                <button id="close-hierarchy-modal" class="close-modal-btn">&times;</button>
-                <div id="hierarchy-modal-body">
-                    <!-- Conteúdo preenchido dinamicamente via JS -->
-                </div>
-            </div>
-        
-
-        <!-- MODAL DE DETALHES DAS CLASSES -->
+        <!-- MODAL DE DETALHES DAS CLASSES (POP-UP PREMIUM) -->
         <div id="class-modal-overlay" class="class-modal-overlay">
             <div class="class-modal-content">
                 <button id="close-class-modal" class="close-modal-btn">&times;</button>
                 <div id="class-modal-body">
-                    <!-- Conteúdo preenchido dinamicamente via JS -->
+                    <!-- Conteúdo preenchido dinamicamente via JS do main.js -->
                 </div>
             </div>
         </div>
+
+        <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent); margin: 60px 0;">
+
+        <!-- Hero Section Progressão Social -->
+        <section class="hierarchy-hero reveal">
+            <h1>O Preço da Ascensão</h1>
+            <p>Subir na Escada do Poder de Velmora exige tempo, influência e, frequentemente, sangue. Conheça as principais trilhas de progressão que um cidadão pode tomar — e o terrível preço da queda.</p>
+        </section>
+
+        <!-- Container de Progressão (Árvores) -->
+        <section class="progression-container reveal">
+            <div class="prog-grid">
+                
+                <!-- 1. Camponeses -->
+                <div class="prog-path-card">
+                    <h3 class="prog-path-title">🌾 O Caminho dos Camponeses</h3>
+                    <p class="prog-path-desc">A base do mundo. Com suor e ambição, quem trabalha a terra pode forjar um futuro melhor.</p>
+                    
+                    <div class="prog-node"><h4>Camponês</h4><span style="font-size: 0.8rem; color:#888;">Sobrevivência Básica</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Trabalhador Especializado</h4><span style="font-size: 0.8rem; color:#888;">Agricultura / Mineração</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Artesão Magistral</h4><span style="font-size: 0.8rem; color:#888;">Forja e Carpintaria</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node" style="border-color: var(--primary-gold);"><h4>Mercador</h4><span style="font-size: 0.8rem; color:var(--primary-gold);">Rede de Comércio Local</span></div>
+                </div>
+
+                <!-- 2. Burguesia -->
+                <div class="prog-path-card">
+                    <h3 class="prog-path-title">💰 O Caminho da Burguesia</h3>
+                    <p class="prog-path-desc">Onde o ouro fala mais alto que o sangue. Depende de contatos e lucros exorbitantes.</p>
+                    
+                    <div class="prog-node"><h4>Mercador / Artesão</h4><span style="font-size: 0.8rem; color:#888;">Especialista do Reino</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Mestre da Guilda</h4><span style="font-size: 0.8rem; color:#888;">Líder de Rotas Comerciais</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Grande Mercador</h4><span style="font-size: 0.8rem; color:#888;">Riqueza Extrema</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node" style="border-color: var(--primary-gold);"><h4>Nobre Decadente</h4><span style="font-size: 0.8rem; color:var(--primary-gold);">Compra de Terras e Títulos</span></div>
+                </div>
+
+                <!-- 3. Militar -->
+                <div class="prog-path-card">
+                    <h3 class="prog-path-title">⚔️ O Caminho Militar</h3>
+                    <p class="prog-path-desc">A glória forjada no aço. Exige disciplina, vitórias em combate e lealdade inabalável.</p>
+                    
+                    <div class="prog-node"><h4>Escudeiro</h4><span style="font-size: 0.8rem; color:#888;">Aprendiz de Armaduras</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Cavaleiro Juramentado</h4><span style="font-size: 0.8rem; color:#888;">Conquista das Esporas</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Guarda Real</h4><span style="font-size: 0.8rem; color:#888;">Elite de Proteção da Coroa</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node" style="border-color: var(--primary-gold);"><h4>Capitão da Guarda</h4><span style="font-size: 0.8rem; color:var(--primary-gold);">Comando Estratégico</span></div>
+                </div>
+
+                <!-- 4. Religioso -->
+                <div class="prog-path-card">
+                    <h3 class="prog-path-title">✝️ O Caminho Religioso</h3>
+                    <p class="prog-path-desc">A ascensão através da devoção, estudo arcano e eliminação de heresias.</p>
+                    
+                    <div class="prog-node"><h4>Seguidor</h4><span style="font-size: 0.8rem; color:#888;">Fiel Devoto</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Sacerdote</h4><span style="font-size: 0.8rem; color:#888;">Guia do Povo</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Inquisidor / Alquimista</h4><span style="font-size: 0.8rem; color:#888;">Espada ou Mente da Igreja</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node" style="border-color: var(--primary-gold);"><h4>Alto Clero (Bispo)</h4><span style="font-size: 0.8rem; color:var(--primary-gold);">O Topo da Política Religiosa</span></div>
+                </div>
+
+                <!-- 5. Nobreza -->
+                <div class="prog-path-card">
+                    <h3 class="prog-path-title">👑 Ascensão à Nobreza</h3>
+                    <p class="prog-path-desc">Casos Raros: Dinheiro não compra respeito facilmente. Requer grandes feitos ou casamentos.</p>
+                    
+                    <div class="prog-node"><h4>Burguesia</h4><span style="font-size: 0.8rem; color:#888;">Ouro Abundante</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Nobre Decadente</h4><span style="font-size: 0.8rem; color:#888;">Comprando Títulos Vazios</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node" style="border-color: var(--primary-gold);"><h4>Duque</h4><span style="font-size: 0.8rem; color:var(--primary-gold);">Retomada de Glória e Terras</span></div>
+                </div>
+
+                <!-- 6. Marginalizados -->
+                <div class="prog-path-card">
+                    <h3 class="prog-path-title">🗡️ Caminho das Sombras</h3>
+                    <p class="prog-path-desc">A hierarquia do submundo. Crescer aqui significa sobreviver à guarda e aos próprios "colegas".</p>
+                    
+                    <div class="prog-node"><h4>Criminoso</h4><span style="font-size: 0.8rem; color:#888;">Batedor de Carteiras</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Mercenário</h4><span style="font-size: 0.8rem; color:#888;">Lâmina de Aluguel</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node"><h4>Bruxo Renegado</h4><span style="font-size: 0.8rem; color:#888;">Lenda Temida e Caçada</span></div>
+                    <div class="prog-arrow">↓</div>
+                    <div class="prog-node" style="border-color: #E57373;"><h4>Líder do Submundo</h4><span style="font-size: 0.8rem; color:#E57373;">Barão do Contrabando</span></div>
+                </div>
+
+            </div>
+
+            <!-- THE FALL (DECADÊNCIA) -->
+            <div class="decadence-banner reveal">
+                <h2 class="decadence-title">🩸 Decadência Social (A Queda)</h2>
+                <p style="color: #ddd; font-size: 1.1rem; max-width: 800px; line-height: 1.6;">Assim como a ascensão é gloriosa, a queda é brutal. Seus atos (ou a falta deles) podem tirar tudo o que você conquistou:</p>
+                
+                <ul class="decadence-list">
+                    <li>
+                        <strong>A Ruína do Nobre</strong>
+                        Um Nobre falido ou traidor tem suas terras confiscadas e vira um Nobre Decadente (ou um exilado).
+                    </li>
+                    <li>
+                        <strong>A Desonra do Cavaleiro</strong>
+                        Um Cavaleiro desonrado ou covarde tem sua espada quebrada e perde seu título.
+                    </li>
+                    <li>
+                        <strong>A Fogueira do Inquisidor</strong>
+                        Um Sacerdote ou Inquisidor corrupto é excomungado e jogado à própria sorte (ou à fogueira).
+                    </li>
+                    <li>
+                        <strong>A Prisão do Burguês</strong>
+                        Um Mercador que negocia ilegalidades e é pego perde sua licença e vira um contrabandista procurado.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent); margin: 60px 0;">
+
+        <!-- Hero Section Hierarquia -->
+        <section class="hierarchy-hero reveal">
+            <h1>A Escada do Poder</h1>
+            <p>Em Velmora, o sangue pode definir onde você nasce, mas o ouro, a fé e o aço determinam onde você vai parar. Explore as camadas da sociedade e entenda os riscos e privilégios de cada Status.</p>
+        </section>
+
+        <!-- Banners Container -->
+        <section class="banner-container reveal">
+            
+            <!-- TIER 0: REALEZA -->
+            <div class="hierarchy-banner tier-0">
+                <div class="banner-bg"></div>
+                <div class="banner-header">
+                    <h2 class="banner-title">👑 Nível 0: A Realeza Suprema</h2>
+                </div>
+                <div class="banner-content">
+                    <p class="banner-intro">"Aqueles que governam por direito divino. Sua palavra é a lei, e sua ira é absoluta."</p>
+                    <div class="roles-grid">
+                        <div class="role-card">
+                            <h4>Rei / Rainha</h4>
+                            <p>Os governantes máximos de Velmora. Detêm poder total sobre terras, leis e exércitos.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Pode ditar impostos e declarar guerras.</span>
+                                <span class="risk">- Risco: Alvo constante de assassinatos e golpes políticos.</span>
+                            </div>
+                        </div>
+                        <div class="role-card">
+                            <h4>Família Real</h4>
+                            <p>Príncipes e Princesas. Herdaram o sangue e os benefícios, vivendo no topo da cadeia alimentar.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Imunidade a leis menores e guarda pessoal.</span>
+                                <span class="risk">- Risco: Usados como moeda de troca em casamentos arranjados.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIER 1: ALTA NOBREZA E CLERO -->
+            <div class="hierarchy-banner tier-1">
+                <div class="banner-bg"></div>
+                <div class="banner-header">
+                    <h2 class="banner-title">⚜️ Nível 1: A Alta Corte e o Clero</h2>
+                </div>
+                <div class="banner-content">
+                    <p class="banner-intro">"Os pilares que sustentam a coroa. Aqueles que sussurram no ouvido do Rei ou falam em nome dos Deuses."</p>
+                    <div class="roles-grid">
+                        <div class="role-card">
+                            <h4>Nobreza Maior (Duques)</h4>
+                            <p>Donos de vastas terras e feudos. Controlam as economias locais e cobram tributos do povo.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Controle político e terras abundantes.</span>
+                                <span class="risk">- Risco: Rivalidade mortal entre outras famílias nobres.</span>
+                            </div>
+                        </div>
+                        <div class="role-card">
+                            <h4>O Papa / Alto Clero</h4>
+                            <p>Os mensageiros da fé. Possuem poder suficiente para desafiar até mesmo a Nobreza em questões morais.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Pode excomungar hereges e ditar dogmas.</span>
+                                <span class="risk">- Risco: Perder a fé do povo significa perder a própria vida.</span>
+                            </div>
+                        </div>
+                        <div class="role-card">
+                            <h4>Inquisidores</h4>
+                            <p>O braço armado e punitivo da igreja. Caçam bruxos, hereges e criminosos sem piedade.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Licença para matar e confiscar bens de condenados.</span>
+                                <span class="risk">- Risco: Excesso de abusos pode causar revoltas violentas.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIER 2: MILITARES E BURGUESIA -->
+            <div class="hierarchy-banner tier-2">
+                <div class="banner-bg"></div>
+                <div class="banner-header">
+                    <h2 class="banner-title">⚔️ Nível 2: O Poder Moderador</h2>
+                </div>
+                <div class="banner-content">
+                    <p class="banner-intro">"A força bruta do aço e a força sutil do ouro. Sem eles, o reino sucumbe."</p>
+                    <div class="roles-grid">
+                        <div class="role-card">
+                            <h4>Comandantes Militares</h4>
+                            <p>Aqueles que lideram os exércitos e a guarda da cidade. Têm força militar bruta à disposição.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Acesso ao arsenal real e autoridade nas ruas.</span>
+                                <span class="risk">- Risco: São os primeiros a morrer em invasões (KingdomsX).</span>
+                            </div>
+                        </div>
+                        <div class="role-card">
+                            <h4>Grandes Burgueses</h4>
+                            <p>Mestres de Guilda e grandes comerciantes. O ouro flui através deles para toda a nação.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Monopólios comerciais e capacidade de comprar nobres.</span>
+                                <span class="risk">- Risco: Sujeitos à alta taxação e roubos na estrada.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIER 3: POVO E MARGINALIZADOS -->
+            <div class="hierarchy-banner tier-3">
+                <div class="banner-bg"></div>
+                <div class="banner-header">
+                    <h2 class="banner-title">⚒️ Nível 3: A Base da Sociedade</h2>
+                </div>
+                <div class="banner-content">
+                    <p class="banner-intro">"Aqueles que sujam as mãos para que o topo continue limpo. Os artesãos, os plebeus e as sombras."</p>
+                    <div class="roles-grid">
+                        <div class="role-card">
+                            <h4>Artesãos e Camponeses</h4>
+                            <p>Os motores que mantêm o reino alimentado e equipado. Sem eles, não há espadas nem pão.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Vida simples e possibilidade de ascender a Burguês.</span>
+                                <span class="risk">- Risco: Completamente submissos às leis e abusos da nobreza.</span>
+                            </div>
+                        </div>
+                        <div class="role-card">
+                            <h4>Criminosos e Bruxos</h4>
+                            <p>Vivem nas sombras, operando fora da lei. Contrabandistas, ladrões e praticantes de magias proibidas.</p>
+                            <div class="role-details">
+                                <span class="perk">+ Privilégio: Lucros rápidos, mercado negro e liberdade das leis.</span>
+                                <span class="risk">- Risco: Podem ser executados ou jogados nas Masmorras sumariamente.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+        <!-- WIKI CODEX SECION -->
+        <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent); margin: 60px 0;">
+
+        <section class="hierarchy-hero reveal">
+            <h1>Codex de Velmora</h1>
+            <p>Conhecimento é poder. Explore os pergaminhos sagrados para entender as mecânicas ocultas e as leis imutáveis do reino.</p>
+        </section>
+
+        <section class="wiki-container reveal">
+            <!-- Sidebar Navigation -->
+            <aside class="wiki-sidebar">
+                <h3>📖 Índice</h3>
+                <ul class="wiki-nav">
+                    <li><button class="wiki-nav-btn active" data-wiki="visao">👁️ Visão Geral</button></li>
+                    <li><button class="wiki-nav-btn" data-wiki="guia">✨ O Guia das Orbs</button></li>
+                    <li><button class="wiki-nav-btn" data-wiki="polimento">⚒️ Polimento e Mods</button></li>
+                    <li><button class="wiki-nav-btn" data-wiki="mesas">📜 Mesas de Classe</button></li>
+                    <li><button class="wiki-nav-btn" data-wiki="crafts">⚖️ Restrições de Craft</button></li>
+                </ul>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="wiki-content-area">
+                
+                <!-- PANEL 1: VISÃO GERAL -->
+                <div id="visao" class="wiki-panel active">
+                    <h2 class="wiki-title">O Que São Orbs?</h2>
+                    <div class="wiki-subtitle">O Sistema de Modificação de Itens (NemonicOrbPlugin)</div>
+                    <p class="wiki-text">Em Velmora, equipamentos comuns são apenas o começo. Através do poder cristalizado em <strong>Orbs Místicas</strong>, os jogadores podem ascender seus itens, adicionando modificadores de dano, defesa, roubo de vida e resistências elementais.</p>
+                    
+                    <h3 style="color: #fff; font-family: 'Cinzel', serif; margin-bottom: 10px;">Sistema de Raridades (Tiers)</h3>
+                    <div class="wiki-grid" style="grid-template-columns: 1fr; gap: 10px; margin-bottom: 30px;">
+                        <div class="wiki-card" style="border-top-color: #888; padding: 15px;">
+                            <h4 style="color: #aaa;">⚪ Tier 0 - Comum</h4>
+                            <p style="margin:0;">O item base, sem modificadores. A maioria dos itens forjados começa aqui.</p>
+                        </div>
+                        <div class="wiki-card blue-card" style="padding: 15px;">
+                            <h4 style="color: #5B92E5;">🔵 Tier 1 - Mágico</h4>
+                            <p style="margin:0;">Possui até 2 modificadores.</p>
+                        </div>
+                        <div class="wiki-card gold-card" style="padding: 15px;">
+                            <h4 style="color: #FDD835;">🟡 Tier 2 - Raro</h4>
+                            <p style="margin:0;">Equipamento avançado, pode ter até 6 modificadores.</p>
+                        </div>
+                        <div class="wiki-card" style="border-top-color: #FFD700; padding: 15px;">
+                            <h4 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.5);">🌟 Tier 3 - Único</h4>
+                            <p style="margin:0;">Lendário. Modificadores fixos com +50% de poder extra. Apenas via Moeda da Sorte (2%).</p>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #fff; font-family: 'Cinzel', serif; margin-bottom: 10px;">Rotas de Evolução</h3>
+                    <p class="wiki-text">
+                        <strong>🛡️ SEGURA:</strong> Comum ➔ Pedra de Encantamento ➔ Mágico ➔ Runa Nobre ➔ Raro<br>
+                        <strong>⚡ RÁPIDA:</strong> Comum ➔ Pedra de Refinamento ➔ Raro<br>
+                        <strong>🎲 DA SORTE:</strong> Comum ➔ Moeda da Sorte ➔ (Pode vir Mágico, Raro ou Único!)
+                    </p>
+
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--primary-gold); border-radius: 4px;">
+                        <h4 style="color: var(--primary-gold); margin-bottom: 5px; font-family: 'Cinzel', serif;">Como conseguir Orbs? (Drop de Mobs)</h4>
+                        <p style="color: #ccc; font-size: 0.95rem; margin: 0;">Ao derrotar criaturas e limpar masmorras: 72% de chance de ser Comum, 22% Mágico e 6% Raro. Mercadores possuem multiplicadores de drop, enquanto Alquimistas têm chance de encontrar a raríssima Pedra Corrosiva.</p>
+                    </div>
+                </div>
+
+                <!-- PANEL 2: O GUIA DAS ORBS -->
+                <div id="guia" class="wiki-panel">
+                    <h2 class="wiki-title">O Guia das Orbs</h2>
+                    <div class="wiki-subtitle">Conheça as 9 Pedras de Poder</div>
+                    <p class="wiki-text">As pedras se dividem entre aplicar novos encantos, elevar a raridade de um item ou refinar os bônus existentes.</p>
+                    
+                    <style>
+                        .orb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+                        .orb-card { background: rgba(10, 10, 10, 0.7); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 20px; transition: all 0.3s; }
+                        .orb-card:hover { transform: translateY(-5px); border-color: var(--primary-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+                        .orb-icon { font-size: 2rem; margin-bottom: 10px; display: inline-block; }
+                        .orb-title { font-family: 'Cinzel', serif; font-size: 1.1rem; margin-bottom: 8px; }
+                        .orb-desc { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; line-height: 1.5; }
+                        .orb-rule { font-size: 0.75rem; text-transform: uppercase; color: #666; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; }
+                        .c-id { color: #A89F91; } .c-enc { color: #5B92E5; } .c-ref { color: #D4AF37; } .c-aug { color: #5B92E5; } .c-reg { color: #D4AF37; } .c-pow { color: #D4AF37; } .c-cor { color: #D04646; } .c-luc { color: #9B59B6; } .c-pol { color: #E6C875; }
+                    </style>
+
+                    <div class="orb-grid">
+                        <div class="orb-card">
+                            <div class="orb-icon">📜</div><h3 class="orb-title c-id" style="font-size: 0.95rem;">Pergaminho de Identificação</h3>
+                            <p class="orb-desc">Desvenda a natureza de artefatos obscuros, revelando seus poderes ocultos.</p>
+                            <div class="orb-rule">Funciona em obscuros/únicos</div>
+                        </div>
+                        <div class="orb-card">
+                            <div class="orb-icon">🔵</div><h3 class="orb-title c-enc">Pedra de Encantamento</h3>
+                            <p class="orb-desc">Insufla magia em equipamentos mundanos, concedendo modificadores.</p>
+                            <div class="orb-rule">Apenas itens Comuns</div>
+                        </div>
+                        <div class="orb-card">
+                            <div class="orb-icon">⚗️</div><h3 class="orb-title c-ref">Pedra de Refinamento</h3>
+                            <p class="orb-desc">Converte um item comum diretamente em uma relíquia Rara e caótica.</p>
+                            <div class="orb-rule">Apenas itens Comuns</div>
+                        </div>
+                        <div class="orb-card">
+                            <div class="orb-icon">➕</div><h3 class="orb-title c-aug">Pedra de Reforço</h3>
+                            <p class="orb-desc">Adiciona um novo poder a um equipamento mágico que tenha espaço livre.</p>
+                            <div class="orb-rule">Itens Mágicos com 1 Mod</div>
+                        </div>
+                        <div class="orb-card">
+                            <div class="orb-icon">👑</div><h3 class="orb-title c-reg">Runa Nobre</h3>
+                            <p class="orb-desc">Eleva um item mágico completo ao glorioso status de artefato Raro.</p>
+                            <div class="orb-rule">Itens Mágicos com 2 Mods</div>
+                        </div>
+                        <div class="orb-card">
+                            <div class="orb-icon">⚡</div><h3 class="orb-title c-pow">Runa de Poder</h3>
+                            <p class="orb-desc">Adiciona uma bênção aleatória a um artefato Raro, empurrando-o ao limite.</p>
+                            <div class="orb-rule">Itens Raros com espaço livre</div>
+                        </div>
+                        <div class="orb-card">
+                            <div class="orb-icon">🧪</div><h3 class="orb-title c-cor">Pedra Corrosiva</h3>
+                            <p class="orb-desc">Devora uma magia aleatória do item. Apague maldições ou corra riscos.</p>
+                            <div class="orb-rule">Itens Mágicos ou Raros</div>
+                        </div>
+                        <div class="orb-card">
+                            <div class="orb-icon">🎲</div><h3 class="orb-title c-luc">Moeda da Sorte</h3>
+                            <p class="orb-desc">O item pode virar lixo ou despertar como uma lenda Única e incomparável.</p>
+                            <div class="orb-rule">Sorte ou Revés Absoluto</div>
+                        </div>
+                        <div class="orb-card">
+                            <div class="orb-icon">🫙</div><h3 class="orb-title c-pol">Óleo de Polimento</h3>
+                            <p class="orb-desc">Sela as magias para sempre, amplificando todas as existentes de forma brutal.</p>
+                            <div class="orb-rule">A marca da finalização absoluta</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 3: POLIMENTO E MODS -->
+                <div id="polimento" class="wiki-panel">
+                    <h2 class="wiki-title">Polimento e Modificadores</h2>
+                    <div class="wiki-subtitle">O Segredo para Maximizar o Equipamento</div>
+                    <p class="wiki-text">Aplicar <strong>Óleo de Polimento</strong> no equipamento aumenta todos os atributos dele permanentemente. No entanto, após o 1º polimento, os modificadores ficam travados (nenhuma Orb de augment ou anulação funcionará mais).</p>
+                    
+                    <div class="wiki-grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="wiki-card gold-card">
+                            <h4>Escala de Polimento</h4>
+                            <ul style="color: #ccc; margin-top: 10px; padding-left: 20px; line-height: 1.6;">
+                                <li><strong>1ª Aplicação:</strong> +8.0% stats</li>
+                                <li><strong>2ª Aplicação:</strong> +16.6% stats</li>
+                                <li><strong>3ª Aplicação:</strong> +26.0% stats</li>
+                                <li><strong>4ª Aplicação:</strong> +36.0% stats</li>
+                                <li style="color: var(--primary-gold);"><strong>5ª Aplicação (Máx):</strong> +46.9% stats</li>
+                            </ul>
+                        </div>
+                        <div class="wiki-card blue-card">
+                            <h4>Sistema de Builds</h4>
+                            <p>Para manter as batalhas equilibradas, cada item só pode ter <strong>um mod por categoria</strong>. Por exemplo, uma espada pode ter 1 mod de "Dano" e 1 mod de "Lifesteal", mas não 2 de "Dano". Isso força a criação de builds especializadas em vez de equipamentos genéricos super fortes.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #fff; font-family: 'Cinzel', serif; margin-bottom: 10px;">Exemplos de Categorias</h3>
+                    <table class="codex-table" style="font-size: 0.9rem;">
+                        <tr><th>Equipamento</th><th>Principais Categorias Possíveis</th></tr>
+                        <tr><td><strong>Armas</strong></td><td>Ataque, Crítico, Elemental (Fogo/Gelo/Raio), Lifesteal, PvE, Custo de Magia.</td></tr>
+                        <tr><td><strong>Armaduras</strong></td><td>Defesa, HP Absoluto, Mitigação (Dodge/Parry), Defesa Elemental, Bônus XP.</td></tr>
+                        <tr><td><strong>Acessórios</strong></td><td>Mana Máxima, Stamina, Redução de Cooldown (CDR).</td></tr>
+                    </table>
+                </div>
+
+                <!-- PANEL 4: MESAS DE CLASSE -->
+                <div id="mesas" class="wiki-panel">
+                    <h2 class="wiki-title">Mesas de Classe & Crafts</h2>
+                    <div class="wiki-subtitle">A Lei da Economia de Velmora</div>
+                    <p class="wiki-text">As classes não são apenas títulos; elas possuem infraestrutura e mecânicas reais em que toda a economia do servidor se baseia. Toda vez que um item é craftado nas bancadas, ele sai no Tier 0 e roda automaticamente atributos bônus baseados no nível da classe e na "Craft Luck".</p>
+                    
+                    <div class="wiki-grid" style="grid-template-columns: 1fr; gap: 20px;">
+                        <div class="wiki-card blue-card">
+                            <h4>⚗️ Mesa da Transmutação (Alquimista)</h4>
+                            <p><strong>Nível Mínimo: 5 a 25.</strong> O Alquimista é capaz de derreter equipamentos mágicos para extrair Orbs brutas. O rendimento da transmutação melhora se a mesa estiver cercada de Estantes de Livros (+40% máx) e se houver outros jogadores próximos acompanhando (+25% máx).</p>
+                        </div>
+                        
+                        <div class="wiki-card gold-card">
+                            <h4>⚒️ Mesa de Forja (Ferreiro)</h4>
+                            <p><strong>Nível Mínimo: 5.</strong> Craftar ou reparar itens não é só clicar num botão. Ferreiros entram num minigame de 4 estágios: <em>Aquecimento ➔ Modelagem ➔ Resfriamento ➔ Refinamento</em>. Quanto mais perfeito o processo, maior o Breakpoint (até +20% stats bônus). Ferreiros também fabricam o essencial Óleo de Polimento.</p>
+                        </div>
+
+                        <div class="wiki-card" style="border-top-color: #81C784;">
+                            <h4>📜 Mesa do Mercador (Mercador)</h4>
+                            <p><strong>Nível Mínimo: 1 a 15.</strong> Itens dropados em masmorras caem "Não Identificados". Apenas o Mercador possui a mesa capaz de identificar os status (gastando XP de profissão). Eles também são os únicos a fabricar Pergaminhos de Retorno e operar a complexa Rede de Rotas Comerciais de teletransporte.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 5: RESTRIÇÕES DE CRAFTING -->
+                <div id="crafts" class="wiki-panel">
+                    <h2 class="wiki-title">Restrições de Crafting</h2>
+                    <div class="wiki-subtitle">A Lei da Economia e Sobrevivência Coletiva</div>
+                    <p class="wiki-text">No NemonicRP, nem todo jogador pode craftar tudo. Certas receitas e blocos de trabalho são exclusivos de classes específicas, parte do sistema de especialização que torna cada classe única.</p>
+                    
+                    <h3 style="color: #fff; font-family: 'Cinzel', serif; margin-top: 30px; margin-bottom: 15px;">Resumo Rápido</h3>
+                    <table class="codex-table" style="margin-bottom: 40px;">
+                        <thead>
+                            <tr>
+                                <th>Item / Bloco</th>
+                                <th>Permitido</th>
+                                <th>Proibido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Armadura e ferramentas de diamante</td>
+                                <td><strong style="color: #FDD835;">⚒️ Ferreiro</strong></td>
+                                <td style="color: #E57373;">Todos os outros</td>
+                            </tr>
+                            <tr>
+                                <td>Armas de diamante (espada, machado...)</td>
+                                <td><strong style="color: #FDD835;">⚒️ Ferreiro</strong></td>
+                                <td style="color: #E57373;">Todos os outros</td>
+                            </tr>
+                            <tr>
+                                <td>Mesa de Forja (upgrades Netherite)</td>
+                                <td><strong style="color: #FDD835;">⚒️ Ferreiro</strong></td>
+                                <td style="color: #E57373;">Todos os outros</td>
+                            </tr>
+                            <tr>
+                                <td>Arco, Besta, Escudo</td>
+                                <td><strong style="color: #5B92E5;">🛡️ Guerreiro</strong></td>
+                                <td style="color: #E57373;">Todos os outros</td>
+                            </tr>
+                            <tr>
+                                <td>Mesa de Poções (Brewing Stand)</td>
+                                <td><strong style="color: #9C27B0;">⚗️ Alquimista</strong></td>
+                                <td style="color: #E57373;">Todos os outros</td>
+                            </tr>
+                            <tr>
+                                <td>Maçã Dourada</td>
+                                <td><strong style="color: #9C27B0;">⚗️ Alquimista</strong></td>
+                                <td style="color: #E57373;">Todos os outros</td>
+                            </tr>
+                            <tr>
+                                <td>Qualquer item de ferro, madeira, pedra, ouro</td>
+                                <td><strong style="color: #81C784;">✅ Todos</strong></td>
+                                <td style="color: #888;">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 style="color: #fff; font-family: 'Cinzel', serif; margin-bottom: 10px;">Detalhamento por Classe</h3>
+                    <div class="wiki-grid" style="grid-template-columns: 1fr; gap: 20px;">
+                        <div class="wiki-card gold-card">
+                            <h4>⚒️ Ferreiro</h4>
+                            <p>O Ferreiro é o único capaz de trabalhar com diamante e forjar equipamentos avançados.</p>
+                            
+                            <h5 style="color: #fff; margin-top: 15px; margin-bottom: 5px;">Craft exclusivo:</h5>
+                            <ul style="color: #ccc; margin-left: 20px;">
+                                <li>Capacete, peitoral, calças e botas de diamante</li>
+                                <li>Espada, picareta, machado, pá e enxada de diamante</li>
+                            </ul>
+                            
+                            <h5 style="color: #fff; margin-top: 15px; margin-bottom: 5px;">Bloco exclusivo:</h5>
+                            <ul style="color: #ccc; margin-left: 20px;">
+                                <li><strong>Mesa de Forja</strong> — necessária para upgrades de Netherite. Sem um Ferreiro, seu grupo não evolui para o tier máximo de equipamento.</li>
+                            </ul>
+                            
+                            <div style="margin-top: 15px; padding: 10px; background: rgba(229, 115, 115, 0.1); border-left: 3px solid #E57373; font-size: 0.9em; color: #E57373;">
+                                Tentar craftar ou usar esses itens como outra classe cancela a ação e exibe uma mensagem de aviso.
+                            </div>
+                        </div>
+
+                        <div class="wiki-card blue-card">
+                            <h4>🛡️ Guerreiro</h4>
+                            <p>O Guerreiro é o único especialista em armas de combate à distância e defesa.</p>
+                            
+                            <h5 style="color: #fff; margin-top: 15px; margin-bottom: 5px;">Craft exclusivo:</h5>
+                            <ul style="color: #ccc; margin-left: 20px;">
+                                <li>Arco</li>
+                                <li>Besta</li>
+                                <li>Escudo</li>
+                            </ul>
+                        </div>
+
+                        <div class="wiki-card" style="border-top-color: #9C27B0;">
+                            <h4>⚗️ Alquimista</h4>
+                            <p>O Alquimista controla toda a produção de poções e itens de suporte mágico.</p>
+                            
+                            <h5 style="color: #fff; margin-top: 15px; margin-bottom: 5px;">Bloco exclusivo:</h5>
+                            <ul style="color: #ccc; margin-left: 20px;">
+                                <li><strong>Mesa de Poções (Brewing Stand)</strong> — ninguém mais pode abri-la</li>
+                            </ul>
+
+                            <h5 style="color: #fff; margin-top: 15px; margin-bottom: 5px;">Craft exclusivo:</h5>
+                            <ul style="color: #ccc; margin-left: 20px;">
+                                <li>Maçã Dourada</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(255, 255, 255, 0.05); border-left: 3px solid var(--primary-gold); border-radius: 4px;">
+                        <h4 style="color: var(--primary-gold); margin-bottom: 10px; font-family: 'Cinzel', serif;">Por que isso existe?</h4>
+                        <p style="color: #ccc; font-size: 0.95rem; margin-bottom: 10px;">Esse sistema força a cooperação entre jogadores. Para montar um grupo competitivo você precisa de:</p>
+                        <ul style="color: #ddd; margin-left: 20px; margin-bottom: 15px;">
+                            <li>Um <strong>Ferreiro</strong> para forjar o equipamento do grupo</li>
+                            <li>Um <strong>Guerreiro</strong> para produzir arcos e escudos</li>
+                            <li>Um <strong>Alquimista</strong> para fabricar as poções que vão manter todos vivos</li>
+                        </ul>
+                        <p style="color: #fff; font-weight: bold; margin: 0;">Nenhuma classe é autossuficiente — e isso é intencional.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Script para alternar as abas do Wiki -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const wikiBtns = document.querySelectorAll('.wiki-nav-btn');
+                const wikiPanels = document.querySelectorAll('.wiki-panel');
+
+                wikiBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Remove ativo de todos os botões e painéis
+                        wikiBtns.forEach(b => b.classList.remove('active'));
+                        wikiPanels.forEach(p => p.classList.remove('active'));
+
+                        // Adiciona ativo no clicado
+                        btn.classList.add('active');
+                        const targetId = btn.getAttribute('data-wiki');
+                        const targetPanel = document.getElementById(targetId);
+                        
+                        if(targetPanel) {
+                            targetPanel.classList.add('active');
+                        }
+                    });
+                });
+            });
+        </script>
+
     </main>
 
     <!-- FOOTER -->
@@ -478,10 +1348,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="main.js"></script>
+    <script src="main.js?v=2.1"></script>
 </body>
-
 </html>
-
-

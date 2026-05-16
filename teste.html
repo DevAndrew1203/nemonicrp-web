@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NemonicRP | Página de Teste</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="historia.html">História</a>
+                <a href="classes.html">Classe e Sistemas</a>
+                <a href="velmora.html">Mundo de Velmora</a>
+                <a href="regras.html">Guia do Jogador</a>
+                <a href="mapa.html">Mapa</a>
+                <a href="teste.html" class="active" style="color: var(--primary-gold);">Teste</a>
+                <a href="loja.html" style="display: none;">Loja</a>
+                <a href="https://discord.gg/v34BpF54C" target="_blank" class="btn btn-outline-gold">Jogue Agora</a>
+                <div class="music-control-container">
+                    <button id="music-toggle" class="btn-icon" aria-label="Alternar Música"
+                        title="Tocar Música Ambiente">
+                        <span id="music-icon">🔊</span>
+                    </button>
+                    <div class="volume-dropdown">
+                        <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5"
+                            title="Ajustar Volume">
+                    </div>
+                </div>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main style="padding-top: 120px; min-height: 80vh;">
+        <style>
+            /* Tabs Navigation */
+            .prof-tabs-container {
+                max-width: 1000px;
+                margin: 0 auto 40px auto;
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+                padding: 0 20px;
+            }
+
+            .prof-tab-btn {
+                background: rgba(10, 10, 10, 0.7);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                color: var(--text-muted);
+                padding: 12px 30px;
+                border-radius: 8px;
+                font-family: 'Cinzel', serif;
+                font-size: 1.1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(5px);
+            }
+
+            .prof-tab-btn:hover {
+                border-color: rgba(212, 175, 55, 0.5);
+                color: #fff;
+                transform: translateY(-2px);
+            }
+
+            .prof-tab-btn.active {
+                background: rgba(212, 175, 55, 0.1);
+                border-color: var(--primary-gold);
+                color: var(--primary-gold);
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            }
+
+            /* Professions Content */
+            .prof-content-area {
+                max-width: 1200px;
+                margin: 0 auto 80px auto;
+                padding: 0 20px;
+            }
+
+            .prof-panel {
+                display: none;
+                animation: fadeIn 0.4s ease-in-out;
+            }
+
+            .prof-panel.active {
+                display: block;
+            }
+
+            .prof-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 30px;
+            }
+
+            .prof-card {
+                background: linear-gradient(145deg, rgba(15, 15, 18, 0.9), rgba(5, 5, 8, 0.95));
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 10px;
+                padding: 30px;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+
+            .prof-card::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0; height: 3px;
+                background: var(--primary-gold);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.4s ease;
+            }
+
+            .prof-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(212, 175, 55, 0.3);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            }
+
+            .prof-card:hover::before {
+                transform: scaleX(1);
+            }
+
+            .prof-icon {
+                font-size: 3rem;
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            .prof-title {
+                font-family: 'Cinzel', serif;
+                font-size: 1.5rem;
+                color: #fff;
+                margin-bottom: 10px;
+            }
+
+            .prof-desc {
+                color: var(--text-muted);
+                line-height: 1.6;
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+
+            .prof-features {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .prof-features li {
+                position: relative;
+                padding-left: 20px;
+                margin-bottom: 8px;
+                font-size: 0.9rem;
+                color: #ccc;
+            }
+
+            .prof-features li::before {
+                content: '✦';
+                position: absolute;
+                left: 0;
+                color: var(--primary-gold);
+                font-size: 0.8rem;
+                top: 2px;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        </style>
+
+        <section class="section" style="padding-bottom: 80px;">
+            <div class="container text-center reveal active">
+                <h1 class="title-gold" style="font-size: 3rem; margin-bottom: 20px;">Profissões de Elite</h1>
+                <p class="hero-quote">Escolha sua especialização e molde o destino da economia de Baris.</p>
+            </div>
+
+        <!-- Tabs -->
+        <div class="prof-tabs-container">
+            <button class="prof-tab-btn active" data-target="ferreiro">🔨 Ferreiro</button>
+            <button class="prof-tab-btn" data-target="alquimista">🧪 Alquimista</button>
+            <button class="prof-tab-btn" data-target="mercador">🏪 Mercador</button>
+            <button class="prof-tab-btn" data-target="guerreiro">⚔️ Guerreiro</button>
+        </div>
+
+        <!-- Content Area -->
+        <div class="prof-content-area">
+            
+            <!-- FERREIRO -->
+            <div id="ferreiro" class="prof-panel active">
+                <div class="prof-grid">
+                    <div class="prof-card">
+                        <span class="prof-icon">🗡️</span>
+                        <h3 class="prof-title">Armeiro</h3>
+                        <p class="prof-desc">Especialistas na forja da guerra. Fabricam lâminas letais e instrumentos de destruição em massa.</p>
+                        <ul class="prof-features">
+                            <li>Bônus de sucesso ao forjar Espadas e Machados.</li>
+                            <li>Acesso a moldes exclusivos de Armas Pesadas.</li>
+                            <li>Menor gasto de Carvão na Mesa de Forja.</li>
+                        </ul>
+                    </div>
+                    <div class="prof-card">
+                        <span class="prof-icon">🛡️</span>
+                        <h3 class="prof-title">Cuteleiro</h3>
+                        <p class="prof-desc">Mestres da defesa. Dobram o aço para criar armaduras impenetráveis e escudos pesados.</p>
+                        <ul class="prof-features">
+                            <li>Bônus defensivos extras ao refinar peitorais.</li>
+                            <li>Reparo de armaduras consome -20% materiais.</li>
+                            <li>Permite criação de Reforços de Titânio.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALQUIMISTA -->
+            <div id="alquimista" class="prof-panel">
+                <div class="prof-grid">
+                    <div class="prof-card">
+                        <span class="prof-icon">⚗️</span>
+                        <h3 class="prof-title">Mestre de Poções</h3>
+                        <p class="prof-desc">Manipuladores da vida e da morte que destilam os vapores mais voláteis de Velmora.</p>
+                        <ul class="prof-features">
+                            <li>Poções de cura duram o dobro do tempo.</li>
+                            <li>Desbloqueia receitas de Elixires de Batalha.</li>
+                            <li>Transmutações na mesa geram +10% de orbs.</li>
+                        </ul>
+                    </div>
+                    <div class="prof-card">
+                        <span class="prof-icon">🌿</span>
+                        <h3 class="prof-title">Botânico</h3>
+                        <p class="prof-desc">Sábios da natureza. Extraem poder oculto das raízes, cogumelos e corações de feras.</p>
+                        <ul class="prof-features">
+                            <li>Maior drop rate ao colher ervas e reagentes.</li>
+                            <li>Pode criar antídotos para as pragas de Baris.</li>
+                            <li>Sinergia de crescimento perto de Estantes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MERCADOR -->
+            <div id="mercador" class="prof-panel">
+                <div class="prof-grid">
+                    <div class="prof-card">
+                        <span class="prof-icon">💰</span>
+                        <h3 class="prof-title">Magnata</h3>
+                        <p class="prof-desc">Reis da logística e do dinheiro. Dominam as estradas e os portos de comércio.</p>
+                        <ul class="prof-features">
+                            <li>Desconto em taxas de venda nas cidades.</li>
+                            <li>Pode criar até 5 Rotas Comerciais de teletransporte.</li>
+                            <li>Selo de Rota custa -30% menos Mana.</li>
+                        </ul>
+                    </div>
+                    <div class="prof-card">
+                        <span class="prof-icon">📜</span>
+                        <h3 class="prof-title">Contrabandista</h3>
+                        <p class="prof-desc">Negociantes das sombras. Movem itens ilícitos e encantamentos proibidos pela Inquisição.</p>
+                        <ul class="prof-features">
+                            <li>+15% de chance de sucesso ao Encantar itens.</li>
+                            <li>Identifica itens sem gastar XP de avaliação.</li>
+                            <li>Pode abrir lojas ocultas no submundo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GUERREIRO -->
+            <div id="guerreiro" class="prof-panel">
+                <div class="prof-grid">
+                    <div class="prof-card">
+                        <span class="prof-icon">⚔️</span>
+                        <h3 class="prof-title">Berserker</h3>
+                        <p class="prof-desc">A vanguarda violenta. Focam em força bruta e intimidação no campo de batalha.</p>
+                        <ul class="prof-features">
+                            <li>Bônus de dano com armas de duas mãos.</li>
+                            <li>Acesso a habilidades de fúria sangrenta.</li>
+                            <li>Carga máxima aumentada para itens de batalha.</li>
+                        </ul>
+                    </div>
+                    <div class="prof-card">
+                        <span class="prof-icon">🏹</span>
+                        <h3 class="prof-title">Arqueiro</h3>
+                        <p class="prof-desc">Ataques à distância letais. Sobrevivência e furtividade nas matas densas de Velmora.</p>
+                        <ul class="prof-features">
+                            <li>Pode craftar Bestas e Arcos Reforçados.</li>
+                            <li>Passos silenciosos reduzem o alcance de aggro.</li>
+                            <li>Maior precisão crítica contra pontos fracos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </section>
+
+        <script>
+            // Lógica de alternância das abas de Profissões
+            document.addEventListener('DOMContentLoaded', () => {
+                const tabs = document.querySelectorAll('.prof-tab-btn');
+                const panels = document.querySelectorAll('.prof-panel');
+
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        // Remove ativo de todos os botões e paineis
+                        tabs.forEach(t => t.classList.remove('active'));
+                        panels.forEach(p => p.classList.remove('active'));
+
+                        // Adiciona ativo no clicado
+                        tab.classList.add('active');
+                        const targetId = tab.getAttribute('data-target');
+                        document.getElementById(targetId).classList.add('active');
+                    });
+                });
+            });
+        </script>
+    <!-- SISTEMA DE MOCHILAS (BACKPACKS) CINEMÁTICO -->
+        <section class="section backpacks" id="backpacks" style="padding: 100px 0; background: linear-gradient(rgba(7, 9, 12, 0.95), rgba(7, 9, 12, 0.95)), url('assets/hero_bg.png'); background-attachment: fixed; background-size: cover;">
+            <div class="container reveal">
+                <div class="section-header text-center">
+                    <h2 class="title-gold">Mecânica de Mochilas</h2>
+                    <p>Amplie sua capacidade de carga e sobreviva aos perigos do mundo.</p>
+                </div>
+
+                <!-- Bloco Informativo de Regras -->
+                <div class="backpack-rules-card">
+                    <div class="rules-icon-wrapper">
+                        <span class="warning-icon">⚠️</span>
+                    </div>
+                    <div class="rules-content">
+                        <h3 class="rules-title">Leis de Carga e Penalidades</h3>
+                        <p class="rules-desc">A imersão medieval cobra o seu preço nas regras de transporte.</p>
+                        <ul class="rules-list">
+                            <li><strong>Visibilidade:</strong> Aparece fisicamente nas costas do seu personagem (via CPM).</li>
+                            <li><strong>Morte:</strong> O conteúdo interno cai no chão ao morrer em zonas de perigo.</li>
+                            <li><strong>Penalidade:</strong> Nadar com mochilas grandes causa lentidão severa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="backpack-cinematic-slider">
+                    <button class="slider-arrow prev" id="backpack-prev" aria-label="Anterior">&lt;</button>
+                    
+                    <div class="backpack-slides-container">
+                        <!-- Slide 1: Mochila de Couro -->
+                        <div class="backpack-cinematic-slide active" data-index="0">
+                            <div class="backpack-card">
+                                <div class="backpack-front">
+                                    <div class="backpack-main-info">
+                                        <span class="backpack-slots-badge">9 SLOTS</span>
+                                        <h3 class="backpack-title">Mochila de Couro</h3>
+                                    </div>
+                                    <div class="backpack-visual-wrapper">
+                                        <img src="assets/backpack_leather.png" alt="Mochila de Couro" class="backpack-image">
+                                    </div>
+                                    <p class="click-hint">🖱️ Clique para Detalhes</p>
+                                </div>
+                                <div class="backpack-back">
+                                    <h3 class="backpack-title-back">Mochila de Couro</h3>
+                                    <div class="backpack-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-icon">🛠️</span>
+                                            <span class="stat-text"><strong>Material:</strong> Couro Simples e Linha</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-icon">🏃‍♂️</span>
+                                            <span class="stat-text"><strong>Mobilidade:</strong> 100% (Sem Penalidade)</span>
+                                        </div>
+                                    </div>
+                                    <p class="backpack-phrase">"Para o andarilho que sabe que peso demais cansa o corpo e a alma."</p>
+                                    <p class="click-hint">🖱️ Clique para Voltar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Mochila Imperial -->
+                        <div class="backpack-cinematic-slide" data-index="1">
+                            <div class="backpack-card">
+                                <div class="backpack-front">
+                                    <div class="backpack-main-info">
+                                        <span class="backpack-slots-badge">18 SLOTS</span>
+                                        <h3 class="backpack-title">Mochila Imperial</h3>
+                                    </div>
+                                    <div class="backpack-visual-wrapper">
+                                        <img src="assets/backpack_gold.png" alt="Mochila Imperial" class="backpack-image">
+                                    </div>
+                                    <p class="click-hint">🖱️ Clique para Detalhes</p>
+                                </div>
+                                <div class="backpack-back">
+                                    <h3 class="backpack-title-back">Mochila Imperial</h3>
+                                    <div class="backpack-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-icon">👑</span>
+                                            <span class="stat-text"><strong>Material:</strong> Couro Tratado e Ouro</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-icon">🛡️</span>
+                                            <span class="stat-text"><strong>Mobilidade:</strong> 90% de velocidade</span>
+                                        </div>
+                                    </div>
+                                    <p class="backpack-phrase">"O ouro protege seus tesouros mais valiosos com a nobreza que você carrega."</p>
+                                    <p class="click-hint">🖱️ Clique para Voltar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Mochila de Conquistador -->
+                        <div class="backpack-cinematic-slide" data-index="2">
+                            <div class="backpack-card">
+                                <div class="backpack-front">
+                                    <div class="backpack-main-info">
+                                        <span class="backpack-slots-badge">27 SLOTS</span>
+                                        <h3 class="backpack-title">Mochila de Conquistador</h3>
+                                    </div>
+                                    <div class="backpack-visual-wrapper">
+                                        <img src="assets/backpack_diamond.png" alt="Mochila de Conquistador" class="backpack-image">
+                                    </div>
+                                    <p class="click-hint">🖱️ Clique para Detalhes</p>
+                                </div>
+                                <div class="backpack-back">
+                                    <h3 class="backpack-title-back">Mochila de Conquistador</h3>
+                                    <div class="backpack-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-icon">💎</span>
+                                            <span class="stat-text"><strong>Material:</strong> Couro Rígido e Diamante</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-icon">⚠️</span>
+                                            <span class="stat-text"><strong>Mobilidade:</strong> 75% (Lento ao nadar)</span>
+                                        </div>
+                                    </div>
+                                    <p class="backpack-phrase">"Forjada para saquear as profundezas das masmorras mais perigosas."</p>
+                                    <p class="click-hint">🖱️ Clique para Voltar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="slider-arrow next" id="backpack-next" aria-label="Próximo">&gt;</button>
+                </div>
+
+                <div class="slider-dots" id="backpack-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+            <!-- SISTEMA DE CIDADES -->
+        <section class="section cities-section" style="padding: 100px 0; background: linear-gradient(to bottom, #000, #0a0a0c);">
+            <style>
+                .cities-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+                .cities-header { text-align: center; margin-bottom: 50px; }
+                
+                .city-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+                .city-btn {
+                    background: transparent; border: none; color: #888; font-family: 'Cinzel', serif; font-size: 1.5rem; cursor: pointer; transition: 0.3s; padding-bottom: 5px; position: relative;
+                }
+                .city-btn::after {
+                    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--primary-gold); transition: 0.3s;
+                }
+                .city-btn:hover, .city-btn.active { color: #fff; text-shadow: 0 0 15px rgba(212,175,55,0.5); }
+                .city-btn.active::after { width: 100%; }
+
+                .city-panel { display: none; animation: fadeIn 0.5s ease; }
+                .city-panel.active { display: block; }
+                
+                .city-layout { display: flex; gap: 40px; align-items: center; }
+                @media(max-width: 900px) { .city-layout { flex-direction: column; } }
+                
+                .city-image-wrapper { flex: 1; border-radius: 8px; overflow: hidden; position: relative; border: 1px solid rgba(212,175,55,0.2); }
+                .city-image-wrapper img { width: 100%; display: block; filter: brightness(0.7) contrast(1.2); transition: 0.5s; }
+                .city-image-wrapper:hover img { filter: brightness(1) contrast(1.1); transform: scale(1.02); }
+                .city-badge { position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--primary-gold); padding: 5px 15px; font-family: 'Cinzel', serif; color: var(--primary-gold); border-radius: 4px; font-size: 0.9rem; z-index: 2; }
+
+                .city-info { flex: 1; }
+                .city-title { font-family: 'Cinzel', serif; font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+                .city-subtitle { color: var(--primary-gold); font-style: italic; margin-bottom: 20px; font-size: 1.1rem; }
+                .city-desc { color: #ccc; line-height: 1.7; margin-bottom: 30px; }
+                
+                .city-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+                .city-stat-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 6px; border-left: 3px solid var(--primary-gold); }
+                .city-stat-title { color: #fff; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 5px; }
+                .city-stat-value { color: #aaa; font-size: 0.95rem; }
+            </style>
+
+            <div class="cities-container reveal">
+                <div class="cities-header">
+                    <h2 class="title-gold" style="font-size: 3rem;">Terras de Velmora</h2>
+                    <p class="hero-quote">Conheça as fortalezas e os redutos onde a humanidade tenta sobreviver.</p>
+                </div>
+
+                <div class="city-nav">
+                    <button class="city-btn active" data-city="eldrath">👑 Eldrath</button>
+                    <button class="city-btn" data-city="halyss">⚓ Halyss</button>
+                    <button class="city-btn" data-city="kaelgard">⚒️ Kaelgard <span style="font-size: 0.6rem; vertical-align: top; color: #d04646;">(TESTE)</span></button>
+                </div>
+
+                <!-- ELDRATH -->
+                <div id="eldrath" class="city-panel active">
+                    <div class="city-layout">
+                        <div class="city-image-wrapper">
+                            <span class="city-badge">Alta Segurança</span>
+                            <img src="assets/dungeon_visual.png" alt="Eldrath" style="height: 400px; object-fit: cover;">
+                        </div>
+                        <div class="city-info">
+                            <h3 class="city-title">Eldrath</h3>
+                            <div class="city-subtitle">A Capital de Pedra e Fé</div>
+                            <p class="city-desc">A joia do arquipélago, construída sobre montanhas e fortemente defendida por muralhas impenetráveis. Eldrath é a sede da realeza e da inquisição. Aqui, os nobres e clérigos vivem em luxo absoluto, enquanto o restante da população se aglomera nos anéis externos da cidade sob a pesada cobrança de impostos da Coroa.</p>
+                            <div class="city-stats">
+                                <div class="city-stat-box">
+                                    <div class="city-stat-title">Guarda Real</div>
+                                    <div class="city-stat-value">Forte Presença. Regras rígidas e punições severas.</div>
+                                </div>
+                                <div class="city-stat-box">
+                                    <div class="city-stat-title">Economia</div>
+                                    <div class="city-stat-value">Itens de Luxo, Encantamentos da Igreja e Forja Divina.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HALYSS -->
+                <div id="halyss" class="city-panel">
+                    <div class="city-layout">
+                        <div class="city-image-wrapper">
+                            <span class="city-badge" style="border-color: #3498db; color: #3498db;">Porto Livre</span>
+                            <img src="assets/hero_bg.png" alt="Halyss" style="height: 400px; object-fit: cover; filter: sepia(0.3) brightness(0.6);">
+                        </div>
+                        <div class="city-info">
+                            <h3 class="city-title">Halyss</h3>
+                            <div class="city-subtitle">O Porto das Sombras</div>
+                            <p class="city-desc">Onde o ouro circula mais rápido que o sangue. Halyss é uma cidade costeira e pantanosa dominada pela Burguesia e pelas Guildas de Mercadores. Apesar de rica, a guarda é facilmente corrompível, fazendo com que o verdadeiro poder na cidade durante a noite resida nas mãos de Contrabandistas e Marginalizados.</p>
+                            <div class="city-stats">
+                                <div class="city-stat-box" style="border-left-color: #3498db;">
+                                    <div class="city-stat-title">Segurança</div>
+                                    <div class="city-stat-value">Média de dia, Perigosa à noite. Evite os becos sem luz.</div>
+                                </div>
+                                <div class="city-stat-box" style="border-left-color: #3498db;">
+                                    <div class="city-stat-title">Mercado</div>
+                                    <div class="city-stat-value">Reagentes Alquímicos, Comércio Negro e Orbs Místicas.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KAELGARD -->
+                <div id="kaelgard" class="city-panel">
+                    <div class="city-layout">
+                        <div class="city-image-wrapper">
+                            <span class="city-badge" style="border-color: #e67e22; color: #e67e22;">Fronteira Militar</span>
+                            <img src="assets/velmora_village_bg_user.jpg" alt="Kaelgard" style="height: 400px; object-fit: cover;">
+                        </div>
+                        <div class="city-info">
+                            <h3 class="city-title">Kaelgard <span style="font-size: 1rem; color: #d04646;">(TESTE)</span></h3>
+                            <div class="city-subtitle">A Forja da Fronteira</div>
+                            <p class="city-desc">Um assentamento brutal e frio, cravado no limite das Terras Sombrias. Kaelgard serve como posto avançado de mineração e resistência militar. Seus habitantes sobrevivem sob constantes ataques de monstros da névoa. Não há luxo ou política elaborada aqui; o respeito é forjado no aço e medido em cicatrizes de batalha.</p>
+                            <div class="city-stats">
+                                <div class="city-stat-box" style="border-left-color: #e67e22;">
+                                    <div class="city-stat-title">Risco Total</div>
+                                    <div class="city-stat-value">Zonas Imediatas Fatais. Dungeons de alto nível vizinhas.</div>
+                                </div>
+                                <div class="city-stat-box" style="border-left-color: #e67e22;">
+                                    <div class="city-stat-title">Recursos Brutos</div>
+                                    <div class="city-stat-value">Paraíso de Ferreiros: Farta em Minérios e Materiais de Mobs.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const cityBtns = document.querySelectorAll('.city-btn');
+                    const cityPanels = document.querySelectorAll('.city-panel');
+
+                    cityBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            cityBtns.forEach(b => b.classList.remove('active'));
+                            cityPanels.forEach(p => p.classList.remove('active'));
+
+                            btn.classList.add('active');
+                            const target = btn.getAttribute('data-city');
+                            document.getElementById(target).classList.add('active');
+                        });
+                    });
+                });
+            </script>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="f-info">
+                    <img src="assets/serverlogo_bg.png" alt="NemonicRP Logo" class="footer-logo" style="max-width: 250px; margin-bottom: 20px;">
+                    <p>Página de testes do NemonicRP.</p>
+                </div>
+                <div class="f-links">
+                    <h4>Navegação</h4>
+                    <a href="index.html">Início</a>
+                    <a href="historia.html">História</a>
+                    <a href="regras.html">Guia do Jogador</a>
+                </div>
+            </div>
+            <div class="f-copy">
+                &copy; 2026 NemonicRP.
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

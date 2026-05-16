@@ -14,8 +14,184 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Jost:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Custom CSS with Cache Busting -->
+    <link rel="stylesheet" href="style.css?v=2.1">
+
+    <style>
+        /* Document Layout CSS (From Sistemas Wiki) */
+        .doc-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 20px 60px 20px;
+            gap: 40px;
+        }
+
+        /* Sidebar Navigation */
+        .doc-sidebar {
+            flex: 0 0 300px;
+            position: sticky;
+            top: 110px;
+            height: calc(100vh - 130px);
+            overflow-y: auto;
+            padding-right: 20px;
+        }
+
+        .doc-sidebar::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .doc-sidebar::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+        }
+
+        .doc-nav-title {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .doc-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .doc-nav-list li {
+            margin-bottom: 10px;
+        }
+
+        .doc-nav-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+        }
+
+        .doc-nav-list a:hover, .doc-nav-list a.active {
+            color: #fff;
+            background: rgba(212, 175, 55, 0.1);
+            border-left-color: var(--primary-gold);
+        }
+
+        /* Content Area */
+        .doc-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .doc-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 120px;
+        }
+
+        .doc-section h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .doc-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .doc-section h3 {
+            font-family: 'Jost', sans-serif;
+            font-size: 1.4rem;
+            color: #ccc;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .doc-section p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+
+        .doc-alert {
+            background: rgba(208, 70, 70, 0.1);
+            border-left: 4px solid #d04646;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+
+        .doc-alert.info {
+            background: rgba(91, 146, 229, 0.1);
+            border-left-color: #5B92E5;
+        }
+
+        .doc-alert.warning {
+            background: rgba(230, 200, 117, 0.1);
+            border-left-color: #E6C875;
+        }
+
+        .doc-alert p {
+            margin-bottom: 0;
+        }
+
+        /* Tables */
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: rgba(10, 10, 10, 0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .doc-table th, .doc-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .doc-table th {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            background: rgba(0, 0, 0, 0.5);
+            font-weight: 600;
+        }
+
+        .doc-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .doc-container {
+                flex-direction: column;
+            }
+            .doc-sidebar {
+                flex: none;
+                height: auto;
+                position: static;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                margin-bottom: 40px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -166,6 +342,188 @@
             </div>
         </section>
 
+        <!-- GUIA KINGDOMSX -->
+        <section class="section kingdomsx-guide" id="kingdomsx" style="background: rgba(10, 12, 16, 0.95); border-top: 1px solid rgba(255,255,255,0.05);">
+            <div class="doc-container">
+                <!-- Sidebar -->
+                <aside class="doc-sidebar">
+                    <h3 class="doc-nav-title">Guia do KingdomsX</h3>
+                    <ul class="doc-nav-list">
+                        <li><a href="#k-intro" class="active">Introdução & Dinâmica</a></li>
+                        <li><a href="#k-rp">Resource Points (RP)</a></li>
+                        <li><a href="#k-estruturas">Estruturas do Reino</a></li>
+                        <li><a href="#k-defesas">Turrets e Guards</a></li>
+                        <li><a href="#k-champion">Champion e Shield</a></li>
+                        <li><a href="#k-comandos">Invasão vs Saque</a></li>
+                        <li><a href="#k-dicas">Dicas & Avisos (FAQ)</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Content -->
+                <div class="doc-content">
+                    
+                    <div id="k-intro" class="doc-section">
+                        <h1>A Arte da Guerra em Velmora</h1>
+                        <p>O KingdomsX pode parecer complicado no começo, mas ao entender suas peças, ele se torna intuitivo. Este guia cobre tudo para você não ficar de fora das guerras, proteger seus recursos e montar defesas impenetráveis.</p>
+                        
+                        <h2>Invasões: Apenas nos Fins de Semana</h2>
+                        <p>No NemonicRP, a semana serve para se preparar. <strong>De segunda a sexta, seu reino está protegido automaticamente.</strong> Ninguém pode invadi-lo. Sábado e domingo, no entanto, tudo é liberado: guerras, invasões e saques.</p>
+
+                        <div class="doc-alert warning">
+                            <p><strong>Atenção à Sexta-Feira:</strong> Feche a semana garantindo que seu <em>Extractor</em> está abastecido, suas <em>Turrets</em> estão com munição, e os upgrades do <em>Champion</em> foram feitos. Chegar no sábado sem preparo é pedir para perder território.</p>
+                        </div>
+                    </div>
+
+                    <div id="k-rp" class="doc-section">
+                        <h2>Resource Points (RP)</h2>
+                        <p>Resource Points (RP) são a moeda interna da guerra. Você precisa de RP para repor munição, invadir, comprar itens e dar upgrade no reino.</p>
+                        
+                        <h3>Como obter RP:</h3>
+                        <p>A principal fonte é o <strong>Extractor</strong>, que gera passivamente (desde que tenha combustível). Outras fontes incluem o sucesso em invadir reinos inimigos e saquear RP usando o comando <code>/k saque</code>.</p>
+                    </div>
+
+                    <div id="k-estruturas" class="doc-section">
+                        <h2>Estruturas do Reino</h2>
+                        <p>Construções especiais instaladas em suas terras que concedem vantagens defensivas e econômicas.</p>
+                        
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Estrutura</th>
+                                    <th>Função Principal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Nexus</strong></td>
+                                    <td>O coração do reino. Gerencia upgrades, champion e configs. Se for destruído, as penalidades são pesadas.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Extractor</strong></td>
+                                    <td>Gera RP passivamente, mas precisa de combustível. Retire os pontos com frequência para não travar a produção.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Regulator</strong></td>
+                                    <td>Controla o chunk: reabastece turrets, controla mobs. Funciona <em>apenas no chunk</em> onde foi instalado.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Powercell</strong></td>
+                                    <td>Cria uma proteção na área. O inimigo não pode acessar terras centrais sem primeiro conquistar onde o Powercell está.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Siege Cannon</strong></td>
+                                    <td>Arma de cerco. Serve para destruir Shields de reinos inimigos. Pode disparar Blocos de Ferro, Ouro e Bola de Fogo.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="doc-alert info">
+                            <p><strong>Sobre o Regulator e Munição:</strong> Para reabastecer uma Turret automaticamente, ela deve chegar a 0 munição (exatos zero), estar no mesmo chunk do Regulator, e você deve ter RP suficiente para a carga completa.</p>
+                        </div>
+                    </div>
+
+                    <div id="k-defesas" class="doc-section">
+                        <h2>Turrets e Guards</h2>
+                        <p>Suas defesas automatizadas e soldados iniciais.</p>
+                        
+                        <h3>Tipos de Turrets</h3>
+                        <p>Elas atiram sozinhas em qualquer invasor. Precisam ser fixadas em cercas ou paredes.</p>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Turret</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Arrow</td>
+                                    <td>Atira flechas em inimigos (padrão)</td>
+                                </tr>
+                                <tr>
+                                    <td>Inferno</td>
+                                    <td>Dispara projéteis flamejantes</td>
+                                </tr>
+                                <tr>
+                                    <td>Healing</td>
+                                    <td>Cura membros e aliados próximos</td>
+                                </tr>
+                                <tr>
+                                    <td>Soldier</td>
+                                    <td>Invoca soldados no campo de batalha</td>
+                                </tr>
+                                <tr>
+                                    <td>Pressure Mine</td>
+                                    <td>Explode quando pisada pelo inimigo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="doc-alert">
+                            <p><strong>Por que minha Turret não atira?</strong> Motivos comuns: sem munição, alvo em criativo/god, linha de visão bloqueada, reino em modo pacifista, ou o Regulator desativou as armas naquele chunk.</p>
+                        </div>
+
+                        <h3>Guards</h3>
+                        <p>São NPCs que surgem na fronteira assim que o inimigo entra no seu reino. Eles não mudam de alvo e não surgem novos guards enquanto os atuais não morrerem ou o alvo sair.</p>
+                    </div>
+
+                    <div id="k-champion" class="doc-section">
+                        <h2>O Champion e o Shield</h2>
+                        
+                        <h3>Champion</h3>
+                        <p>Quando alguém usa <code>/k invade</code>, o Champion do seu reino aparece. O atacante <strong>precisa matar o Champion</strong> para conquistar aquela terra. Priorize fazer upgrades nele nas sextas-feiras.</p>
+                        
+                        <h3>Shield</h3>
+                        <p>Uma proteção que bloqueia temporariamente qualquer invasão e saque (comandos <code>/k invade</code> e <code>/k saque</code> falham). Pode ser destruído pelo inimigo usando um <em>Siege Cannon</em>.</p>
+                    </div>
+
+                    <div id="k-comandos" class="doc-section">
+                        <h2>Invasão vs Saque</h2>
+                        <p>Entender a diferença entre dominar terras e enfraquecer o inimigo é crucial para a guerra.</p>
+
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>/k invade</th>
+                                    <th>/k saque</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Objetivo</strong></td>
+                                    <td>Expansão territorial</td>
+                                    <td>Enfraquecimento econômico</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Toma a Land?</strong></td>
+                                    <td>Sim</td>
+                                    <td>Não</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bônus de Recursos?</strong></td>
+                                    <td>Normal</td>
+                                    <td>Maior (direto da reserva do inimigo)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><em>Dica Tática:</em> Use saques para drenar a munição e os RPs das turrets inimigas antes de ordenar um grande <code>/k invade</code>.</p>
+                    </div>
+
+                    <div id="k-dicas" class="doc-section">
+                        <h2>Avisos e Dicas Cruciais</h2>
+                        <ul>
+                            <li><strong>Extractor cedo:</strong> Sem RP nada funciona. Monte e abasteça seu Extractor o mais rápido possível.</li>
+                            <li><strong>Não subestime o Powercell:</strong> Force seus inimigos em "corredores" longos de turrets.</li>
+                            <li><strong>Não é possível recolher Turrets:</strong> Apenas staff recolhe Turrets/Estruturas depois de colocadas. Pense bem antes de instalá-las.</li>
+                            <li><strong>Se renda com sabedoria:</strong> <code>/k surrender</code> passa a land instantaneamente para o atacante, mas com penalidades severas. Só use se for impossível vencer.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- MODAIS -->
         <div id="map-modal-overlay" class="map-modal-overlay">
             <div class="map-modal-content">
@@ -202,6 +560,32 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <!-- Scripts with Cache Busting -->
+    <script src="main.js?v=2.1"></script>
+    <script>
+        // Simple Scroll Spy for Sidebar
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.doc-section');
+            const navLinks = document.querySelectorAll('.doc-nav-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 250)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

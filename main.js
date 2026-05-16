@@ -167,12 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8.5 Detalhes das Classes (Modal)
-    const classBtns = document.querySelectorAll('.class-detail-btn');
-    const classModalOverlay = document.getElementById('class-modal-overlay');
-    const classModalBody = document.getElementById('class-modal-body');
-    const closeClassModalBtn = document.getElementById('close-class-modal');
-
+    // 8.5 Cards Expansíveis de Classes (v2.1 - Inline)
     const classDetailedData = {
         alquimista: {
             name: "Alquimista",
@@ -263,66 +258,67 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         }
     };
+    // 8.5 Detalhes das Classes (Pop-up Modal)
+    const classBtns = document.querySelectorAll('.class-detail-btn');
+    const classModalOverlay = document.getElementById('class-modal-overlay');
+    const classModalBody = document.getElementById('class-modal-body');
+    const closeClassModalBtn = document.getElementById('close-class-modal');
 
     if (classBtns.length > 0 && classModalOverlay) {
         classBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
                 const classKey = btn.getAttribute('data-class');
                 const data = classDetailedData[classKey];
 
                 if (data) {
-                    let html = `
+                    console.log('Abrindo modal para:', classKey); // Debug opcional
+                    
+                    let skillsHtml = data.skills.map(skill => `
+                        <div class="skill-card-inline">
+                            <div class="skill-header-inline">
+                                <span class="skill-name-inline">${skill.name}</span>
+                                <span class="skill-lv-inline">LV. ${skill.lv}</span>
+                            </div>
+                            <div class="skill-meta-inline">
+                                <span>⏱️ ${skill.cd}</span>
+                                <span>✨ ${skill.mana}</span>
+                            </div>
+                            <p class="skill-desc-inline">${skill.desc}</p>
+                        </div>
+                    `).join('');
+
+                    let attrHtml = data.attributes.map(attr => `
+                        <div class="attr-item">
+                            <span class="attr-label">${attr.label}</span>
+                            <span class="attr-val">${attr.val}</span>
+                        </div>
+                    `).join('');
+
+                    classModalBody.innerHTML = `
                         <div class="modal-class-header">
                             <h2>${data.name}</h2>
                             <p class="modal-class-quote">"${data.quote}"</p>
-                            <p style="margin-top:10px; color:var(--gold); font-family:var(--font-heading); font-size:0.9rem;">Caminho: ${data.style}</p>
                         </div>
-
-                        ${data.description ? `
-                            <div class="modal-class-desc-box" style="margin-bottom:30px; text-align:center;">
-                                <p style="color:var(--text-muted); line-height:1.6; font-size:1rem;">${data.description}</p>
-                            </div>
-                        ` : ''}
 
                         ${data.warning ? `
-                            <div class="death-warning" style="margin-bottom:30px; border-left: 4px solid var(--gold); background: rgba(210, 204, 161, 0.05);">
-                                <h4 style="color:var(--gold); margin-bottom:5px;">⚠️ Aviso de Sobrevivência</h4>
-                                <p style="color:#ddd; font-style:italic;">${data.warning}</p>
+                            <div class="death-warning-inline">
+                                <h4>⚠️ Aviso de Sobrevivência</h4>
+                                <p>${data.warning}</p>
                             </div>
                         ` : ''}
-                        
-                        <div class="modal-section-title">📊 Atributos de Base</div>
+
+                        <div class="modal-section-title">📊 Atributos Base</div>
                         <div class="modal-attr-grid">
-                            ${data.attributes.length > 0 ? 
-                                data.attributes.map(attr => `
-                                    <div class="attr-item">
-                                        <span class="attr-label">${attr.label}</span>
-                                        <span class="attr-val">${attr.val}</span>
-                                    </div>
-                                `).join('') : '<p style="color:var(--text-muted);">Informações em breve.</p>'
-                            }
+                            ${attrHtml}
                         </div>
 
-                        <div class="modal-section-title">⚔️ Árvore de Habilidades</div>
+                        <div class="modal-section-title">⚔️ Habilidades</div>
                         <div class="skills-container">
-                            ${data.skills.length > 0 ? 
-                                data.skills.map(skill => `
-                                    <div class="skill-card">
-                                        <div class="skill-header">
-                                            <span class="skill-name">${skill.name}</span>
-                                            <span class="skill-lv">LV. ${skill.lv}</span>
-                                        </div>
-                                        <div class="skill-meta">
-                                            <span>⏱️ Cooldown: <strong>${skill.cd}</strong></span>
-                                            <span>✨ Mana: <strong>${skill.mana}</strong></span>
-                                        </div>
-                                        <p class="skill-desc">${skill.desc}</p>
-                                    </div>
-                                `).join('') : '<p style="color:var(--text-muted);">As habilidades desta classe serão reveladas em breve.</p>'
-                            }
+                            ${skillsHtml}
                         </div>
                     `;
-                    classModalBody.innerHTML = html;
+
                     classModalOverlay.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 }
@@ -334,162 +330,36 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'auto';
         };
 
-        closeClassModalBtn.addEventListener('click', fecharClassModal);
+        if(closeClassModalBtn) closeClassModalBtn.addEventListener('click', fecharClassModal);
+        
         classModalOverlay.addEventListener('click', (e) => {
             if (e.target === classModalOverlay) fecharClassModal();
         });
         
         // Fechar no ESC
         document.addEventListener('keydown', (e) => {
-            if(e.key === 'Escape' && classModalOverlay.classList.contains('active')) {
-                fecharClassModal();
-            }
+            if(e.key === 'Escape') fecharClassModal();
         });
     }
 
-    // 8.6 Detalhes da Hierarquia (Modal)
-    const hierarchyBtns = document.querySelectorAll('.hierarchy-detail-btn');
-    const hierarchyModalOverlay = document.getElementById('hierarchy-modal-overlay');
-    const hierarchyModalBody = document.getElementById('hierarchy-modal-body');
-    const closeHierarchyModalBtn = document.getElementById('close-hierarchy-modal');
-
-    const hierarchyDetailedData = {
-        realeza: {
-            icon: "👑",
-            name: "Realeza",
-            role: "A Soberania Máxima",
-            desc: "Os donos do mundo, ditando os rumos do reino, as guerras e as leis.",
-            topics: [
-                { title: "A Casa Real", text: "O Rei, a Rainha e os herdeiros diretos do trono." }
-            ],
-            color: "var(--gold)"
-        },
-        nobreza: {
-            icon: "🏰",
-            name: "Nobreza",
-            role: "Os Senhores das Terras",
-            desc: "Abaixo apenas da coroa, são os responsáveis por administrar os territórios, cobrar os impostos e manter a ordem local.",
-            topics: [
-                { title: "Duques e Lordes", text: "Governam grandes extensões de terra e exercem autoridade militar e econômica sobre suas províncias." },
-                { title: "Nobres Decadentes", text: "Aqueles que ainda ostentam o título de sangue azul, mas que perderam sua riqueza, poder ou influência política. Vivem de aparências e alianças duvidosas." }
-            ],
-            color: "var(--gold)"
-        },
-        clero: {
-            icon: "⛪",
-            name: "O Clero",
-            role: "A Voz do Divino",
-            desc: "A autoridade religiosa e espiritual. Eles não apenas cuidam das almas, mas também controlam os segredos do mundo (incluindo o uso legal do conhecimento arcano/Redstone).",
-            topics: [
-                { title: "Papa", text: "O líder máximo da fé. A única figura que, em certas circunstâncias, ousa questionar a Coroa." },
-                { title: "Inquisidores", text: "A espada da igreja. Cavaleiros sagrados encarregados de caçar hereges, purgar a magia profana e manter a pureza da fé (são eles que mandam para a fogueira quem usa magia sem permissão)." },
-                { title: "Alquimistas", text: "Praticantes de conhecimentos arcanos tolerados e rigidamente supervisionados pela Igreja." },
-                { title: "Sacerdotes / Padres", text: "Conduzem os rituais, ouvem confissões e cuidam do rebanho nas vilas e cidades." },
-                { title: "Seguidores", text: "Os fiéis e membros devotos que compõem a força da religião." }
-            ],
-            color: "var(--gold)"
-        },
-        cavaleiros: {
-            icon: "⚔️",
-            name: "Os Cavaleiros",
-            role: "O Braço Armado",
-            desc: "A elite militar de Velmora. Vivem pela espada, responsáveis por travar as guerras, proteger as fronteiras e manter a ordem civil.",
-            topics: [
-                { title: "Guarda Real", text: "A elite implacável e altamente treinada que protege o Rei e a corte de qualquer ameaça." },
-                { title: "Cavaleiros Juramentados", text: "Guerreiros de elite que servem a Lordes específicos e seguem um rígido código de honra." },
-                { title: "Escudeiros", text: "Os aprendizes em treinamento, que limpam armaduras e cuidam dos cavalos na esperança de um dia receberem as esporas de cavaleiro." }
-            ],
-            color: "var(--gold)"
-        },
-        burguesia: {
-            icon: "💰",
-            name: "A Burguesia",
-            role: "O Motor do Mundo",
-            desc: "Aqueles que não têm sangue azul, mas possuem algo igualmente poderoso: o dinheiro. São eles que fazem a economia girar.",
-            topics: [
-                { title: "Guilda dos Mercadores", text: "Comerciantes astutos que controlam rotas, compram barato, vendem caro e monopolizam as trocas de longa distância." },
-                { title: "Mestres Artesãos", text: "Profissionais altamente especializados (como Ferreiros lendários, carpinteiros e engenheiros) que produzem os melhores equipamentos do reino." },
-                { title: "Navegadores", text: "Especialistas no mar, conhecedores de mapas, rotas ocultas e exploração." }
-            ],
-            color: "var(--gold)"
-        },
-        camponeses: {
-            icon: "🌾",
-            name: "Os Camponeses",
-            role: "A Base da Pirâmide",
-            desc: "O sustento silencioso de Velmora. Eles são a maioria absoluta da população e a força de trabalho do mundo.",
-            topics: [
-                { title: "Trabalhadores", text: "Agricultores, lenhadores, pecuaristas e mineiros que sujam as mãos de terra e fuligem para que o reino não morra de fome ou frio." }
-            ],
-            color: "var(--gold)"
-        },
-        marginalizados: {
-            icon: "🌑",
-            name: "Os Marginalizados",
-            role: "As Sombras da Sociedade",
-            desc: "Indivíduos que vivem fora da ordem estabelecida. Não possuem a proteção da lei, mas dominam o submundo.",
-            topics: [
-                { title: "Bandidos", text: "Criminosos que sobrevivem de roubos, assaltos nas estradas e extorsão." },
-                { title: "Contrabandistas", text: "Os donos do mercado negro. Se você quer algo ilegal ou sem pagar impostos, é com eles que você fala." },
-                { title: "Mercenários", text: "Espadas de aluguel. Lutam guerras e compram brigas por quem pagar mais, sem juramentos de lealdade." },
-                { title: "Bruxos Clandestinos", text: "Praticantes de artes arcanas obscuras que agem fora da lei da Igreja. Vivem sempre a um passo da fogueira da Inquisição." }
-            ],
-            color: "#d04646" // Red thematic color
-        }
-    };
-
-    if (hierarchyBtns.length > 0 && hierarchyModalOverlay) {
-        hierarchyBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tierKey = btn.getAttribute('data-tier');
-                const data = hierarchyDetailedData[tierKey];
-
-                if (data) {
-                    let html = `
-                        <div class="modal-class-header" style="border-bottom-color: ${data.color};">
-                            <h2><span style="font-size: 1.5em; vertical-align: middle;">${data.icon}</span> ${data.name}</h2>
-                            <p style="margin-top:10px; color:${data.color}; font-family:var(--font-heading); font-size:1.1rem; text-transform: uppercase;">${data.role}</p>
-                        </div>
-
-                        <div class="modal-class-desc-box" style="margin-bottom:30px; text-align:center;">
-                            <p style="color:var(--text-muted); line-height:1.6; font-size:1.05rem; font-style: italic;">"${data.desc}"</p>
-                        </div>
-                        
-                        <div class="skills-container">
-                            ${data.topics.map(topic => `
-                                <div class="skill-card" style="border-left: 3px solid ${data.color};">
-                                    <div class="skill-header">
-                                        <span class="skill-name" style="color: ${data.color};">${topic.title}</span>
-                                    </div>
-                                    <p class="skill-desc" style="margin-top: 10px;">${topic.text}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                    hierarchyModalBody.innerHTML = html;
-                    hierarchyModalOverlay.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-        });
-
-        const fecharHierarchyModal = () => {
-            hierarchyModalOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        };
-
-        closeHierarchyModalBtn.addEventListener('click', fecharHierarchyModal);
-        hierarchyModalOverlay.addEventListener('click', (e) => {
-            if (e.target === hierarchyModalOverlay) fecharHierarchyModal();
-        });
-        
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'Escape' && hierarchyModalOverlay.classList.contains('active')) {
-                fecharHierarchyModal();
+    // 8.6 Hierarquia Expansível (Inline)
+    const hierarchyCards = document.querySelectorAll('.expandable-hierarchy');
+    
+    if (hierarchyCards.length > 0) {
+        hierarchyCards.forEach(card => {
+            const btn = card.querySelector('.hierarchy-expand-btn');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    card.classList.toggle('expanded');
+                    if (card.classList.contains('expanded')) {
+                        btn.textContent = 'Recolher Detalhes';
+                    } else {
+                        btn.textContent = 'Conhecer Hierarquia';
+                    }
+                });
             }
         });
     }
-
 
     // 9. Música de Fundo
     const musicBtn = document.getElementById('music-toggle');
